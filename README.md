@@ -1,21 +1,40 @@
-# GluayGluay: Testing for Sudoku
+# 🐈 GluayGluay 🍌: Testing for Sudoku
 
 ## ITCS473 - Software Quality Assurance and Testing
-### Mahidol University, ICT
+### 🏫 Mahidol University, ICT
 
-### Introduction
+## Table of Contents
+- [Introduction](#-introduction)
+- [Project Details](#-project-details)
+- [Added Unit Test Cases](#-added-unit-test-cases)
+- [Test Case Documentation](#-test-case-documentation)
+  - [Test Case 1](#1-testgeneraterandomsudokupuzzletypewithtypesixbysix_returnboardlengthis6)
+  - [Test Case 2](#2-testgeneraterandomsudokupuzzletypewithtypeninebynine_returnboardlengthis9)
+  - [Test Case 3](#3-testgeneraterandomsudokupuzzletypewithtypetwelvebytwelve_returnboardlengthis1)
+  - [Test Case 4](#4-testgeneraterandomsudokupuzzletypewithtypesixteenbysixteen_returnboardlengthis16)
+  - [Test Case 5](#5-testmakemove)
+  - [Test Case 6](#6-testwhencallisvalidvaluewithinvalidvalue_returnfalse)
+  - [Test Case 7](#7-testwhencallisvalidmove_returncorrectresult)
+  - [Test Case 8](#8-testnuminrowcolbox)
+  - [Test Case 9](#9-testgetvalue)
+  - [Test Case 10](#10-yourtestcasename)
+- [License](#-license)
+
+### 🚀 Introduction
 This repository represents our team's enhancements for the Sudoku project as part of the "Project Assignment 1: Unit Test for Open-Source Software Projects". We've aimed to extend the robustness and coverage of testing by adding 10 additional unit test cases.
 
-### Chosen Project Details
+### 📌 Project Details
 - **GitHub Repository**: [Sudoku](https://github.com/mattnenterprise/Sudoku) by Matt McCoy (mattnenterprise)
-- **Star Count**: 48
-- **Programming Language**: Java
+- **Star Count**: 🌟 48 ⭐️
+- **Programming Language**: Java 
 - **Existing Testing Framework**: Gradle
 
-### Added Unit Test Cases
+### 🧪 Added Unit Test Cases
 The additional unit test cases are located in the [`SudokuTest.java`](src/test/java/sudoku/SudokuTest.java) file in this repository, each focusing on specific functionalities or interfaces of the application.
 
-### Test Case Documentation
+### 📜 Test Case Documentation
+
+A structured documentation of test cases aiming to validate various functionalities of the Sudoku application.
 
 #### 1. Test Case Name: testGenerateRandomSudokuPuzzleWithTypeSIXBYSIX_thenReturnBoardLengthIs6
 
@@ -36,6 +55,18 @@ The additional unit test cases are located in the [`SudokuTest.java`](src/test/j
   
 - **Test and Expected Values**: When tested with `SudokuPuzzleType.SIXBYSIX` should return a board of length 6.
 
+### 📝 Test Scenarios
+- **Positive Test Scenarios**: 
+  - Ensure that generating a SIXBYSIX type puzzle results in a board of length 6.
+    ```java
+    assertEquals(6, generatedPuzzle.getBoardLength());
+    ```
+- **Negative Test Scenarios**: 
+  - Validate that generating a SIXBYSIX type puzzle does not result in a board of length 9.
+    ```java
+    assertNotEquals(9, generatedPuzzle.getBoardLength());
+    ```
+
 #### 2. Test Case Name: testGenerateRandomSudokuPuzzleWithTypeNINEBYNINE_thenReturnBoardLengthIs9
 
 - **Goal**: Validate that generating a random Sudoku puzzle of type NINEBYNINE results in a board of length 9.
@@ -54,6 +85,18 @@ The additional unit test cases are located in the [`SudokuTest.java`](src/test/j
 - **Approaches Used**: [ACoC, ECC, PWC, BCC, MBCC] - Specify which approaches were used for this test case.
   
 - **Test and Expected Values**: When tested with `SudokuPuzzleType.NINENINE` should return a board of length 9.
+
+### 📝 Test Scenarios
+- **Positive Test Scenarios**: 
+  - Ensure that generating a NINEBYNINE type puzzle results in a board of length 9.
+    ```java
+    assertEquals(9, generatedPuzzle.getBoardLength());
+    ```
+- **Negative Test Scenarios**: 
+  - Validate that generating a NINEBYNINE type puzzle does not result in a board of length 6.
+    ```java
+    assertNotEquals(6, generatedPuzzle.getBoardLength());
+    ```
 
 #### 3. Test Case Name: testGenerateRandomSudokuPuzzleWithTypeTWELVEBYTWELVE_thenReturnBoardLengthIs1
 
@@ -74,6 +117,18 @@ The additional unit test cases are located in the [`SudokuTest.java`](src/test/j
   
 - **Test and Expected Values**: When tested with `SudokuPuzzleType.TWELVEBYTWELVE` should return a board of length 12.
 
+### 📝 Test Scenarios
+- **Positive Test Scenarios**: 
+  - Ensure that generating a TWELVEBYTWELVE type puzzle results in a board of length 12.
+    ```java
+    assertEquals(12, generatedPuzzle.getBoard().length);
+    ```
+- **Negative Test Scenarios**: 
+  - Validate that generating a TWELVEBYTWELVE type puzzle does not result in a board of length 6.
+    ```java
+    assertNotEquals(6, generatedPuzzle.getBoardLength());
+    ```
+
 #### 4. Test Case Name: testGenerateRandomSudokuPuzzleWithTypeSIXTEENBYSIXTEEN_thenReturnBoardLengthIs16
 
 - **Goal**: Validate that generating a random Sudoku puzzle of type SIXTEENBYSIXTEEN results in a board of length 16.
@@ -92,6 +147,18 @@ The additional unit test cases are located in the [`SudokuTest.java`](src/test/j
 - **Approaches Used**: [ACoC, ECC, PWC, BCC, MBCC] - Specify which approaches were used for this test case.
   
 - **Test and Expected Values**: When tested with `SudokuPuzzleType.SIXTEENBYSIXTEEN` should return a board of length 16.
+
+### 📝 Test Scenarios
+- **Positive Test Scenarios**: 
+  - Ensure that generating a SIXTEENBYSIXTEEN type puzzle results in a board of length 16.
+    ```java
+    assertEquals(16, generatedPuzzle.getBoard().length);
+    ```
+- **Negative Test Scenarios**: 
+  - Validate that generating a SIXTEENBYSIXTEEN type puzzle does not result in a board of length 20.
+    ```java
+    assertNotEquals(20, generatedPuzzle.getBoardLength());
+    ```
 
 #### 5. Test Case Name: testMakeMove
 
@@ -122,6 +189,18 @@ The additional unit test cases are located in the [`SudokuTest.java`](src/test/j
     - Update the value at `(0, 0)` to `"5"` (`assertEquals("5", puzzle.getValue(0, 0))`)
     - Ensure the value is not `"1"` (`assertNotEquals("1", puzzle.getValue(0, 0))`)
     - Ensure the value at `(0, 1)` is not affected (`assertNotEquals("5", puzzle.getValue(0, 1))`)
+   
+#### 📝 Test Scenarios
+- **Positive Test Scenarios**: 
+  - Ensure that after making a move to (0, 0) with the value "5", the value is reflected in the puzzle state.
+    ```java
+    assertEquals("5", puzzle.getValue(0, 0));
+    ```
+- **Negative Test Scenarios**: 
+  - Validate that making a move to (0, 0) with the value "5" does not affect the value at (0, 1).
+    ```java
+    assertNotEquals("5", puzzle.getValue(0, 1));
+    ```
 
 #### 6. Test Case Name: testWhenCallIsValidValueWithInvalidValue_thenReturnFalse
 
@@ -149,6 +228,20 @@ The additional unit test cases are located in the [`SudokuTest.java`](src/test/j
   - Invalid values (e.g., "-1", "0", "10", "A") should not be set on the board and should not change the puzzle state.
   - The `getValue` method should return the same value before and after an invalid move is attempted.
 
+ #### 📝 Test Scenarios
+- **Positive Test Scenarios**: 
+  - Ensure that a valid move (like placing "5" at (0, 0)) is reflected in the puzzle state.
+    ```java
+    puzzle.makeMove(0, 0, "5", true);
+    assertEquals("5", puzzle.getValue(0, 0));
+    ```
+- **Negative Test Scenarios**: 
+  - Validate that an invalid move (like placing "-1" at (0, 0)) is not reflected in the puzzle state.
+    ```java
+    puzzle.makeMove(0, 0, "-1", true);
+    assertNotEquals("-1", puzzle.getValue(0, 0));
+    ```
+
 #### 7. Test Case Name: testWhenCallIsValidMove_thenReturnCorrectResult
 
 - **Goal**: Validate the behavior of the `isValidMove` method when provided with various row, column, and value inputs.
@@ -172,6 +265,23 @@ The additional unit test cases are located in the [`SudokuTest.java`](src/test/j
 - **Test and Expected Values**: 
   - The `isValidMove` method should return `false` for invalid moves, such as when `row` or `col` are negative or exceed the board's size.
   - The method should return `true` for valid moves, where `row` and `col` are within the board's size and `value` is permissible.
+
+### 📝 Test Scenarios
+
+- **Negative Test Scenarios**: 
+  Ensure that the method returns `false` for invalid row or column values:
+  ```java
+  assertFalse(puzzle.isValidMove(-1, 0, "5"));
+  assertFalse(puzzle.isValidMove(0, -1, "5"));
+  assertFalse(puzzle.isValidMove(-1, -1, "5"));
+  ```
+- **Positive Test Scenarios**: 
+  Validate that the method returns `true` for valid row and column values:
+  ```java
+  assertTrue(puzzle.isValidMove(1, 0, "1"));
+  assertTrue(puzzle.isValidMove(0, 1, "6"));
+  assertTrue(puzzle.isValidMove(1, 1, "9"));
+  ```
 
 #### 8. Test Case Name: testNumInRowColBox
 
@@ -199,6 +309,22 @@ The additional unit test cases are located in the [`SudokuTest.java`](src/test/j
   - After a number "5" is placed in position (0, 0), `numInRow`, `numInCol`, and `numInBox` should return `true` when checking for "5" in the respective row, column, and box.
   - Checks for "5" in different rows, columns, and boxes should return `false`, ensuring the number placement is accurately identified.
 
+### 📝 Test Scenarios
+
+- **Positive Test Scenarios**: 
+  Confirm the number "5" is identified in the correct row, column, and box after being placed at (0, 0):
+  ```java
+  assertTrue(puzzle.numInRow(0, "5"));
+  assertTrue(puzzle.numInCol(0, "5"));
+  assertTrue(puzzle.numInBox(0, 0, "5"));
+  ```
+- **Negative Test Scenarios**:
+  Ensure "5" is not falsely identified in different rows, columns, and boxes:
+  ```java
+  assertFalse(puzzle.numInRow(1,"5"));
+  assertFalse(puzzle.numInCol(1, "5"));
+  assertFalse(puzzle.numInBox(1, 1, "5"));
+  ```
 #### 9. Test Case Name: testIsSlotAvailable
 
 - **Goal**: Validate that the puzzle correctly identifies the availability of a slot after moves have been made.
@@ -221,6 +347,22 @@ The additional unit test cases are located in the [`SudokuTest.java`](src/test/j
 - **Test and Expected Values**: 
   - After a move is made to a slot, `isSlotAvailable` should return `false` for that slot, and it should return `true` for slots where no move has been made.
 
+### 📝 Test Scenarios
+
+- **Positive Test Scenarios**: 
+  Verify that an untouched slot is identified as available:
+  ```java
+  assertTrue(puzzle.isSlotAvailable(8, 3));
+  ```
+- **Negative Test Scenarios**:
+  Ensure that a slot is identified as not available after a move is made:
+  ```java
+  puzzle.makeMove(0, 0, "5", true);
+  assertFalse(puzzle.isSlotAvailable(0, 0));
+  puzzle.makeMove(0, 2, "6", true);
+  assertFalse(puzzle.isSlotAvailable(0, 2));
+  ```
+  
 #### 10. Test Case Name: testGetValue
 
 - **Goal**: 
@@ -248,8 +390,22 @@ The additional unit test cases are located in the [`SudokuTest.java`](src/test/j
   - After a move is made to a slot, `getValue` should return the placed value for that slot.
   - For invalid or out-of-bounds indices, `getValue` should return a default value (e.g., an empty string) or handle it as per your implementation.
 
+### 📝 Test Scenarios
 
-### Licensing Statement
+- **Positive Test Scenarios**: 
+  Ensure that the placed value is correctly retrieved:
+  ```java
+  assertEquals("5", puzzle.getValue(0, 0));
+  assertEquals("8", puzzle.getValue(0, 7));
+  ```
+- **Negative Test Scenarios**:
+  Validate that invalid or out-of-bounds indices are handled gracefully:
+  ```java
+  assertEquals("", puzzle.getValue(-1, -1));
+  assertEquals("", puzzle.getValue(100, 100));
+  ```
+  
+### 📄 License
 ```plaintext
 Copyright (C) 2023 GluayGluay - All Rights Reserved
 You may use, distribute, and modify this code under the terms of the MIT license.
