@@ -8,7 +8,7 @@
 - [Project Details](#-project-details)
 - [Added Unit Test Cases](#-added-unit-test-cases)
 - [Test Case Documentation](#-test-case-documentation)
-  - [Test Case 1](#1-testgeneraterandomsudokupuzzletypewithtypesixbysix_returnboardlengthis6)
+  - [Test Case 1](#1-test-case-name-testgeneraterandomsudokupuzzletypewithtypesixbysix_returnboardlengthis6)
   - [Test Case 2](#2-testgeneraterandomsudokupuzzletypewithtypeninebynine_returnboardlengthis9)
   - [Test Case 3](#3-testgeneraterandomsudokupuzzletypewithtypetwelvebytwelve_returnboardlengthis1)
   - [Test Case 4](#4-testgeneraterandomsudokupuzzletypewithtypesixteenbysixteen_returnboardlengthis16)
@@ -26,8 +26,8 @@ This repository represents our team's enhancements for the Sudoku project as par
 ### 📌 Project Details
 - **GitHub Repository**: [Sudoku](https://github.com/mattnenterprise/Sudoku) by Matt McCoy (mattnenterprise)
 - **Star Count**: 🌟 48 ⭐️
-- **Programming Language**: Java 
-- **Existing Testing Framework**: Gradle
+- **Programming Language**: Java ☕️
+- **Existing Testing Framework**: Gradle 🐘
 
 ### 🧪 Added Unit Test Cases
 The additional unit test cases are located in the [`SudokuTest.java`](src/test/java/sudoku/SudokuTest.java) file in this repository, each focusing on specific functionalities or interfaces of the application.
