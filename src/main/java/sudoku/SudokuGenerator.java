@@ -47,7 +47,7 @@ public class SudokuGenerator {
 	 * @return valid move or not or done
 	 * Responses: Erroneous data 
 	 */
-    private boolean backtrackSudokuSolver(int r,int c,SudokuPuzzle puzzle) {
+    protected boolean backtrackSudokuSolver(int r,int c,SudokuPuzzle puzzle) {
     	//If the move is not valid return false
 		if(!puzzle.inRange(r,c)) {
 			return false;

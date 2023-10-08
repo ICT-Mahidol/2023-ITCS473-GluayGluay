@@ -139,9 +139,11 @@ public class SudokuPuzzle {
 		return this.board;
 	}
 	
-	private boolean isValidValue(String value) {
+	protected boolean isValidValue(String value) {
 		for(String str : this.VALIDVALUES) {
-			if(str.equals(value)) return true;
+			if(str.equals(value)) {
+				return true;
+			}
 		}
 		return false;
 	}
