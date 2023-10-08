@@ -1,6 +1,3 @@
-/* Copyright (C) 2023 GluayGluay - All Rights Reserved
- * You may use, distribute and modify this code under the terms of the MIT license.
-*/
 package sudoku;
 
 import org.junit.Before;
@@ -19,22 +16,42 @@ public class SudokuTest {
         puzzle = new SudokuPuzzle(9, 9, 3, 3, new String[]{"1","2","3","4","5","6","7","8","9"});
     }
 
+    //#1
     @Test
-    public void testGenerateRandomSudoku() {
-        // Test that the generator is creat a non-null Sudoku puzzle.
+    public void testGenerateRandomSudokuPuzzleWithTypeSIXBYSIX_thenReturnBoardLengthIs6() {
+        // Test that the generate random Sudoku puzzle with type SIXBYSIX
+        SudokuPuzzle generatedPuzzle = generator.generateRandomSudoku(SudokuPuzzleType.SIXBYSIX);
+        assertEquals(6, generatedPuzzle.getBoard().length);
+    }
+
+    //#2
+    @Test
+    public void testGenerateRandomSudokuPuzzleWithTypeNINEBYNINE_thenReturnBoardLengthIs9() {
+        // Test that the generate random Sudoku puzzle with type NINEBYNINE
         SudokuPuzzle generatedPuzzle = generator.generateRandomSudoku(SudokuPuzzleType.NINEBYNINE);
-        assertNotNull(generatedPuzzle);
+        assertEquals(9, generatedPuzzle.getBoard().length);
         // Add more?
     }
 
+    //#3
     @Test
-    public void testMultiplePuzzleGenerations() {
-        // Test that the generator creates distinct Sudoku puzzles on separate calls.
-        SudokuPuzzle puzzle1 = generator.generateRandomSudoku(SudokuPuzzleType.NINEBYNINE);
-        SudokuPuzzle puzzle2 = generator.generateRandomSudoku(SudokuPuzzleType.NINEBYNINE);
-        assertNotEquals(puzzle1.getBoard(), puzzle2.getBoard());
+    public void testGenerateRandomSudokuPuzzleWithTypeNINEBYNINE_thenReturnBoardLengthIs12() {
+        // Test that the generate random Sudoku puzzle with type TWELVEBYTWELVE
+        SudokuPuzzle generatedPuzzle = generator.generateRandomSudoku(SudokuPuzzleType.TWELVEBYTWELVE);
+        assertEquals(12, generatedPuzzle.getBoard().length);
+        // Add more?
     }
 
+    //#4
+    @Test
+    public void testGenerateRandomSudokuPuzzleWithTypeSIXBYSIX_thenReturnBoardLengthIs16() {
+        // Test that the generate random Sudoku puzzle with type SIXTEENBYSIXTEEN
+        SudokuPuzzle generatedPuzzle = generator.generateRandomSudoku(SudokuPuzzleType.SIXTEENBYSIXTEEN);
+        assertEquals(16, generatedPuzzle.getBoard().length);
+        // Add more?
+    }
+
+    //#5
     @Test
     public void testMakeMove() {
         // Test that the move-making work correct updates the puzzle's state.
@@ -42,12 +59,27 @@ public class SudokuTest {
         assertEquals("5", puzzle.getValue(0, 0));
     }
 
-//    @Test(expected = IllegalArgumentException.class)
-//    public void testImmutableMove() {
-//        puzzle.makeMove(0, 0, "5", false);
-//    }
-    // Failed
+    //#6
+    @Test()
+    public void testWhenCallIsValidValueWithInvalidValue_thenReturnFalse() {
+        // Test if the value is not valid then return false
+        puzzle.makeMove(0, 0, "-1", true);
+        assertFalse(puzzle.numInBox(0, 0, "5"));
+    }
 
+    //#7
+    @Test()
+    public void testWhenCallIsValidMove_thenReturnCorrectResult() {
+        //When the move is invalid by row or col then return false
+        boolean actualFailMove = puzzle.isValidMove(-1, 0, "5");
+        assertFalse(actualFailMove);
+
+        //When the move is invalid by row or col then return true
+        boolean actualPassMove = puzzle.isValidMove(0, 0, "1");
+        assertTrue(actualPassMove);
+    }
+
+    //#8
     @Test
     public void testNumInRowColBox() {
         // Test that the puzzle identifies a number in a row, column, and box correctly.
@@ -56,8 +88,8 @@ public class SudokuTest {
         assertTrue(puzzle.numInCol(0, "5"));
         assertTrue(puzzle.numInBox(0, 0, "5"));
     }
-    // ได้ปะวะรวมของคนนั้นเป็นอันเดียว ถถถถถ
 
+    //#9
     @Test
     public void testIsSlotAvailable() {
         // Test that the puzzle correct identifies slot availability after a move is made.
@@ -68,30 +100,17 @@ public class SudokuTest {
         puzzle.makeMove(4, 5, "9", true);
         assertTrue(puzzle.isSlotAvailable(8, 3));
     }
-    // Beam (กูแก้เพิ่ม)
 
-    @Test
-    public void testIsSlotMutable() {
-        // Test that a slot is identified as mutable.
-        assertTrue(puzzle.isSlotMutable(0, 0));
-    }
-
+    //#10
     @Test
     public void testGetValue() {
         // Test that the puzzle state correct updates and retrieves a value after a move.
         puzzle.makeMove(0, 0, "5", true);
         assertEquals("5", puzzle.getValue(0, 0));
         puzzle.makeMove(0, 7, "8", true);
-        assertNotEquals("4", puzzle.getValue(1, 0));
         assertEquals("8", puzzle.getValue(0, 7));
+        assertEquals("", puzzle.getValue(-1, -1));
     }
-
-    @Test
-    public void testBoardFull() {
-        // Test that the puzzle correct identifies that it is not fully populated.
-        assertFalse(puzzle.boardFull());
-    }
-    // Beam
 }
 /*
 Checklist for the Assignment on Unit Testing

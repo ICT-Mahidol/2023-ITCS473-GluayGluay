@@ -13,7 +13,7 @@ public enum SudokuPuzzleType {
 	private final String [] validValues;
 	private final String desc;
 	
-	private SudokuPuzzleType(int rows,int columns,int boxWidth,int boxHeight,String [] validValues,String desc) {
+	private SudokuPuzzleType(int rows,int columns,int boxWidth,int boxHeight,String [] validValues, String desc) {
 		this.rows = rows;
 		this.columns = columns;
 		this.boxWidth = boxWidth;
