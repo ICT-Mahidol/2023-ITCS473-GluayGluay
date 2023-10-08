@@ -8,7 +8,7 @@
 - [Project Details](#-project-details)
 - [Added Unit Test Cases](#-added-unit-test-cases)
 - [Test Case Documentation](#-test-case-documentation)
-  - [Test Case 1](#1-test-case-name-testgeneraterandomsudokupuzzletypewithtypesixbysix_returnboardlengthis6)
+  - [Test Case 1](#-1-test-case-name-testgeneraterandomsudokupuzzletypewithtypesixbysix_returnboardlengthis6)
   - [Test Case 2](#2-testgeneraterandomsudokupuzzletypewithtypeninebynine_returnboardlengthis9)
   - [Test Case 3](#3-testgeneraterandomsudokupuzzletypewithtypetwelvebytwelve_returnboardlengthis1)
   - [Test Case 4](#4-testgeneraterandomsudokupuzzletypewithtypesixteenbysixteen_returnboardlengthis16)
