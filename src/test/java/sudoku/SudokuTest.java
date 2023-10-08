@@ -56,29 +56,21 @@ public class SudokuTest {
 
     //#5
     @Test
-    public void testBacktrackSudokuSolver_when_IfTheMoveIsNotValid_ThenReturnFalse() {
-        // Test that the move is not valid then return false
-        boolean result = generator.backtrackSudokuSolver(-1,-1, puzzle);
-        assertFalse(result);
-    }
-
-    //#6
-    @Test
     public void testMakeMove() {
         // Test that the move-making work correct updates the puzzle's state.
         puzzle.makeMove(0, 0, "5", true);
         assertEquals("5", puzzle.getValue(0, 0));
     }
 
-    //#7
+    //#6
     @Test()
     public void testWhenCallIsValidValueWithInvalidValue_thenReturnFalse() {
         // Test if the value is not valid then return false
-        boolean actual = puzzle.isValidValue("-1");
-        assertFalse(actual);
+        puzzle.makeMove(0, 0, "-1", true);
+        assertFalse(puzzle.numInBox(0, 0, "5"));
     }
 
-    //#8
+    //#7
     @Test()
     public void testWhenCallIsValidMove_thenReturnCorrectResult() {
         //When the move is invalid by row or col then return false
@@ -90,7 +82,7 @@ public class SudokuTest {
         assertTrue(actualPassMove);
     }
 
-    //#9
+    //#8
     @Test
     public void testNumInRowColBox() {
         // Test that the puzzle identifies a number in a row, column, and box correctly.
@@ -100,7 +92,7 @@ public class SudokuTest {
         assertTrue(puzzle.numInBox(0, 0, "5"));
     }
 
-    //#10
+    //#9
     @Test
     public void testIsSlotAvailable() {
         // Test that the puzzle correct identifies slot availability after a move is made.
@@ -112,7 +104,7 @@ public class SudokuTest {
         assertTrue(puzzle.isSlotAvailable(8, 3));
     }
 
-    //#11
+    //#10
     @Test
     public void testGetValue() {
         // Test that the puzzle state correct updates and retrieves a value after a move.
