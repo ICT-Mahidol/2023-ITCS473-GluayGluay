@@ -26,6 +26,8 @@ The additional unit test cases are located in the [`SudokuTest.java`](src/test/j
 
 A structured documentation of test cases aiming to validate various functionalities of the Sudoku application.
 
+---
+
 #### 1. Test Case Name: testGenerateRandomSudokuPuzzleWithTypeSIXBYSIX_thenReturnBoardLengthIs6
 
 - **Goal**: Validate that generating a random Sudoku puzzle of type SIXBYSIX results in a board of length 6.
