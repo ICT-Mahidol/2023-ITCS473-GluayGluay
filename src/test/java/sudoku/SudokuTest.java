@@ -1,5 +1,7 @@
+/* Copyright (C) 2023 GluayGluay - All Rights Reserved
+ * You may use, distribute and modify this code under the terms of the MIT license.
+ */
 package sudoku;
-
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -22,6 +24,7 @@ public class SudokuTest {
         // Test that the generate random Sudoku puzzle with type SIXBYSIX
         SudokuPuzzle generatedPuzzle = generator.generateRandomSudoku(SudokuPuzzleType.SIXBYSIX);
         assertEquals(6, generatedPuzzle.getBoard().length);
+        assertNotEquals(12,generatedPuzzle.getBoard().length);
     }
 
     //#2
@@ -30,25 +33,25 @@ public class SudokuTest {
         // Test that the generate random Sudoku puzzle with type NINEBYNINE
         SudokuPuzzle generatedPuzzle = generator.generateRandomSudoku(SudokuPuzzleType.NINEBYNINE);
         assertEquals(9, generatedPuzzle.getBoard().length);
-        // Add more?
+        assertNotEquals(12,generatedPuzzle.getBoard().length);
     }
 
     //#3
     @Test
-    public void testGenerateRandomSudokuPuzzleWithTypeNINEBYNINE_thenReturnBoardLengthIs12() {
+    public void testGenerateRandomSudokuPuzzleWithTypeTWELVEBYTWELVE_thenReturnBoardLengthIs12() {
         // Test that the generate random Sudoku puzzle with type TWELVEBYTWELVE
         SudokuPuzzle generatedPuzzle = generator.generateRandomSudoku(SudokuPuzzleType.TWELVEBYTWELVE);
         assertEquals(12, generatedPuzzle.getBoard().length);
-        // Add more?
+        assertNotEquals(6,generatedPuzzle.getBoard().length);
     }
 
     //#4
     @Test
-    public void testGenerateRandomSudokuPuzzleWithTypeSIXBYSIX_thenReturnBoardLengthIs16() {
+    public void testGenerateRandomSudokuPuzzleWithTypeSIXTEENBYSIXTEEN_thenReturnBoardLengthIs16() {
         // Test that the generate random Sudoku puzzle with type SIXTEENBYSIXTEEN
         SudokuPuzzle generatedPuzzle = generator.generateRandomSudoku(SudokuPuzzleType.SIXTEENBYSIXTEEN);
         assertEquals(16, generatedPuzzle.getBoard().length);
-        // Add more?
+        assertNotEquals(20, generatedPuzzle.getBoard().length);
     }
 
     //#5
@@ -57,13 +60,24 @@ public class SudokuTest {
         // Test that the move-making work correct updates the puzzle's state.
         puzzle.makeMove(0, 0, "5", true);
         assertEquals("5", puzzle.getValue(0, 0));
+        assertNotEquals("1", puzzle.getValue(0, 0));
+        assertNotEquals("5", puzzle.getValue(0, 1));
     }
 
     //#6
     @Test()
     public void testWhenCallIsValidValueWithInvalidValue_thenReturnFalse() {
-        // Test if the value is not valid then return false
+        /// Test if the value is not valid then return false
+        String initialState = puzzle.getValue(0, 0);
+
         puzzle.makeMove(0, 0, "-1", true);
+        puzzle.makeMove(0, 0, "0", true);
+        puzzle.makeMove(0, 0, "10", true);
+        puzzle.makeMove(0, 0, "A", true);
+
+        // Assert that the invalid moves did not change the puzzle state
+        assertEquals(initialState, puzzle.getValue(0, 0));
+
         assertFalse(puzzle.numInBox(0, 0, "5"));
     }
 
@@ -71,12 +85,14 @@ public class SudokuTest {
     @Test()
     public void testWhenCallIsValidMove_thenReturnCorrectResult() {
         //When the move is invalid by row or col then return false
-        boolean actualFailMove = puzzle.isValidMove(-1, 0, "5");
-        assertFalse(actualFailMove);
+        assertFalse(puzzle.isValidMove(-1, 0, "5"));
+        assertFalse(puzzle.isValidMove(0, -1, "5"));
+        assertFalse(puzzle.isValidMove(-1, -1, "5"));
 
         //When the move is invalid by row or col then return true
-        boolean actualPassMove = puzzle.isValidMove(0, 0, "1");
-        assertTrue(actualPassMove);
+        assertTrue(puzzle.isValidMove(1, 0, "1"));
+        assertTrue(puzzle.isValidMove(0, 1, "6"));
+        assertTrue(puzzle.isValidMove(1, 1, "9"));
     }
 
     //#8
@@ -84,9 +100,15 @@ public class SudokuTest {
     public void testNumInRowColBox() {
         // Test that the puzzle identifies a number in a row, column, and box correctly.
         puzzle.makeMove(0, 0, "5", true);
+
         assertTrue(puzzle.numInRow(0, "5"));
+        assertFalse(puzzle.numInRow(1,"5"));
+
         assertTrue(puzzle.numInCol(0, "5"));
+        assertFalse(puzzle.numInCol(1, "5"));
+
         assertTrue(puzzle.numInBox(0, 0, "5"));
+        assertFalse(puzzle.numInBox(3, 3, "5"));
     }
 
     //#9
@@ -107,9 +129,12 @@ public class SudokuTest {
         // Test that the puzzle state correct updates and retrieves a value after a move.
         puzzle.makeMove(0, 0, "5", true);
         assertEquals("5", puzzle.getValue(0, 0));
+
         puzzle.makeMove(0, 7, "8", true);
         assertEquals("8", puzzle.getValue(0, 7));
+
         assertEquals("", puzzle.getValue(-1, -1));
+        assertEquals("", puzzle.getValue(100, 100));
     }
 }
 /*
@@ -122,13 +147,13 @@ Checklist for the Assignment on Unit Testing
    - [x] Ensured the project is unique to your group.
 
 2. Understand Testing Framework
-   - [ ] Identified the testing framework used in the project (e.g., ant, maven, gradle).
+   - [x] Identified the testing framework used in the project (e.g., ant, maven, gradle).
    - [x] Studied how the existing automated tests are structured and run.
 
 3. Develop Unit Test Cases
-   - [ ] Created 10 additional unit test cases distinct from existing ones.(8)
+   - [x] Created 10 additional unit test cases distinct from existing ones.
    - [x] Ensured each unit test case is a single testing method in your test suite.
-   - [ ] Validated that multiple assert statements within a test case are logical and related.
+   - [x] Validated that multiple assert statements within a test case are logical and related.(further validation could strengthen some test cases.)
 
 4. Automatic Test Execution
    - [x] Ensured that your unit tests can be executed automatically using the project’s testing framework.
@@ -140,8 +165,8 @@ Checklist for the Assignment on Unit Testing
    - [ ] Provided the name of the test case.
    - [ ] Described the goal of the test case.
    - [ ] Defined characteristics using Input Space Partitioning, ensuring:
-   - [x] At least one interface-based characteristic.
-   - [x] At least one functionality-based characteristic.
+   - [ ] At least one interface-based characteristic.
+   - [ ] At least one functionality-based characteristic.
 
 7. Input Domain Modelling
 For each test case, documented the following in the README.md:
@@ -163,39 +188,4 @@ For each test case, documented the following in the README.md:
 - [ ] Ensured all code and documentation are pushed to a GitHub repository.
 - [ ] Checked that README.md is clear, well-structured, and informative for grading.
 
- */
-/*
-อันนี้ Chat ทำ(กูไม่ชัวร์เลยให้checkอ่านcodeแล้วถามมันอันไหนเป็นไม่เป็น)
-1. testGenerateRandomSudoku
-Goal: Validate that a non-null Sudoku puzzle is created.
-Functionality-based Characteristic: The generateRandomSudoku method should create a valid SudokuPuzzle object.
-Interface-based Characteristic: N/A
-2. testMultiplePuzzleGenerations
-Goal: Ensure distinct Sudoku puzzles are created on separate generation calls.
-Functionality-based Characteristic: The generateRandomSudoku method should create different puzzles each time it is called.
-Interface-based Characteristic: N/A
-3. testMakeMove
-Goal: Validate that a move updates the puzzle’s state.
-Functionality-based Characteristic: When a move is made using makeMove, the state of puzzle should be updated.
-Interface-based Characteristic: N/A
-4. testNumInRowColBox
-Goal: Ensure the puzzle identifies a number in a row, column, and box correctly.
-Functionality-based Characteristic: The methods numInRow, numInCol, and numInBox should return true when the specified number is in the respective row, column, or box.
-Interface-based Characteristic: The input to numInRow, numInCol, and numInBox is a number and a string, and they return a boolean.
-5. testIsSlotAvailable
-Goal: Validate slot availability is correctly identified.
-Functionality-based Characteristic: The isSlotAvailable method should return false if a move has been made in a slot, and true otherwise.
-Interface-based Characteristic: The isSlotAvailable method takes two integers as input (row and column index) and returns a boolean.
-6. testIsSlotMutable
-Goal: Check that a slot is identified as mutable.
-Functionality-based Characteristic: The isSlotMutable method should return true for mutable slots and false otherwise.
-Interface-based Characteristic: The isSlotMutable method takes two integers as input (row and column index) and returns a boolean.
-7. testGetValue
-Goal: Confirm the puzzle state updates and retrieves a value correctly after a move.
-Functionality-based Characteristic: The getValue method should return the correct value after makeMove has been called.
-Interface-based Characteristic: The getValue method takes two integers as input (row and column index) and returns a string.
-8. testBoardFull
-Goal: Confirm the puzzle identifies that it is not fully populated.
-Functionality-based Characteristic: The boardFull method should correctly identify whether all slots on the board are filled.
-Interface-based Characteristic: The boardFull method takes no inputs and returns a boolean.
  */
