@@ -8,16 +8,6 @@
 - [Project Details](#-project-details)
 - [Added Unit Test Cases](#-added-unit-test-cases)
 - [Test Case Documentation](#-test-case-documentation)
- - [Test Case 1](#1-test-case-name-testgeneraterandomsudokupuzzletypewithtypesixbysix_returnboardlengthis6)
-- [Test Case 2](#2-testgeneraterandomsudokupuzzletypewithtypeninebynine_returnboardlengthis9)
-- [Test Case 3](#3-testgeneraterandomsudokupuzzletypewithtypetwelvebytwelve_returnboardlengthis1)
-- [Test Case 4](#4-testgeneraterandomsudokupuzzletypewithtypesixteenbysixteen_returnboardlengthis16)
-- [Test Case 5](#5-testmakemove)
-- [Test Case 6](#6-testwhencallisvalidvaluewithinvalidvalue_returnfalse)
-- [Test Case 7](#7-testwhencallisvalidmove_returncorrectresult)
-- [Test Case 8](#8-testnuminrowcolbox)
-- [Test Case 9](#9-testgetvalue)
-- [Test Case 10](#10-yourtestcasename)
 - [License](#-license)
 
 ### 🚀 Introduction
@@ -66,7 +56,7 @@ A structured documentation of test cases aiming to validate various functionalit
     ```java
     assertNotEquals(9, generatedPuzzle.getBoardLength());
     ```
-
+---
 #### 2. Test Case Name: testGenerateRandomSudokuPuzzleWithTypeNINEBYNINE_thenReturnBoardLengthIs9
 
 - **Goal**: Validate that generating a random Sudoku puzzle of type NINEBYNINE results in a board of length 9.
@@ -97,7 +87,7 @@ A structured documentation of test cases aiming to validate various functionalit
     ```java
     assertNotEquals(6, generatedPuzzle.getBoardLength());
     ```
-
+---
 #### 3. Test Case Name: testGenerateRandomSudokuPuzzleWithTypeTWELVEBYTWELVE_thenReturnBoardLengthIs1
 
 - **Goal**: Validate that generating a random Sudoku puzzle of type TWELVEBYTWELVE results in a board of length 12.
@@ -128,7 +118,7 @@ A structured documentation of test cases aiming to validate various functionalit
     ```java
     assertNotEquals(6, generatedPuzzle.getBoardLength());
     ```
-
+---
 #### 4. Test Case Name: testGenerateRandomSudokuPuzzleWithTypeSIXTEENBYSIXTEEN_thenReturnBoardLengthIs16
 
 - **Goal**: Validate that generating a random Sudoku puzzle of type SIXTEENBYSIXTEEN results in a board of length 16.
@@ -159,7 +149,7 @@ A structured documentation of test cases aiming to validate various functionalit
     ```java
     assertNotEquals(20, generatedPuzzle.getBoardLength());
     ```
-
+---
 #### 5. Test Case Name: testMakeMove
 
 - **Goal**: Validate that making a move updates the puzzle’s state accurately and consistently.
@@ -201,7 +191,7 @@ A structured documentation of test cases aiming to validate various functionalit
     ```java
     assertNotEquals("5", puzzle.getValue(0, 1));
     ```
-
+---
 #### 6. Test Case Name: testWhenCallIsValidValueWithInvalidValue_thenReturnFalse
 
 - **Goal**: Validate that invalid values are not accepted in a move and do not alter the puzzle state.
@@ -241,7 +231,7 @@ A structured documentation of test cases aiming to validate various functionalit
     puzzle.makeMove(0, 0, "-1", true);
     assertNotEquals("-1", puzzle.getValue(0, 0));
     ```
-
+---
 #### 7. Test Case Name: testWhenCallIsValidMove_thenReturnCorrectResult
 
 - **Goal**: Validate the behavior of the `isValidMove` method when provided with various row, column, and value inputs.
@@ -282,7 +272,7 @@ A structured documentation of test cases aiming to validate various functionalit
   assertTrue(puzzle.isValidMove(0, 1, "6"));
   assertTrue(puzzle.isValidMove(1, 1, "9"));
   ```
-
+---
 #### 8. Test Case Name: testNumInRowColBox
 
 - **Goal**: Validate that the puzzle correctly identifies the presence of a number in a specific row, column, and box after a move has been made.
@@ -323,8 +313,9 @@ A structured documentation of test cases aiming to validate various functionalit
   ```java
   assertFalse(puzzle.numInRow(1,"5"));
   assertFalse(puzzle.numInCol(1, "5"));
-  assertFalse(puzzle.numInBox(1, 1, "5"));
+  assertFalse(puzzle.numInBox(3, 3, "5"));
   ```
+---
 #### 9. Test Case Name: testIsSlotAvailable
 
 - **Goal**: Validate that the puzzle correctly identifies the availability of a slot after moves have been made.
@@ -362,7 +353,7 @@ A structured documentation of test cases aiming to validate various functionalit
   puzzle.makeMove(0, 2, "6", true);
   assertFalse(puzzle.isSlotAvailable(0, 2));
   ```
-  
+ --- 
 #### 10. Test Case Name: testGetValue
 
 - **Goal**: 
@@ -404,7 +395,14 @@ A structured documentation of test cases aiming to validate various functionalit
   assertEquals("", puzzle.getValue(-1, -1));
   assertEquals("", puzzle.getValue(100, 100));
   ```
-  
+---
+
+## 🎯 Test Results
+
+![Test Results](/path_to/test_results.png)
+
+--- 
+
 ### 📄 License
 ```plaintext
 Copyright (C) 2023 GluayGluay - All Rights Reserved
