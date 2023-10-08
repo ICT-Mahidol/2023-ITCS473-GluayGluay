@@ -1,6 +1,3 @@
-/* Copyright (C) 2023 GluayGluay - All Rights Reserved
- * You may use, distribute and modify this code under the terms of the MIT license.
-*/
 package sudoku;
 
 import org.junit.Before;
