@@ -188,6 +188,13 @@ A structured documentation of test cases aiming to validate various functionalit
       |------------------------------------|------|-------|
       | C1 = Generate a valid Sudoku board | True | False |
       | C2 = Match specified type          | True | False |
+ 
+    - **Identify possible value****
+    
+      | Characteristics                          | b1          | b2         |
+      |------------------------------------------|-------------|------------|
+      | C1 = Generate a valid Sudoku board       | 9           | 6          |
+      | C2 = Match specified type                | NINEBYNINE  | SIXBYSIX   |
 
     - **Approaches Used**: ACoC
       - **Test requirements:**
@@ -274,6 +281,13 @@ A structured documentation of test cases aiming to validate various functionalit
       |------------------------------------|------|-------|
       | C1 = Generate a valid Sudoku board | True | False |
       | C2 = Match specified type          | True | False |
+ 
+    - **Identify possible value****
+    
+      | Characteristics                          | b1          | b2         |
+      |------------------------------------------|-------------|------------|
+      | C1 = Generate a valid Sudoku board       | 12          | 6          |
+      | C2 = Match specified type                | TWELVEBYTWELVE  | SIXBYSIX   |
 
     - **Approaches Used**: ECC
       - **Test requirements:**
@@ -356,6 +370,13 @@ A structured documentation of test cases aiming to validate various functionalit
       |------------------------------------|------|-------|
       | C1 = Generate a valid Sudoku board | True | False |
       | C2 = Match specified type          | True | False |
+ 
+    - **Identify possible value****
+    
+      | Characteristics                          | b1          | b2         |
+      |------------------------------------------|-------------|------------|
+      | C1 = Generate a valid Sudoku board       | 16          | 6          |
+      | C2 = Match specified type                | SIXTEENBYSIXTEEN  | SIXBYSIX   |
 
     - **Approaches Used**: ECC
       - **Test requirements:**
