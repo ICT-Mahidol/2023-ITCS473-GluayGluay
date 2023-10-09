@@ -71,9 +71,9 @@ A structured documentation of test cases aiming to validate various functionalit
 
     - **Approaches Used**: ACoC
       - **Test requirements:**
-        - T1(Equal to 6)
-        - T2(Not 6)
-        - T3(Any other value)
+        - T1 (Equal to 6)
+        - T2 (Not 6)
+        - T3 (Any other value)
           
     - **Derive test values and expected values.**
 
@@ -104,10 +104,10 @@ A structured documentation of test cases aiming to validate various functionalit
       
     - **Approaches Used**: ACoC
       - **Test requirements:**
-        - T1(True, True)
-        - T2(True, False)
-        - T3(False, True)
-        - T4(False, False)
+        - T1 (True, True)
+        - T2 (True, False)
+        - T3 (False, True)
+        - T4 (False, False)
           
     - **Derive test values and expected values.**
 
@@ -165,9 +165,9 @@ A structured documentation of test cases aiming to validate various functionalit
 
     - **Approaches Used**: ACoC
       - **Test requirements:**
-        - T1(Equal to 9)
-        - T2(Not 9)
-        - T3(Any other value)
+        - T1 (Equal to 9)
+        - T2 (Not 9)
+        - T3 (Any other value)
           
     - **Derive test values and expected values.**
 
@@ -198,10 +198,10 @@ A structured documentation of test cases aiming to validate various functionalit
 
     - **Approaches Used**: ACoC
       - **Test requirements:**
-        - T1(True, True)
-        - T2(True, False)
-        - T3(False, True)
-        - T4(False, False)
+        - T1 (True, True)
+        - T2 (True, False)
+        - T3 (False, True)
+        - T4 (False, False)
           
     - **Derive test values and expected values.**
 
@@ -258,9 +258,9 @@ A structured documentation of test cases aiming to validate various functionalit
 
     - **Approaches Used**: ECC
       - **Test requirements:**
-        - T1(Equal to 12)
-        - T2(Not 12)
-        - T3(Any other value)
+        - T1 (Equal to 12)
+        - T2 (Not 12) 
+        - T3 (Any other value)
           
     - **Derive test values and expected values.**
 
@@ -291,8 +291,8 @@ A structured documentation of test cases aiming to validate various functionalit
 
     - **Approaches Used**: ECC
       - **Test requirements:**
-        - T1(True, True)
-        - T2(False, False)
+        - T1 (True, True)
+        - T2 (False, False)
           
     - **Derive test values and expected values.**
 
@@ -347,9 +347,9 @@ A structured documentation of test cases aiming to validate various functionalit
 
     - **Approaches Used**: ECC
       - **Test requirements:**
-        - T1(Equal to 16)
-        - T2(Not 16)
-        - T3(Any other value)
+        - T1 (Equal to 16)
+        - T2 (Not 16)
+        - T3 (Any other value)
           
     - **Derive test values and expected values.**
 
@@ -380,15 +380,15 @@ A structured documentation of test cases aiming to validate various functionalit
 
     - **Approaches Used**: ECC
       - **Test requirements:**
-        - T1(True, True)
-        - T2(False, False)
+        - T1 (True, True)
+        - T2 (False, False)
           
     - **Derive test values and expected values.**
 
       | Test            | Valid Sudoku | Type Match       | Expected Result                          |
       |-----------------|--------------|------------------|-----------------------------------------|
       | T1(True, True)  | 16           | SIXTEENBYSIXTEEN | True (valid Sudoku, type matches input) |
-      | T4(False, False)| 6            | SIXBYSIX         | False (invalid Sudoku, type doesn't match)|
+      | T2(False, False)| 6            | SIXBYSIX         | False (invalid Sudoku, type doesn't match)|
 
 ### 📝 Test Scenarios
 - **Positive Test Scenarios**:
@@ -456,19 +456,29 @@ A structured documentation of test cases aiming to validate various functionalit
 
     - **Approaches Used**: PWC
       - **Test Requirements**:
-        - T1(Valid, Valid, True)
-        - T2(Valid, Valid, False)
-        - T3(Valid, Invalid, True)
-        - T4(Invalid, Valid, True)
+        - T1 (Less than 0, Less than 1, True)
+        - T2 (Less than 0, 1 - 9, False)
+        - T3 (Less than 0, Greater than 9, False)
+        - T4 (0 - 8, Less than 1, False)
+        - T5 (0 - 8, 1 - 9, True) 
+        - T6 (0 - 8, Greater than 9, True)
+        - T7 (Greater than 8, Less than 1, False)
+        - T8 (Greater than 8, 1 - 9, True)
+        - T9 (Greater than 8, Greater than 9, True)
           
     - **Derive Test Values and Expected Values**
 
-      | Test                          | (row, col) | value | isMutable | Expected Result                        |
-      |-------------------------------|------------|-------|-----------|----------------------------------------|
-      | T1(Valid, Valid, True)        | (0, 0)     | "5"   | true      | Value at (0,0) is "5"                  |
-      | T2(Valid, Valid, False)       | (0, 0)     | "5"   | false     | Value at (0,0) is "5"                  |
-      | T3(Valid, Invalid, True)      | (0, 0)     | "10"  | true      | Value at (0,0) is not changed          |
-      | T4(Invalid, Valid, True)      | (-1, -1)   | "5"   | true      | Value at (-1,-1) is not changed/valid  |
+      | Test                                      | (row, col) | value | isMutable | Expected Result                        |
+      |-------------------------------            |------------|-------|-----------|----------------------------------------|
+      | T1 (Less than 0, Less than 1, True)       | (-1, -1)   | "0"   | true      | Value at (-1,-1) is not changed/valid  |
+      | T2 (Less than 0, 1 - 9, False)            | (-1, -1)   | "5"   | false     | Value at (-1,-1) is not changed/valid  |
+      | T3 (Less than 0, Greater than 9, False)   | (-1, -1)   | "10"  | false     | Value at (-1,-1) is not changed/valid  |
+      | T4 (0 - 8, Less than 1, False)            | (0, 0)     | "0"   | false     | Value at (0, 0) is not changed         |
+      | T5 (0 - 8, 1 - 9, True)                   | (0, 0)     | "5"   | true      | Value at (0, 0) is "5"                 |
+      | T6 (0 - 8, Greater than 9, True)          | (0, 0)     | "10"  | true      | Value at (0, 0) is not changed/valid   |
+      | T7 (Greater than 8, Less than 1, False)   | (9, 9)     | "0"   | false     | Value at (9, 9) is not changed/valid   |
+      | T8 (Greater than 8, 1 - 9, True)          | (9, 9)     | "5"   | true      | Value at (9, 9) is not changed/valid   |
+      | T9 (Greater than 8, Greater than 9, True) | (9, 9)     | "10"  | true      | Value at (9, 9) is not changed/valid   |
 
   - **Functionality-Based**: Verifying that the move-making functionality updates the board correctly.
     - **Develop Characteristics**
@@ -491,18 +501,18 @@ A structured documentation of test cases aiming to validate various functionalit
     
     - **Approaches Used**: PWC
       - **Test Requirements**:
-        - T5(Updated, Mutable)
-        - T6(Updated, Immutable)
-        - T7(Not Updated, Mutable)
-        - T8(Not Updated, Immutable)
+        - T5 (Updated, Mutable)
+        - T6 (Updated, Immutable)
+        - T7 (Not Updated, Mutable)
+        - T8 (Not Updated, Immutable)
     - **Derive Test Values and Expected Values**
     
-      | Test                   | (row, col) | Update Value | isMutable | Expected Result                             |
-      |------------------------|------------|--------------|-----------|---------------------------------------------|
-      | T5(Updated, Mutable)   | (0, 0)     | "5"          | true      | Value at (0,0) is "5", and is mutable       |
-      | T6(Updated, Immutable) | (0, 0)     | "5"          | false     | Value at (0,0) is "5", and is immutable     |
-      | T7(Not Updated, Mutable) | (0, 0)   | "10"         | true      | Value at (0,0) is not "10", and is mutable  |
-      | T8(Not Updated, Immutable) | (0, 0) | "10"         | false     | Value at (0,0) is not "10", and is immutable|     
+      | Test                       | Update Value | isMutable | Expected Result                             |
+      |------------------------    |--------------|-----------|---------------------------------------------|
+      | T5(Updated, Mutable)       | "5"          | true      | Value at (0,0) is "5", and is mutable       |
+      | T6(Updated, Immutable)     | "5"          | false     | Value at (0,0) is not update value          |
+      | T7(Not Updated, Mutable)   | "10"         | true      | Value at (0,0) is not "10", and is mutable  |
+      | T8(Not Updated, Immutable) | "10"         | false     | Value at (0,0) is not "10", and is immutable|     
 
 #### 📝 Test Scenarios
 - **Positive Test Scenarios**:
