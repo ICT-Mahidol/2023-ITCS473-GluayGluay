@@ -715,54 +715,63 @@ A structured documentation of test cases aiming to validate various functionalit
       - **Partition characteristics**
         | Characteristics          | b1           | b2         | b3             | b4         |
         |-------------------       |-----------   |------------|----------      |------------|
-        | C1 = Validity of `row`   | Less than 0  | 0 - 8      | Greater than 8 |            |
-        | C2 = Validity of `col`   | Less than 0  | 0 - 8      | Greater than 8 |            |
+        | C1 = Validity of `row`   | Less than 0  | 0 - 9      | Greater than 9 |            |
+        | C2 = Validity of `col`   | Less than 0  | 0 - 9      | Greater than 9 |            |
         | C3 = Validity of `value` | Less than 1  | 1 - 9      | Greater than 9 | Non-number |
       - **Identify possible value**:
         | Characteristics            | b1         | b2     |  b3    | b4         |
         |-------------------         |------------|--------|--------|------------|
-        | C1 = Validity of `row`     | -1         | 1      | 9      |            |
-        | C2 = Validity of `col`     | -1         | 1      | 9      |            |
-        | C3 = Validity of `value`   | "0"        | "1"    | "10"   | "A"        |
+        | C1 = Validity of `row`     | -1         | 1      | 10      |            |
+        | C2 = Validity of `col`     | -1         | 1      | 10      |            |
+        | C3 = Validity of `value`   | 0          | 1      | 10     | A          |
       - **Approaches Used**: BCC (Base Choice Coverage)
-        - **Test requirements:** 
+        - **Base Choice**: 0-9, 0-9,  1-9
+        - **Test requirements:**
+          - T1: Less than 0, 0-9, 1-9
+          - T2: Greater than 8, 0-9, 1-9
+          - T3: 0-9 , Less than 0,  1-9
+          - T4: 0-9 , Greater than 9 , 1-9
+          - T5: 0-9 , 0-9, Less than 1
+          - T6: 0-9 , 0-9, Greater than 9
+          - T7: 0-9 ,Less than 0, Non-Number
+          - T8: 0-9, 0-9,  1-9
       - **Derive test values and expected values.**
-        | Test                      | `row` | `col` | `value` | Expected Result |
-        |---------------------------|-------|-------|---------|-----------------|
-        | T1(Invalid, Invalid, Invalid) | -1    | -1    | "A"     | false           |
-        | T2(Valid, Invalid, Invalid)   | 1     | -1    | "A"     | false           |
-        | T3(Invalid, Valid, Invalid)   | -1    | 1     | "A"     | false           |
-        | T4(Invalid, Invalid, Valid)   | -1    | -1    | "5"     | false           |
+        | Test                                              | `row` | `col` | `value` | Expected Result |
+        |---------------------------                        |-------|-------|---------|-----------------|
+        | T1(Less than 0, 0-8, 1-9)                         | -1    | 1     | 1       | false           |
+        | T2(Greater than 9, 0-8, 1-9)                      | 10    | 1     | 1       | false           |
+        | T3(0-8 , Less than 0,  1-9)                       | 1     | -1    | 1       | false           |
+        | T4(0-8 , Greater than 8 , 1-9)                    | 1     | 10    | 1       | false           |
+        | T5(0-8 , 0-8, Less than 1)                        | 1     | 1     | 0       | true            |
+        | T6(0-8 , 0-8, Greater than 9)                     | 1     | 1     | 10      | true            |
+        | T7(0-8 ,Less than 0, Non-Number)                  | 1     | -1    | A       | false           |
+        | T8(0-8, 0-8,  1-9)                                | 1     | 1     | 1       | true            |
     
     - **Functionality-Based**: Verifying the method's ability to correctly determine valid and invalid moves based on the inputs.
-        - **Develop Characteristics**:
-          - **C4** = The boolean result of `isValidMove`
-          - **C5** = The validity of the board state after the move
+      - **Develop Characteristics**:
+        - **C4** = The boolean result of `isValidMove`
     
-        - **Partition Characteristics**:
+      - **Partition Characteristics**:
+        | Characteristics              | b1  | b2    |
+        |-----------------------------|-----|-------|
+        | C4 = Result of `isValidMove`| True| False |
+      - **Identify Possible Values**:
     
-          | Characteristics                     | b1        | b2         |
-          |-------------------------            |-----------|------------|
-          | C4 = Result of `isValidMove`        | True      | False      |
-          | C5 = Board state after move         | Unchanged | Changed    |
+        | Characteristics              | b1   | b2    |
+        |-----------------------------|------|-------|
+        | C4 = Result of `isValidMove`| true | false |
     
-        - **Identify Possible Values**:
+      - **Approaches Used**: BCC (Base Choice Coverage)
+        - **Test Requirements**:
+          - T1: (True)
+          - T2: (False)
     
-          | Characteristics                  | b1        | b2         |
-          |-------------------------         |---------  |------------|
-          | C4 = Result of `isValidMove`     | true      | false      |
-          | C5 = Board state after move      | Unchanged | Changed    |
+      - **Derive Test Values and Expected Values**:
     
-        - **Approaches Used**: BCC (Base Choice Coverage)
-          - **Test requirements:** 
-    
-        - **Derive Test Values and Expected Values**:
-    
-          | Test                  | `row` | `col` | Expected Result                           |
-          |-----------------------|-------|-------|-------------------------------------------|
-          | T5(True, Unchanged)   | 1     | 1     | true, Unchanged                           |
-          | T6(False, Unchanged)  | -1    | 1     | false, Unchanged                          |
-          | T7(True, Unchanged)   | 1     | 1     | false, Unchanged                          |
+        | Test | Input Values (row, col, value) | Expected Result |
+        |------|--------------------------------|-----------------|
+        | T1   | (1, 1, 5)                      | true            |
+        | T2   | (-1, 0, 5)                     | false           |
 
 
 ### 📝 Test Scenarios
@@ -843,6 +852,7 @@ A structured documentation of test cases aiming to validate various functionalit
         | C5 = Validity of `numInCol`  | (0, 5)       | (1, 5)         |
         | C6 = Validity of `numInBox`  | (0, 0, 5)    | (3, 3, 5)      |
       - **Approaches Used**: BCC (Base Choice Coverage)
+        - **Base Choice**: T1: (Valid, Valid, Valid)
         - **Test Requirements**:
           - T1: (Valid, Valid, Valid)
           - T2: (Invalid, Valid, Valid)
@@ -879,10 +889,6 @@ A structured documentation of test cases aiming to validate various functionalit
 
 - **Goal**: Validate that the puzzle correctly identifies the availability of a slot after moves have been made.
 
-- **Characteristics**:
-  - **Interface-Based**: Ensuring that `isSlotAvailable` returns the accurate boolean value reflecting the availability of a slot.
-  - **Functionality-Based**: Verifying that the puzzle’s state correctly updates and reflects in slot availability after a move.
-
 - **Testable Functions**:
   - `makeMove(int row, int col, String value, boolean isModifiable)`
   - `isSlotAvailable(int row, int col)`
@@ -910,11 +916,9 @@ A structured documentation of test cases aiming to validate various functionalit
       - None: Since the return type is a boolean, any return value other than `true` or `false` is unexpected. If the function returns a non-boolean value or throws an exception when provided with valid input, this would be considered unexpected.
   - **Exceptional Behavior**: The method should accurately return whether a slot is available, reflecting the current state of the puzzle.
 
-- **Input Domain**: Row and column indices to check slot availability.
-
-- **Approaches Used**:
-
-- **Test and Expected Values**: After a move is made to a slot, `isSlotAvailable` should return `false` for that slot, and it should return `true` for slots where no move has been made.
+- **Characteristics**:
+  - **Interface-Based**: Ensuring that `isSlotAvailable` returns the accurate boolean value reflecting the availability of a slot.
+  - **Functionality-Based**: Verifying that the puzzle’s state correctly updates and reflects in slot availability after a move.
 
 ### 📝 Test Scenarios
 
@@ -936,10 +940,6 @@ A structured documentation of test cases aiming to validate various functionalit
 
 - **Goal**:
   Validate that the puzzle correctly retrieves the value after a move has been made and handles invalid index inputs gracefully.
-
-- **Characteristics**:
-  - **Interface-Based**: Ensuring that `getValue` returns the correct string value after a move.
-  - **Functionality-Based**: Verifying that the puzzle’s state correctly updates and reflects when retrieving a value.
 
 - **Testable Functions**:
   - `makeMove(int row, int col, String value, boolean isModifiable)`
@@ -970,13 +970,9 @@ A structured documentation of test cases aiming to validate various functionalit
 
   - **Exceptional Behavior**: The method should handle invalid indices without crashing and possibly return a default value.
 
-- **Input Domain**: Row and column indices for retrieving a value.
-
-- **Approaches Used**:
-
-- **Test and Expected Values**:
-  - After a move is made to a slot, `getValue` should return the placed value for that slot.
-  - For invalid or out-of-bounds indices, `getValue` should return a default value (e.g., an empty string) or handle it as per your implementation.
+- **Characteristics**:
+  - **Interface-Based**: Ensuring that `getValue` returns the correct string value after a move.
+  - **Functionality-Based**: Verifying that the puzzle’s state correctly updates and reflects when retrieving a value.
 
 ### 📝 Test Scenarios
 
