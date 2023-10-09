@@ -24,6 +24,7 @@ public class SudokuTest {
         // Test that the generate random Sudoku puzzle with type SIXBYSIX
         SudokuPuzzle generatedPuzzle = generator.generateRandomSudoku(SudokuPuzzleType.SIXBYSIX);
         assertEquals(6, generatedPuzzle.getBoard().length);
+        assertNotEquals(9, generatedPuzzle.getBoard().length);
         assertNotEquals(12,generatedPuzzle.getBoard().length);
     }
 
@@ -33,6 +34,7 @@ public class SudokuTest {
         // Test that the generate random Sudoku puzzle with type NINEBYNINE
         SudokuPuzzle generatedPuzzle = generator.generateRandomSudoku(SudokuPuzzleType.NINEBYNINE);
         assertEquals(9, generatedPuzzle.getBoard().length);
+        assertNotEquals(6, generatedPuzzle.getBoard().length);
         assertNotEquals(12,generatedPuzzle.getBoard().length);
     }
 
@@ -42,7 +44,8 @@ public class SudokuTest {
         // Test that the generate random Sudoku puzzle with type TWELVEBYTWELVE
         SudokuPuzzle generatedPuzzle = generator.generateRandomSudoku(SudokuPuzzleType.TWELVEBYTWELVE);
         assertEquals(12, generatedPuzzle.getBoard().length);
-        assertNotEquals(6,generatedPuzzle.getBoard().length);
+        assertNotEquals(6, generatedPuzzle.getBoard().length);
+        assertNotEquals(9, generatedPuzzle.getBoard().length);
     }
 
     //#4
@@ -51,7 +54,8 @@ public class SudokuTest {
         // Test that the generate random Sudoku puzzle with type SIXTEENBYSIXTEEN
         SudokuPuzzle generatedPuzzle = generator.generateRandomSudoku(SudokuPuzzleType.SIXTEENBYSIXTEEN);
         assertEquals(16, generatedPuzzle.getBoard().length);
-        assertNotEquals(20, generatedPuzzle.getBoard().length);
+        assertNotEquals(6, generatedPuzzle.getBoard().length);
+        assertNotEquals(9, generatedPuzzle.getBoard().length);
     }
 
     //#5
@@ -62,6 +66,9 @@ public class SudokuTest {
         assertEquals("5", puzzle.getValue(0, 0));
         assertNotEquals("1", puzzle.getValue(0, 0));
         assertNotEquals("5", puzzle.getValue(0, 1));
+        puzzle.makeMove(0, 0, "10", true);
+        assertNotEquals("10", puzzle.getValue(0, 0));
+        assertEquals("5", puzzle.getValue(0, 0));
     }
 
     //#6
