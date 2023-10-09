@@ -47,7 +47,7 @@ A structured documentation of test cases aiming to validate various functionalit
 - **Input Domain Modeling**:
   - **Parameters**: `type`: A `SudokuPuzzleType` enum value.
   - **Return Types**: The function returns a `SudokuPuzzle` object.
-  - **Return Values**: 
+  - **Return Values**:
     - **Expected**: A `SudokuPuzzle` object where `getBoardLength()` returns `6`.
     - **Unexpected**: A `SudokuPuzzle` object where `getBoardLength()` returns a value other than `6`, or an exception is thrown.
   - **Exceptional Behavior**: Not explicitly handled in the test.
@@ -56,55 +56,60 @@ A structured documentation of test cases aiming to validate various functionalit
   - **Interface-Based**: Verifying the output board length when generating a puzzle.
     - **Develop characteristics**
       - **C1**: Length of the generated Sudoku board.
+        
     - **Partition characteristics**
-      
+
       | Characteristics               | b1          | b2         | b3              |
       |-------------------------------|-------------|------------|-----------------|
       | C1 = Length of Sudoku board   | Equal to 6  | Not 6      | Any other value |
+    
     - **Identify possible value**:
-      
+
       | Characteristics               | b1   | b2    | b3     |
       |-------------------------------|------|-------|--------|
       | C1 = Length of Sudoku board   | 6    | 9     | 12     |
-    
+
     - **Approaches Used**: ACoC
-      - **Test requirements:** 
-          - T1(Equal to 6)
-          - T2(Not 6)
-          - T3(Any other value)
-    - **Derive test values and expected values.** 
+      - **Test requirements:**
+        - T1(Equal to 6)
+        - T2(Not 6)
+        - T3(Any other value)
+          
+    - **Derive test values and expected values.**
 
       | Test                         | Length | Expected Result                           |
       |------------------------------|--------|-------------------------------------------|
       | T1(Equal 6)                  | 6      | True (board length equals 6)              |
       | T2(Not 6)                    | 9      | False (board length should not be 6)      |
       | T3(Any other value)          | 12     | False (board length should not be 6)      |
-  
+
   - **Functionality-Based**: Confirming the ability to generate a random Sudoku puzzle with the specified characteristics.
     - **Develop characteristics**
       - **C1** = Ability to generate a valid Sudoku board.
       - **C2** = Ability to generate a Sudoku board corresponding to the specified type.
+        
     - **Partition characteristics**
-      
+
       | Characteristics                    | b1   | b2    |
       |------------------------------------|------|-------|
       | C1 = Generate a valid Sudoku board | True | False |
       | C2 = Match specified type          | True | False |
-    
+
     - **Approaches Used**: ACoC
-      - **Test requirements:** 
-          - T1(True, True)
-          - T2(True, False)
-          - T3(False, True)
-          - T4(False, False)
-    - **Derive test values and expected values.** 
+      - **Test requirements:**
+        - T1(True, True)
+        - T2(True, False)
+        - T3(False, True)
+        - T4(False, False)
+          
+    - **Derive test values and expected values.**
 
       | Test            | Valid Sudoku | Type Match | Expected Result                          |
-      |-----------------|--------------|------------|-----------------------------------------|
-      | T1(True, True)  | Yes          | Yes        | True (valid Sudoku, type matches input) |
-      | T2(True, False) | Yes          | No         | False (valid Sudoku, type doesn't match)|
-      | T3(False, True) | No           | Yes        | False (invalid Sudoku)                  |
-      | T4(False, False)| No           | No         | False (invalid Sudoku, type doesn't match)|
+      |-----------------|--------------|----------|-----------------------------------------|
+      | T1(True, True)  | 6            | SIXBYSIX | True (valid Sudoku, type matches input) |
+      | T2(True, False) | 6            | NINEBYNINE | False (valid Sudoku, type doesn't match)|
+      | T3(False, True) | 9            | SIXBYSIX | False (invalid Sudoku)                  |
+      | T4(False, False)| 12           | TWELVEBYTWELVE         | False (invalid Sudoku, type doesn't match)|
 
 
 ### 📝 Test Scenarios
@@ -125,11 +130,11 @@ A structured documentation of test cases aiming to validate various functionalit
 - **Goal**: Validate that generating a random Sudoku puzzle of type NINEBYNINE results in a board of length 9.
 
 - **Testable Functions**: `generateRandomSudoku(SudokuPuzzleType type)`
-  
+
 - **Input Domain Modeling**:
   - **Parameters**: `type`: A `SudokuPuzzleType` enum value.
   - **Return Types**: The function returns a `SudokuPuzzle` object.
-  - **Return Values**: 
+  - **Return Values**:
     - **Expected**: A `SudokuPuzzle` object where `getBoardLength()` returns `9`.
     - **Unexpected**: A `SudokuPuzzle` object where `getBoardLength()` returns a value other than `9`, or an exception is thrown.
   - **Exceptional Behavior**: Not explicitly handled in the test.
@@ -138,55 +143,60 @@ A structured documentation of test cases aiming to validate various functionalit
   - **Interface-Based**: Verifying the output board length when generating a puzzle.
     - **Develop characteristics**
       - **C1**: Length of the generated Sudoku board.
+        
     - **Partition characteristics**
-      
+
       | Characteristics               | b1          | b2         | b3              |
       |-------------------------------|-------------|------------|-----------------|
       | C1 = Length of Sudoku board   | Equal to 9  | Not 9      | Any other value |
+    
     - **Identify possible value**:
-      
+
       | Characteristics               | b1   | b2    | b3     |
       |-------------------------------|------|-------|--------|
       | C1 = Length of Sudoku board   | 9    | 6     | 12     |
-    
+
     - **Approaches Used**: ACoC
-      - **Test requirements:** 
-          - T1(Equal to 9)
-          - T2(Not 9)
-          - T3(Any other value)
-    - **Derive test values and expected values.** 
+      - **Test requirements:**
+        - T1(Equal to 9)
+        - T2(Not 9)
+        - T3(Any other value)
+          
+    - **Derive test values and expected values.**
 
       | Test                         | Length | Expected Result                           |
       |------------------------------|--------|-------------------------------------------|
       | T1(Equal 9)                  | 9      | True (board length equals 9)              |
       | T2(Not 9)                    | 6      | False (board length should not be 9)      |
       | T3(Any other value)          | 12     | False (board length should not be 9)      |
-  
+
   - **Functionality-Based**: Confirming the ability to generate a random Sudoku puzzle with the specified characteristics.
     - **Develop characteristics**
       - **C1** = Ability to generate a valid Sudoku board.
       - **C2** = Ability to generate a Sudoku board corresponding to the specified type.
+        
     - **Partition characteristics**
-      
+
       | Characteristics                    | b1   | b2    |
       |------------------------------------|------|-------|
       | C1 = Generate a valid Sudoku board | True | False |
       | C2 = Match specified type          | True | False |
-    
-    - **Approaches Used**: ACoC
-      - **Test requirements:** 
-          - T1(True, True)
-          - T2(True, False)
-          - T3(False, True)
-          - T4(False, False)
-    - **Derive test values and expected values.** 
 
-      | Test            | Valid Sudoku | Type Match | Expected Result                          |
-      |-----------------|--------------|------------|-----------------------------------------|
-      | T1(True, True)  | Yes          | Yes        | True (valid Sudoku, type matches input) |
-      | T2(True, False) | Yes          | No         | False (valid Sudoku, type doesn't match)|
-      | T3(False, True) | No           | Yes        | False (invalid Sudoku)                  |
-      | T4(False, False)| No           | No         | False (invalid Sudoku, type doesn't match)|
+    - **Approaches Used**: ACoC
+      - **Test requirements:**
+        - T1(True, True)
+        - T2(True, False)
+        - T3(False, True)
+        - T4(False, False)
+          
+    - **Derive test values and expected values.**
+
+      | Test            | Valid Sudoku | Type Match     | Expected Result                          |
+      |-----------------|--------------|----------------|-----------------------------------------|
+      | T1(True, True)  | 9            | NINEBYNINE      | True (valid Sudoku, type matches input) |
+      | T2(True, False) | 9            | SIXBYSIX       | False (valid Sudoku, type doesn't match)|
+      | T3(False, True) | 6            | NINEBYNINE     | False (invalid Sudoku)                  |
+      | T4(False, False)| 12           | TWELVEBYTWELVE | False (invalid Sudoku, type doesn't match)|
 
 ### 📝 Test Scenarios
 - **Positive Test Scenarios**:
@@ -210,64 +220,65 @@ A structured documentation of test cases aiming to validate various functionalit
 - **Input Domain Modeling**:
   - **Parameters**: `type`: A `SudokuPuzzleType` enum value.
   - **Return Types**: The function returns a `SudokuPuzzle` object.
-  - **Return Values**: 
+  - **Return Values**:
     - **Expected**: A `SudokuPuzzle` object where `getBoardLength()` returns `12`.
     - **Unexpected**: A `SudokuPuzzle` object where `getBoardLength()` returns a value other than `12`, or an exception is thrown.
   - **Exceptional Behavior**: Not explicitly handled in the test.
- 
+
 - **Characteristics**:
   - **Interface-Based**: Verifying the output board length when generating a puzzle.
     - **Develop characteristics**
       - **C1**: Length of the generated Sudoku board.
+        
     - **Partition characteristics**
-      
+
       | Characteristics               | b1          | b2         | b3              |
       |-------------------------------|-------------|------------|-----------------|
       | C1 = Length of Sudoku board   | Equal to 12 | Not 12     | Any other value |
+    
     - **Identify possible value**:
-      
+
       | Characteristics               | b1   | b2    | b3     |
       |-------------------------------|------|-------|--------|
       | C1 = Length of Sudoku board   | 12   | 9     | 6     |
-    
+
     - **Approaches Used**: ECC
-      - **Test requirements:** 
-          - T1(Equal to 12)
-          - T2(Not 12)
-          - T3(Any other value)
-    - **Derive test values and expected values.** 
+      - **Test requirements:**
+        - T1(Equal to 12)
+        - T2(Not 12)
+        - T3(Any other value)
+          
+    - **Derive test values and expected values.**
 
       | Test                         | Length | Expected Result                           |
       |------------------------------|--------|-------------------------------------------|
       | T1(Equal 12)                 | 12     | True (board length equals 12)             |
       | T2(Not 12)                   | 9      | False (board length should not be 12)     |
       | T3(Any other value)          | 6      | False (board length should not be 12)     |
-  
+
   - **Functionality-Based**: Confirming the ability to generate a random Sudoku puzzle with the specified characteristics.
     - **Develop characteristics**
       - **C1** = Ability to generate a valid Sudoku board.
       - **C2** = Ability to generate a Sudoku board corresponding to the specified type.
-    - **Partition characteristics** 
-      
+        
+    - **Partition characteristics**
+
       | Characteristics                    | b1   | b2    |
       |------------------------------------|------|-------|
       | C1 = Generate a valid Sudoku board | True | False |
       | C2 = Match specified type          | True | False |
-    
-    - **Approaches Used**: ECC
-      - **Test requirements:** 
-          - T1(True, True)
-          - T2(True, False)
-          - T3(False, True)
-          - T4(False, False)
-    - **Derive test values and expected values.** 
 
-      | Test            | Valid Sudoku | Type Match | Expected Result                          |
-      |-----------------|--------------|------------|-----------------------------------------|
-      | T1(True, True)  | Yes          | Yes        | True (valid Sudoku, type matches input) |
-      | T2(True, False) | Yes          | No         | False (valid Sudoku, type doesn't match)|
-      | T3(False, True) | No           | Yes        | False (invalid Sudoku)                  |
-      | T4(False, False)| No           | No         | False (invalid Sudoku, type doesn't match)|
+    - **Approaches Used**: ECC
+      - **Test requirements:**
+        - T1(True, True)
+        - T2(False, False)
+          
+    - **Derive test values and expected values.**
+
+      | Test             | Valid Sudoku | Type Match     | Expected Result                          |
+      |------------------|--------------|----------------|-----------------------------------------|
+      | T1(True, True)   | 12           | TWELVEBYTWELVE | True (valid Sudoku, type matches input) |
+      | T2(False, False) | 6            | SIXBYSIX       | False (invalid Sudoku, type doesn't match)|
 
 ### 📝 Test Scenarios
 - **Positive Test Scenarios**:
@@ -276,7 +287,7 @@ A structured documentation of test cases aiming to validate various functionalit
     assertEquals(12, generatedPuzzle.getBoard().length);
     ```
 - **Negative Test Scenarios**:
-  - Validate that generating a TWELVEBYTWELVE type puzzle does not result in a board of length 6.
+  - Validate that generating a TWELVEBYTWELVE type puzzle does not result in a board of length 6 or 9.
     ```java
     assertNotEquals(6, generatedPuzzle.getBoard().length);
     assertNotEquals(9, generatedPuzzle.getBoard().length);
@@ -291,64 +302,65 @@ A structured documentation of test cases aiming to validate various functionalit
 - **Input Domain Modeling**:
   - **Parameters**: `type`: A `SudokuPuzzleType` enum value.
   - **Return Types**: The function returns a `SudokuPuzzle` object.
-  - **Return Values**: 
+  - **Return Values**:
     - **Expected**: A `SudokuPuzzle` object where `getBoardLength()` returns `16`.
     - **Unexpected**: A `SudokuPuzzle` object where `getBoardLength()` returns a value other than `16`, or an exception is thrown.
   - **Exceptional Behavior**: Not explicitly handled in the test.
- 
+
 - **Characteristics**:
   - **Interface-Based**: Verifying the output board length when generating a puzzle.
     - **Develop characteristics**
       - **C1**: Length of the generated Sudoku board.
+        
     - **Partition characteristics**
-      
+
       | Characteristics               | b1          | b2         | b3              |
       |-------------------------------|-------------|------------|-----------------|
       | C1 = Length of Sudoku board   | Equal to 16 | Not 16     | Any other value |
+    
     - **Identify possible value**:
-      
+
       | Characteristics               | b1   | b2    | b3     |
       |-------------------------------|------|-------|--------|
       | C1 = Length of Sudoku board   | 16   | 9     | 6     |
-    
+
     - **Approaches Used**: ECC
-      - **Test requirements:** 
-          - T1(Equal to 16)
-          - T2(Not 16)
-          - T3(Any other value)
-    - **Derive test values and expected values.** 
+      - **Test requirements:**
+        - T1(Equal to 16)
+        - T2(Not 16)
+        - T3(Any other value)
+          
+    - **Derive test values and expected values.**
 
       | Test                         | Length | Expected Result                           |
       |------------------------------|--------|-------------------------------------------|
       | T1(Equal 16)                 | 16     | True (board length equals 16)             |
       | T2(Not 16)                   | 9      | False (board length should not be 16)     |
       | T3(Any other value)          | 6      | False (board length should not be 16)     |
-  
+
   - **Functionality-Based**: Confirming the ability to generate a random Sudoku puzzle with the specified characteristics.
     - **Develop characteristics**
       - **C1** = Ability to generate a valid Sudoku board.
       - **C2** = Ability to generate a Sudoku board corresponding to the specified type.
-    - **Partition characteristics** 
-      
+        
+    - **Partition characteristics**
+
       | Characteristics                    | b1   | b2    |
       |------------------------------------|------|-------|
       | C1 = Generate a valid Sudoku board | True | False |
       | C2 = Match specified type          | True | False |
-    
-    - **Approaches Used**: ECC
-      - **Test requirements:** 
-          - T1(True, True)
-          - T2(True, False)
-          - T3(False, True)
-          - T4(False, False)
-    - **Derive test values and expected values.** 
 
-      | Test            | Valid Sudoku | Type Match | Expected Result                          |
-      |-----------------|--------------|------------|-----------------------------------------|
-      | T1(True, True)  | Yes          | Yes        | True (valid Sudoku, type matches input) |
-      | T2(True, False) | Yes          | No         | False (valid Sudoku, type doesn't match)|
-      | T3(False, True) | No           | Yes        | False (invalid Sudoku)                  |
-      | T4(False, False)| No           | No         | False (invalid Sudoku, type doesn't match)|
+    - **Approaches Used**: ECC
+      - **Test requirements:**
+        - T1(True, True)
+        - T2(False, False)
+          
+    - **Derive test values and expected values.**
+
+      | Test            | Valid Sudoku | Type Match       | Expected Result                          |
+      |-----------------|--------------|------------------|-----------------------------------------|
+      | T1(True, True)  | 16           | SIXTEENBYSIXTEEN | True (valid Sudoku, type matches input) |
+      | T4(False, False)| 6            | SIXBYSIX         | False (invalid Sudoku, type doesn't match)|
 
 ### 📝 Test Scenarios
 - **Positive Test Scenarios**:
@@ -357,7 +369,7 @@ A structured documentation of test cases aiming to validate various functionalit
     assertEquals(16, generatedPuzzle.getBoard().length);
     ```
 - **Negative Test Scenarios**:
-  - Validate that generating a SIXTEENBYSIXTEEN type puzzle does not result in a board of length 20.
+  - Validate that generating a SIXTEENBYSIXTEEN type puzzle does not result in a board of length 6 or 9.
     ```java
     assertNotEquals(6, generatedPuzzle.getBoard().length);
     assertNotEquals(9, generatedPuzzle.getBoard().length);
@@ -367,20 +379,16 @@ A structured documentation of test cases aiming to validate various functionalit
 
 - **Goal**: Validate that making a move updates the puzzle’s state accurately and consistently.
 
-- **Characteristics**:
-  - **Interface-Based**: Ensuring that the state of the puzzle, once a move is made, reflects the made move.
-  - **Functionality-Based**: Verifying that the move-making functionality updates the board correctly.
-
 - **Testable Functions**: `makeMove(int row, int col, String value, boolean isModifiable)` and `getValue(int row, int col)`
 
 - **Input Domain Modeling**:
   - **Parameters**:
-    - `makeMove`: 
+    - `makeMove`:
       - `row` (`int`): The row index for the move.
       - `col` (`int`): The column index for the move.
       - `value` (`String`): The value to be placed in the move.
       - `isModifiable` (`boolean`): Flag indicating if the move is modifiable.
-    - `getValue`: 
+    - `getValue`:
       - `row` (`int`): Row index to retrieve the value.
       - `col` (`int`): Column index to retrieve the value.
   - **Return Typese**:
@@ -390,93 +398,161 @@ A structured documentation of test cases aiming to validate various functionalit
     - `makeMove`: No return value (void).
     - `getValue`:
       - **Expected**: The `String` value present in the specified position of the puzzle.
-      - **Unexpected**: 
+      - **Unexpected**:
         - A different value that was not placed in the specified position.
-        - If indices are out of bounds or invalid, the return might be an empty string, `null`, or it might throw an exception, depending on implementation. 
+        - If indices are out of bounds or invalid, the return might be an empty string, `null`, or it might throw an exception, depending on implementation.
   - **Exceptional Behavior**: If an invalid move is made, the state of the puzzle should not change.
 
-- **Input Domain**:
-    - `row` and `col`: 0-8 (for a 9x9 board, adjust as per board size)
-    - `value`: "1"-"9" (assuming a standard Sudoku game)
-    - `isModifiable`: `true` or `false`
+- **Characteristics**:
+  - **Interface-Based**: Ensuring that the state of the puzzle, once a move is made, reflects the made move.
+    - **Develop Characteristics**
+      - **C1** = Validity of `row` and `col`
+      - **C2** = Validity of `value`
+      - **C3** = State of `isMutable`
+        
+    - **Partition Characteristics**
 
-- **Approaches Used**:
+      | Characteristics   | b1         | b2          | b3          |
+      |-------------------|------------|-------------|-------------|
+      | C1 = Cell position| Less than 0| 0 - 8       | Greater than 8 |
+      | C2 = Value        | Less than 1| 1 - 9       | Greater than 9 |
+      | C3 = isMutable    | True       | False       |             |
 
-- **Test and Expected Values**:
-  - Testing with a move to `(0, 0)` with the value `"5"` should:
-    - Update the value at `(0, 0)` to `"5"` (`assertEquals("5", puzzle.getValue(0, 0))`)
-    - Ensure the value is not `"1"` (`assertNotEquals("1", puzzle.getValue(0, 0))`)
-    - Ensure the value at `(0, 1)` is not affected (`assertNotEquals("5", puzzle.getValue(0, 1))`)
+    - **Identify Possible Values**
+
+      | Characteristics   | b1     | b2       | b3          |
+      |-------------------|--------|----------|-------------|
+      | C1 = Cell position| (-1, -1) | (0, 0) | (10, 10)    |
+      | C2 = Value        | "-1"    | "5"     | "10"        |
+      | C3 = isMutable    | true   | false    |             |   
+
+    - **Combine Partitions to Define Test Requirements - PWC**
+      - **Assumption:** Pair-Wise Coverage (PWC)
+      - **Test Requirements**: Number of tests = 9
+        - T1(Valid, Valid, True)
+        - T2(Valid, Valid, False)
+        - T3(Valid, Invalid, True)
+        - T4(Invalid, Valid, True)
+          
+    - **Derive Test Values and Expected Values**
+
+      | Test                          | (row, col) | value | isMutable | Expected Result (Post-Conditions)      |
+      |-------------------------------|------------|-------|-----------|----------------------------------------|
+      | T1(Valid, Valid, True)        | (0, 0)     | "5"   | true      | Value at (0,0) is "5"                  |
+      | T2(Valid, Valid, False)       | (0, 0)     | "5"   | false     | Value at (0,0) is "5"                  |
+      | T3(Valid, Invalid, True)      | (0, 0)     | "10"  | true      | Value at (0,0) is not changed          |
+      | T4(Invalid, Valid, True)      | (-1, -1)   | "5"   | true      | Value at (-1,-1) is not changed/valid   |
+
+  - **Functionality-Based**: Verifying that the move-making functionality updates the board correctly.
+    - **Develop Characteristics**
+      - **C4** = The updated value on the board
+      - **C5** = The mutability status of the cell after a move
+        
+    - **Partition Characteristics**
+    
+      | Characteristics                          | b1        | b2         |
+      |------------------------------------------|-----------|------------|
+      | C4 = The updated value on the board      | Updated   | Not Updated|
+      | C5 = The mutability status after a move  | Mutable   | Immutable  |
+    
+    - **Identify Possible Values**
+    
+      | Characteristics                          | b1      | b2          |
+      |------------------------------------------|---------|-------------|
+      | C4 = The updated value on the board      | "5"     | "10"        |
+      | C5 = The mutability status after a move  | true    | false       |
+    
+    - **Combine Partitions to Define Test Requirements - PWC**
+      - **Assumption:** Pair-Wise Coverage (PWC)
+      - **Test Requirements**: Number of tests = 4
+        - T5(Updated, Mutable)
+        - T6(Updated, Immutable)
+        - T7(Not Updated, Mutable)
+        - T8(Not Updated, Immutable)
+    - **Derive Test Values and Expected Values**
+    
+      | Test                   | (row, col) | Update Value | isMutable | Expected Result (Post-Conditions)           |
+      |------------------------|------------|--------------|-----------|---------------------------------------------|
+      | T5(Updated, Mutable)   | (0, 0)     | "5"          | true      | Value at (0,0) is "5", and is mutable       |
+      | T6(Updated, Immutable) | (0, 0)     | "5"          | false     | Value at (0,0) is "5", and is immutable     |
+      | T7(Not Updated, Mutable) | (0, 0)   | "10"         | true      | Value at (0,0) is not "10", and is mutable  |
+      | T8(Not Updated, Immutable) | (0, 0) | "10"         | false     | Value at (0,0) is not "10", and is immutable|     
 
 #### 📝 Test Scenarios
 - **Positive Test Scenarios**:
   - Ensure that after making a move to (0, 0) with the value "5", the value is reflected in the puzzle state.
     ```java
+    puzzle.makeMove(0, 0, "5", true);
     assertEquals("5", puzzle.getValue(0, 0));
     ```
 - **Negative Test Scenarios**:
   - Validate that making a move to (0, 0) with the value "5" does not affect the value at (0, 1).
     ```java
+    puzzle.makeMove(0, 0, "5", true);
     assertNotEquals("5", puzzle.getValue(0, 1));
     ```
+  - Validate that the board does not update for an invalid move.
+    ```java
+    puzzle.makeMove(0, 0, "10", true);
+    assertNotEquals("10", puzzle.getValue(0, 0));
+    assertEquals("5", puzzle.getValue(0, 0));
+    ```  
 ---
 #### 6. Test Case Name: testWhenCallIsValidValueWithInvalidValue_thenReturnFalse
 
 - **Goal**: Validate that invalid values are not accepted in a move and do not alter the puzzle state.
 
-- **Characteristics**:
-  - **Interface-Based**: Ensuring invalid moves are not reflected in the puzzle state.
-  - **Functionality-Based**: Verifying that the move-making functionality rejects invalid inputs.
-
 - **Testable Functions**: `makeMove(int row, int col, String value, boolean isModifiable)` and `getValue(int row, int col)`
 
 - **Input Domain Modeling**:
   - **Parameters**:
-    - `makeMove`: 
+    - `makeMove`:
       - `row` (`int`): The row index for the move.
       - `col` (`int`): The column index for the move.
       - `value` (`String`): The value to be placed in the move.
       - `isModifiable` (`boolean`): Flag indicating if the move is modifiable.
-    - `getValue`: 
+    - `getValue`:
       - `row` (`int`): Row index to retrieve the value.
       - `col` (`int`): Column index to retrieve the value.
-  
+
   - **Return Types**:
     - `makeMove`: Does not return a value (void).
     - `getValue`: Returns a `String` indicating the value in the specified cell.
-    
+
   - **Return Values**:
     - `makeMove`: No return value (void).
     - `getValue`:
       - **Expected**: The `String` value present in the specified position of the puzzle.
-      - **Unexpected**: 
+      - **Unexpected**:
         - A different value that was not placed in the specified position.
-        - If indices are out of bounds or invalid, the return might be an empty string, `null`, or it might throw an exception, depending on implementation.  
-  - **Exceptional Behavior**: Invalid moves should not alter the state of the puzzle and should not be recorded in the puzzle’s state.
-
-- **Input Domain**:
-    - `row` and `col`: Integer values (commonly 0-8 for a 9x9 board)
-    - `value`: String representation of the intended move value.
-    - `isModifiable`: Boolean value (`true` or `false`)
-
-- **Approaches Used**:
-
-- **Test and Expected Values**:
-  - Invalid values (e.g., "-1", "0", "10", "A") should not be set on the board and should not change the puzzle state.
-  - The `getValue` method should return the same value before and after an invalid move is attempted.
+        - If indices are out of bounds or invalid, the return might be an empty string, `null`, or it might throw an exception, depending on implementation.
+  - **Exceptional Behavior**:
+    - `makeMove`: If invalid values or indexes are used, the state of the puzzle should not change.
+    - `numInBox`: If indexes are out of bounds or invalid, it might throw an exception depending on implementation.
+ 
+  - **Characteristics**:
+      - **Interface-Based**: Ensuring invalid moves are not reflected in the puzzle state.
+      - **Functionality-Based**: Verifying that the move-making functionality rejects invalid inputs.
 
 #### 📝 Test Scenarios
 - **Positive Test Scenarios**:
-  - Ensure that a valid move (like placing "5" at (0, 0)) is reflected in the puzzle state.
+  - Validate that the puzzle state remains unchanged for invalid values.
     ```java
-    puzzle.makeMove(0, 0, "5", true);
-    assertEquals("5", puzzle.getValue(0, 0));
+    String initialState = puzzle.getValue(0, 0);
+    puzzle.makeMove(0, 0, "-1", true);
+    puzzle.makeMove(0, 0, "0", true);
+    puzzle.makeMove(0, 0, "10", true);
+    puzzle.makeMove(0, 0, "A", true);
+    assertEquals(initialState, puzzle.getValue(0, 0));
     ```
 - **Negative Test Scenarios**:
-  - Validate that an invalid move (like placing "-1" at (0, 0)) is not reflected in the puzzle state.
+  - Validate `numInBox` returns `false` after making a move with a valid value.
     ```java
     puzzle.makeMove(0, 0, "-1", true);
-    assertNotEquals("-1", puzzle.getValue(0, 0));
+    puzzle.makeMove(0, 0, "0", true);
+    puzzle.makeMove(0, 0, "10", true);
+    puzzle.makeMove(0, 0, "A", true);
+    assertFalse(puzzle.numInBox(0, 0, "5"));
     ```
 ---
 #### 7. Test Case Name: testWhenCallIsValidMove_thenReturnCorrectResult
@@ -498,7 +574,7 @@ A structured documentation of test cases aiming to validate various functionalit
     - `isValidMove`: Returns a boolean indicating whether the move is valid.
   - **Return Values**:
     - `isValidMove`:
-      - **Expected**: 
+      - **Expected**:
         - `true`: If the specified move is valid.
         - `false`: If the specified move is invalid.
       - **Unexpected**:
@@ -507,9 +583,9 @@ A structured documentation of test cases aiming to validate various functionalit
   - **Exceptional Behavior**: The function should return `false` when provided with invalid input, such as negative or out-of-bounds indices, and `true` for valid input.
 
 - **Input Domain**:
-    - `row` and `col`: Integer values representing position on the board.
-    - `value`: String representing the intended move value.
-  
+  - `row` and `col`: Integer values representing position on the board.
+  - `value`: String representing the intended move value.
+
 - **Approaches Used**:
 
 - **Test and Expected Values**:
@@ -542,26 +618,26 @@ A structured documentation of test cases aiming to validate various functionalit
   - **Functionality-Based**: Verifying that the puzzle’s state is accurately reflected in methods identifying number placement.
 
 - **Testable Functions**:
-    - `makeMove(int row, int col, String value, boolean isModifiable)`
-    - `numInRow(int row, String value)`
-    - `numInCol(int col, String value)`
-    - `numInBox(int startRow, int startCol, String value)`
+  - `makeMove(int row, int col, String value, boolean isModifiable)`
+  - `numInRow(int row, String value)`
+  - `numInCol(int col, String value)`
+  - `numInBox(int startRow, int startCol, String value)`
 
 - **Input Domain Modeling**:
   - **Parameters**:
-    - `makeMove`: 
+    - `makeMove`:
       - `row` (`int`): The row index for the move.
       - `col` (`int`): The column index for the move.
       - `value` (`String`): The value to be placed in the move.
       - `isModifiable` (`boolean`): Flag indicating if the move is modifiable.
     - `numInRow`:
-      - `row` (`int`): The row index where the presence of the value is being checked. 
+      - `row` (`int`): The row index where the presence of the value is being checked.
       -  `value` (`String`): The numerical value being checked for in the specified row.
     - `numInCol`:
       - `col` (`int`): The column index where the presence of the value is being checked.
       - `value` (`String`): The numerical value being checked for in the specified column.
     - `numInBox`:
-      - `row` (`int`): The row index where the presence of the value is being checked. 
+      - `row` (`int`): The row index where the presence of the value is being checked.
       - `col` (`int`): The column index where the presence of the value is being checked.
       - `value` (`String`): The numerical value being checked for in the specified box.
   - **Return Types**:
@@ -570,17 +646,17 @@ A structured documentation of test cases aiming to validate various functionalit
   - **Return Values**:
     - `makeMove`: No return value.
     - `numInRow`, `numInCol`, and `numInBox`:
-      - **Expected**: 
+      - **Expected**:
         - `true`: If the specified number is found in the respective location.
         - `false`: If the specified number is not found in the respective location.
-      - **Unexpected**: 
+      - **Unexpected**:
         - `true`: If the specified number is not found when it should be.
         - `false`: If the specified number is found when it should not be.
   - **Exceptional Behavior**: The methods should accurately return whether a number is present in a specific row, column, or box, reflecting the current state of the puzzle.
 
 - **Input Domain**: Row, column indices, and string values representing moves and checks on the board.
 
-- **Approaches Used**: 
+- **Approaches Used**:
 
 - **Test and Expected Values**:
   - After a number "5" is placed in position (0, 0), `numInRow`, `numInCol`, and `numInBox` should return `true` when checking for "5" in the respective row, column, and box.
@@ -612,12 +688,12 @@ A structured documentation of test cases aiming to validate various functionalit
   - **Functionality-Based**: Verifying that the puzzle’s state correctly updates and reflects in slot availability after a move.
 
 - **Testable Functions**:
-    - `makeMove(int row, int col, String value, boolean isModifiable)`
-    - `isSlotAvailable(int row, int col)`
+  - `makeMove(int row, int col, String value, boolean isModifiable)`
+  - `isSlotAvailable(int row, int col)`
 
 - **Input Domain Modeling**:
   - **Parameters**:
-    - `makeMove`: 
+    - `makeMove`:
       - `row` (`int`): The row index for the move.
       - `col` (`int`): The column index for the move.
       - `value` (`String`): The value to be placed in the move.
@@ -626,16 +702,16 @@ A structured documentation of test cases aiming to validate various functionalit
       - `row` (`int`): Row index where the availability of the slot is being checked.
       - `col` (`int`): Column index where the availability of the slot is being checked.
   - **Return Types**:
-      - `makeMove`: No return value (void).
-      - `boolean`: Indicates whether the slot is available or not.
+    - `makeMove`: No return value (void).
+    - `boolean`: Indicates whether the slot is available or not.
   - **Return Values**:
-      - `makeMove`: No return value.
-      - `isSlotAvailable`:
-        - **Expected**: 
-        - `true`: If the slot at `(row, col)` is available (i.e., no value is assigned).
-        - `false`: If the slot at `(row, col)` is not available (i.e., a value is already assigned).
-      - **Unexpected**: 
-        - None: Since the return type is a boolean, any return value other than `true` or `false` is unexpected. If the function returns a non-boolean value or throws an exception when provided with valid input, this would be considered unexpected.
+    - `makeMove`: No return value.
+    - `isSlotAvailable`:
+      - **Expected**:
+      - `true`: If the slot at `(row, col)` is available (i.e., no value is assigned).
+      - `false`: If the slot at `(row, col)` is not available (i.e., a value is already assigned).
+    - **Unexpected**:
+      - None: Since the return type is a boolean, any return value other than `true` or `false` is unexpected. If the function returns a non-boolean value or throws an exception when provided with valid input, this would be considered unexpected.
   - **Exceptional Behavior**: The method should accurately return whether a slot is available, reflecting the current state of the puzzle.
 
 - **Input Domain**: Row and column indices to check slot availability.
@@ -670,36 +746,36 @@ A structured documentation of test cases aiming to validate various functionalit
   - **Functionality-Based**: Verifying that the puzzle’s state correctly updates and reflects when retrieving a value.
 
 - **Testable Functions**:
-    - `makeMove(int row, int col, String value, boolean isModifiable)`
-    - `getValue(int row, int col)`
+  - `makeMove(int row, int col, String value, boolean isModifiable)`
+  - `getValue(int row, int col)`
 
 - **Input Domain Modeling**:
   - **Parameters**:
-    - `makeMove`: 
+    - `makeMove`:
       - `row` (`int`): The row index for the move.
       - `col` (`int`): The column index for the move.
       - `value` (`String`): The value to be placed in the move.
       - `isModifiable` (`boolean`): Flag indicating if the move is modifiable.
-    - `getValue`: 
+    - `getValue`:
       - `row` (`int`): Row index to retrieve the value.
       - `col` (`int`): Column index to retrieve the value.
-  
+
   - **Return Types**:
     - `makeMove`: Does not return a value (void).
     - `getValue`: Returns a `String` indicating the value in the specified cell.
-    
+
   - **Return Values**:
     - `makeMove`: No return value (void).
     - `getValue`:
       - **Expected**: The `String` value present in the specified position of the puzzle.
-      - **Unexpected**: 
+      - **Unexpected**:
         - A different value that was not placed in the specified position.
-        - If indices are out of bounds or invalid, the return might be an empty string, `null`, or it might throw an exception, depending on implementation. 
-  
+        - If indices are out of bounds or invalid, the return might be an empty string, `null`, or it might throw an exception, depending on implementation.
+
   - **Exceptional Behavior**: The method should handle invalid indices without crashing and possibly return a default value.
 
 - **Input Domain**: Row and column indices for retrieving a value.
-    
+
 - **Approaches Used**:
 
 - **Test and Expected Values**:
