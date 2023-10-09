@@ -111,11 +111,11 @@ A structured documentation of test cases aiming to validate various functionalit
           
     - **Derive test values and expected values.**
 
-      | Test            | Valid Sudoku | Type Match | Expected Result                          |
-      |-----------------|--------------|----------|-----------------------------------------|
-      | T1(True, True)  | 6            | SIXBYSIX | True (valid Sudoku, type matches input) |
-      | T2(True, False) | 6            | NINEBYNINE | False (valid Sudoku, type doesn't match)|
-      | T3(False, True) | 9            | SIXBYSIX | False (invalid Sudoku)                  |
+      | Test            | Valid Sudoku | Type Match             | Expected Result                          |
+      |-----------------|--------------|----------              |-----------------------------------------|
+      | T1(True, True)  | 6            | SIXBYSIX               | True (valid Sudoku, type matches input) |
+      | T2(True, False) | 6            | NINEBYNINE             | False (valid Sudoku, type doesn't match)|
+      | T3(False, True) | 9            | SIXBYSIX               | False (invalid Sudoku)                  |
       | T4(False, False)| 12           | TWELVEBYTWELVE         | False (invalid Sudoku, type doesn't match)|
 
 
@@ -407,7 +407,7 @@ A structured documentation of test cases aiming to validate various functionalit
 
 - **Goal**: Validate that making a move updates the puzzle’s state accurately and consistently.
 
-- **Testable Functions**: `makeMove(int row, int col, String value, boolean isModifiable)` and `getValue(int row, int col)`
+- **Testable Functions**: `makeMove(int row, int col, String value, boolean isMutable)` and `getValue(int row, int col)`
 
 - **Input Domain Modeling**:
   - **Parameters**:
@@ -415,7 +415,7 @@ A structured documentation of test cases aiming to validate various functionalit
       - `row` (`int`): The row index for the move.
       - `col` (`int`): The column index for the move.
       - `value` (`String`): The value to be placed in the move.
-      - `isModifiable` (`boolean`): Flag indicating if the move is modifiable.
+      - `isMutable` (`boolean`): Flag indicating if the move is modifiable.
     - `getValue`:
       - `row` (`int`): Row index to retrieve the value.
       - `col` (`int`): Column index to retrieve the value.
@@ -448,11 +448,11 @@ A structured documentation of test cases aiming to validate various functionalit
 
     - **Identify Possible Values**
 
-      | Characteristics   | b1     | b2       | b3          |
-      |-------------------|--------|----------|-------------|
-      | C1 = Cell position| (-1, -1) | (0, 0) | (10, 10)    |
-      | C2 = Value        | "-1"    | "5"     | "10"        |
-      | C3 = isMutable    | true   | false    |             |   
+      | Characteristics   | b1       | b2       | b3          |
+      |-------------------|--------  |----------|-------------|
+      | C1 = Cell position| (-1, -1) | (0, 0)   | (10, 10)    |
+      | C2 = Value        | "-1"     | "5"      | "10"        |
+      | C3 = isMutable    | true     | false    |             |   
 
     - **Approaches Used**: PWC
       - **Test Requirements**:
@@ -510,7 +510,7 @@ A structured documentation of test cases aiming to validate various functionalit
       | Test                       | Update Value | isMutable | Expected Result                             |
       |------------------------    |--------------|-----------|---------------------------------------------|
       | T5(Updated, Mutable)       | "5"          | true      | Value at (0,0) is "5", and is mutable       |
-      | T6(Updated, Immutable)     | "5"          | false     | Value at (0,0) is not update value          |
+      | T6(Updated, Immutable)     | "5"          | false     | Value at (0,0) is "5", and is immutable     |
       | T7(Not Updated, Mutable)   | "10"         | true      | Value at (0,0) is not "10", and is mutable  |
       | T8(Not Updated, Immutable) | "10"         | false     | Value at (0,0) is not "10", and is immutable|     
 
@@ -522,16 +522,15 @@ A structured documentation of test cases aiming to validate various functionalit
     assertEquals("5", puzzle.getValue(0, 0));
     ```
 - **Negative Test Scenarios**:
-  - Validate that making a move to (0, 0) with the value "5" does not affect the value at (0, 1).
+  - Validate that making a move to (0, 0) with the value "0" does not affect the value at (0, 0).
     ```java
-    puzzle.makeMove(0, 0, "5", true);
-    assertNotEquals("5", puzzle.getValue(0, 1));
+    puzzle.makeMove(0, 0, "0", false);
+    assertNotEquals("0", puzzle.getValue(0, 0));
     ```
   - Validate that the board does not update for an invalid move.
     ```java
     puzzle.makeMove(0, 0, "10", true);
     assertNotEquals("10", puzzle.getValue(0, 0));
-    assertEquals("5", puzzle.getValue(0, 0));
     ```  
 ---
 #### 6. Test Case Name: testWhenCallIsValidValueWithInvalidValue_thenReturnFalse
@@ -549,7 +548,7 @@ A structured documentation of test cases aiming to validate various functionalit
       - `row` (`int`): The row index for the move.
       - `col` (`int`): The column index for the move.
       - `value` (`String`): The value to be placed in the move.
-      - `isModifiable` (`boolean`): Flag indicating if the move is modifiable.
+      - `isMutable` (`boolean`): Flag indicating if the move is modifiable.
     - `getValue`:
       - `row` (`int`): Row index to retrieve the value.
       - `col` (`int`): Column index to retrieve the value.
@@ -586,42 +585,48 @@ A structured documentation of test cases aiming to validate various functionalit
           - **Develop Characteristics**
               - **C1** = Validity of `row` and `col`
               - **C2** = Validity of `value`
-              - **C3** = State of `isModifiable`
+              - **C3** = State of `isMutable`
           - **Partition Characteristics**:
 
-            | Characteristics    | b1    | b2       | 
-            |--------------------|-------|----------|
-            | C1 = Cell position | Valid | Invalid  |  
-            | C2 = Value         | Valid | Invalid  |        
-            | C3 = isModifiable  | True  | False    |        
+            | Characteristics    | b1           | b2             | b3             |
+            |--------------------|-------       |----------      |----------------|
+            | C1 = Cell position | Less than 0  | 0 - 8          | Greater than 8 |  
+            | C2 = Value         | Less than 1  | Greater than 9 | Non-number     |       
+            | C3 = isMutable     | True         | False          |                |             
 
           - **Identify Possible Values**:
     
-            | Characteristics    | b1     | b2        |
-            |--------------------|--------|-----------|
-            | C1 = Cell position | (0, 0) | (-1, -1)  |
-            | C2 = Value         | "5"    | "A", "10" |
-            | C3 = isModifiable  | true   | false     |
+            | Characteristics    | b1       | b2        | b3          |
+            |--------------------|--------  |-----------|---------    |
+            | C1 = Cell position | (-1, -1) | (0, 0)    | (10, 10)    |       
+            | C2 = Value         | "-1"     | "10"      | "A"         |       
+            | C3 = isMutable     | true     | false     |             |       
 
           - **Approaches Used**: PWC
             - **Test Requirements**: 
-                - T1(Valid, Valid, True)
-                - T2(Valid, Invalid, True)
-                - T3(Invalid, Valid, True)
-                - T4(Valid, Valid, False)
-                - T5(Valid, Invalid, False)
-                - T6(Invalid, Valid, False)
+                - T1 (Less than 0, Less than 1, True)
+                - T2 (Less than 0, Greater than 9, False)
+                - T3 (Less than 0, Non-number, False)
+                - T4 (0 - 8, Less than 1, False)
+                - T5 (0 - 8, Greater than 9, True) 
+                - T6 (0 - 8, Non-number, True)
+                - T7 (Greater than 8, Less than 1, False)
+                - T8 (Greater than 8, Greater than 9, True)
+                - T9 (Greater than 8, Non-number, True)
           
         - **Derive Test Values and Expected Values**:
     
-          | Test                          | (row, col) | value    | isModifiable | Expected Result                        |
-          |-------------------------------|------------|----------|--------------|----------------------------------------|
-          | T1(Valid, Valid, True)        | (0, 0)     | "5"      | true         | Value at (0,0) is "5"                  |
-          | T2(Valid, Invalid, True)      | (0, 0)     | "A"      | true         | Value at (0,0) is not "A"              |
-          | T3(Invalid, Valid, True)      | (-1, -1)   | "5"      | true         | No change/exception                    |
-          | T4(Valid, Valid, False)       | (0, 0)     | "5"      | false        | No change if immutable                 |
-          | T5(Valid, Invalid, False)     | (0, 0)     | "A"      | false        | No change/exception                    |
-          | T6(Invalid, Valid, False)     | (-1, -1)   | "5"      | false        | No change/exception                    |
+          | Test                                      | (row, col) | value  | isMutable | Expected Result                        |
+          |-------------------------------            |------------|------- |-----------|----------------------------------------|
+          | T1 (Less than 0, Less than 1, True)       | (-1, -1)   | "-1"   | true      | Value at (-1,-1) is invalid            |
+          | T2 (Less than 0, Greater than 9, False)   | (-1, -1)   | "10"   | false     | Value at (-1,-1) is invalid            |
+          | T3 (Less than 0, Non-number, False)       | (-1, -1)   | "A"    | false     | Value at (-1,-1) is invalid            |
+          | T4 (0 - 8, Less than 1, False)            | (0, 0)     | "-1"   | false     | Value at (0, 0) is invalid             |
+          | T5 (0 - 8, Greater than 9, True)          | (0, 0)     | "10"   | true      | Value at (0, 0) is invalid             |
+          | T6 (0 - 8, Non-number, True)              | (0, 0)     | "A"    | true      | Value at (0, 0) is invalid             |
+          | T7 (Greater than 8, Less than 1, False)   | (9, 9)     | "-1"   | false     | Value at (9, 9) is invalid             |
+          | T8 (Greater than 8, Greater than 9, True) | (9, 9)     | "10"   | true      | Value at (9, 9) is invalid             |
+          | T9 (Greater than 8, Non-number, True)     | (9, 9)     | "A"    | true      | Value at (9, 9) is invalid             |
 
       - **Functionality-Based**: Verifying that the move-making functionality rejects invalid inputs.
           - **Develop Characteristics**
@@ -639,7 +644,7 @@ A structured documentation of test cases aiming to validate various functionalit
        
             | Characteristics                          | b1      | b2          |
             |------------------------------------------|---------|-------------|
-            | C4 = Updated value on board              | "5"     | "A"        |
+            | C4 = Updated value on board              | "5"     | "A"         |
             | C5 = `numInBox` result                   | true    | false       |
        
           - **Approaches Used**: PWC
@@ -654,9 +659,9 @@ A structured documentation of test cases aiming to validate various functionalit
             | Test                     | (row, col) | value    | isModifiable | Expected Result                                    |
             |--------------------------|------------|----------|--------------|----------------------------------------------------|
             | T7(Updated, True)        | (0, 0)     | "5"      | true         | Value at (0,0) is "5", and `numInBox` returns true  |
-            | T8(Updated, False)       | (0, 0)     | "5"      | true         | Value at (0,0) is "5", and `numInBox` returns false |
+            | T8(Updated, False)       | (0, 0)     | "5"      | false        | Value at (0,0) is "5", and `numInBox` returns false |
             | T9(Not Updated, True)    | (0, 0)     | "A"      | true         | Value at (0,0) is not "A", and `numInBox` returns true |
-            | T10(Not Updated, False)  | (0, 0)     | "A"      | true         | Value at (0,0) is not "A", and `numInBox` returns false |
+            | T10(Not Updated, False)  | (0, 0)     | "A"      | false        | Value at (0,0) is not "A", and `numInBox` returns false |
 
 
 #### 📝 Test Scenarios
