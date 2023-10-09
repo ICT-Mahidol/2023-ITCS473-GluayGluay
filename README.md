@@ -95,7 +95,7 @@ A structured documentation of test cases aiming to validate various functionalit
       | C1 = Generate a valid Sudoku board | True | False |
       | C2 = Match specified type          | True | False |
       
-    - **Identify possible value****
+    - **Identify possible value**
     
       | Characteristics                          | b1        | b2         |
       |------------------------------------------|-----------|------------|
@@ -189,7 +189,7 @@ A structured documentation of test cases aiming to validate various functionalit
       | C1 = Generate a valid Sudoku board | True | False |
       | C2 = Match specified type          | True | False |
  
-    - **Identify possible value****
+    - **Identify possible value**
     
       | Characteristics                          | b1          | b2         |
       |------------------------------------------|-------------|------------|
@@ -282,7 +282,7 @@ A structured documentation of test cases aiming to validate various functionalit
       | C1 = Generate a valid Sudoku board | True | False |
       | C2 = Match specified type          | True | False |
  
-    - **Identify possible value****
+    - **Identify possible value**
     
       | Characteristics                          | b1          | b2         |
       |------------------------------------------|-------------|------------|
@@ -371,7 +371,7 @@ A structured documentation of test cases aiming to validate various functionalit
       | C1 = Generate a valid Sudoku board | True | False |
       | C2 = Match specified type          | True | False |
  
-    - **Identify possible value****
+    - **Identify possible value**
     
       | Characteristics                          | b1          | b2         |
       |------------------------------------------|-------------|------------|
