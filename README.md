@@ -28,13 +28,19 @@ A structured documentation of test cases aiming to validate various functionalit
 
 ---
 
+### Prefix Values
+```java
+    @Before
+    public void setUp() {
+        generator = new SudokuGenerator();
+        puzzle = new SudokuPuzzle(9, 9, 3, 3, new String[]{"1","2","3","4","5","6","7","8","9"});
+    }
+```
+---
+
 #### 1. Test Case Name: testGenerateRandomSudokuPuzzleWithTypeSIXBYSIX_thenReturnBoardLengthIs6
 
 - **Goal**: Validate that generating a random Sudoku puzzle of type SIXBYSIX results in a board of length 6.
-
-- **Characteristics**:
-  - **Interface-Based**: Verifying the output board length when generating a puzzle.
-  - **Functionality-Based**: Confirming the ability to generate a random Sudoku puzzle with the specified characteristics.
 
 - **Testable Functions**: `generateRandomSudoku(SudokuPuzzleType type)`
 
@@ -44,13 +50,67 @@ A structured documentation of test cases aiming to validate various functionalit
   - **Return Values**: 
     - **Expected**: A `SudokuPuzzle` object where `getBoardLength()` returns `6`.
     - **Unexpected**: A `SudokuPuzzle` object where `getBoardLength()` returns a value other than `6`, or an exception is thrown.
-  - **Exceptional Behavior**:
+  - **Exceptional Behavior**: Not explicitly handled in the test.
 
-- **Input Domain**: `SudokuPuzzleType` can be SIXBYSIX, NINEBYNINE, TWELVEBYTWELVE, SIXTEENBYSIXTEEN.
+- **Characteristics**:
+  - **Interface-Based**: Verifying the output board length when generating a puzzle.
+    - **Develop characteristics**
+      - **C1**: Length of the generated Sudoku board.
+    - **Partition characteristics**
+      
+      | Characteristics               | b1          | b2         | b3              |
+      |-------------------------------|-------------|------------|-----------------|
+      | C1 = Length of Sudoku board   | Equal to 6  | Not 6      | Any other value |
+    - **Identify possible value**:
+      
+      | Characteristics               | b1   | b2    | b3     |
+      |-------------------------------|------|-------|--------|
+      | C1 = Length of Sudoku board   | 6    | 9     | 12     |
+    
+    - **Approaches Used**: ACoC
+      - **Test requirements:** 
+      - T1(Equal to 6)
+      - T2(Not 6)
+      - T3(Any other value)
+    - **Derive test values and expected values.** 
 
-- **Approaches Used**:
+      | Test                         | Length | Expected Result                           |
+      |------------------------------|--------|-------------------------------------------|
+      | T1(Equal 6)                  | 6      | True (board length equals 6)              |
+      | T2(Not 6)                    | 9      | False (board length should not be 6)      |
+      | T3(Any other value)          | 12     | False (board length should not be 6)      |
+  
+  - **Functionality-Based**: Confirming the ability to generate a random Sudoku puzzle with the specified characteristics.
+    - **Develop characteristics**
+      - **C1** = Ability to generate a valid Sudoku board.
+      - **C2** = Ability to generate a Sudoku board corresponding to the specified type.
+    - **Partition characteristics**
+      
+      | Characteristics                    | b1   | b2    |
+      |------------------------------------|------|-------|
+      | C1 = Generate a valid Sudoku board | True | False |
+      | C2 = Match specified type          | True | False |
+    - **Identify possible value**:
+      
+      | Characteristics               | b1   | b2    | b3     |
+      |-------------------------------|------|-------|--------|
+      | C1 = Length of Sudoku board   | 6    | 9     | 12     |
+    
+    - **Approaches Used**: ACoC
+      - **Test requirements:** 
+      - T1(True, True)
+      - T2(True, False)
+      - T3(False, True)
+      - T4(False, False)
+    - **Derive test values and expected values.** 
 
-- **Test and Expected Values**: When tested with `SudokuPuzzleType.SIXBYSIX` should return a board of length 6.
+      | Test            | Valid Sudoku | Type Match | Expected Result                          |
+      |-----------------|--------------|------------|-----------------------------------------|
+      | T1(True, True)  | Yes          | Yes        | True (valid Sudoku, type matches input) |
+      | T2(True, False) | Yes          | No         | False (valid Sudoku, type doesn't match)|
+      | T3(False, True) | No           | Yes        | False (invalid Sudoku)                  |
+      | T4(False, False)| No           | No         | False (invalid Sudoku, type doesn't match)|
+
 
 ### 📝 Test Scenarios
 - **Positive Test Scenarios**:
@@ -59,18 +119,15 @@ A structured documentation of test cases aiming to validate various functionalit
     assertEquals(6, generatedPuzzle.getBoardLength());
     ```
 - **Negative Test Scenarios**:
-  - Validate that generating a SIXBYSIX type puzzle does not result in a board of length 9.
+  - Validate that generating a SIXBYSIX type puzzle does not result in a board of length 9 or 12.
     ```java
-    assertNotEquals(9, generatedPuzzle.getBoardLength());
+    assertNotEquals(9, generatedPuzzle.getBoard().length);
+    assertNotEquals(12,generatedPuzzle.getBoard().length);
     ```
 ---
 #### 2. Test Case Name: testGenerateRandomSudokuPuzzleWithTypeNINEBYNINE_thenReturnBoardLengthIs9
 
 - **Goal**: Validate that generating a random Sudoku puzzle of type NINEBYNINE results in a board of length 9.
-
-- **Characteristics**:
-  - **Interface-Based**: Verifying the output board length when generating a puzzle.
-  - **Functionality-Based**: Confirming the ability to generate a random Sudoku puzzle with the specified characteristics.
 
 - **Testable Functions**: `generateRandomSudoku(SudokuPuzzleType type)`
   
@@ -81,12 +138,18 @@ A structured documentation of test cases aiming to validate various functionalit
     - **Expected**: A `SudokuPuzzle` object where `getBoardLength()` returns `9`.
     - **Unexpected**: A `SudokuPuzzle` object where `getBoardLength()` returns a value other than `9`, or an exception is thrown.
   - **Exceptional Behavior**:
- 
-- **Input Domain**: `SudokuPuzzleType` can be SIXBYSIX, NINEBYNINE, TWELVEBYTWELVE, SIXTEENBYSIXTEEN.
 
-- **Approaches Used**: 
-
-- **Test and Expected Values**: When tested with `SudokuPuzzleType.NINENINE` should return a board of length 9.
+- **Characteristics**:
+  - **Interface-Based**: Verifying the output board length when generating a puzzle.
+    - **C1**:
+    - **Identify possible value**:
+    - **Approaches Used**: 
+    - **Test and Expected Values**: When tested with `SudokuPuzzleType.NINENINE` should return a board of length 9.
+  - **Functionality-Based**: Confirming the ability to generate a random Sudoku puzzle with the specified characteristics.
+    - **C1**:
+    - **Identify possible value**:
+    - **Approaches Used**: 
+    - **Test and Expected Values**: When tested with `SudokuPuzzleType.NINENINE` should return a board of length 9.
 
 ### 📝 Test Scenarios
 - **Positive Test Scenarios**:
