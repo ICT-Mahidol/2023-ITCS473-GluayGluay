@@ -94,7 +94,14 @@ A structured documentation of test cases aiming to validate various functionalit
       |------------------------------------|------|-------|
       | C1 = Generate a valid Sudoku board | True | False |
       | C2 = Match specified type          | True | False |
-
+      
+    - **Identify possible value****
+    
+      | Characteristics                          | b1        | b2         |
+      |------------------------------------------|-----------|------------|
+      | C1 = Generate a valid Sudoku board       | 6         | 9          |
+      | C2 = Match specified type                | SIXBYSIX  | NINEBYNINE |
+      
     - **Approaches Used**: ACoC
       - **Test requirements:**
         - T1(True, True)
