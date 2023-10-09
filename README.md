@@ -670,7 +670,6 @@ A structured documentation of test cases aiming to validate various functionalit
     ```java
     String initialState = puzzle.getValue(0, 0);
     puzzle.makeMove(0, 0, "-1", true);
-    puzzle.makeMove(0, 0, "0", true);
     puzzle.makeMove(0, 0, "10", true);
     puzzle.makeMove(0, 0, "A", true);
     assertEquals(initialState, puzzle.getValue(0, 0));
@@ -679,7 +678,6 @@ A structured documentation of test cases aiming to validate various functionalit
   - Validate `numInBox` returns `false` after making a move with a valid value.
     ```java
     puzzle.makeMove(0, 0, "-1", true);
-    puzzle.makeMove(0, 0, "0", true);
     puzzle.makeMove(0, 0, "10", true);
     puzzle.makeMove(0, 0, "A", true);
     assertFalse(puzzle.numInBox(0, 0, "5"));
@@ -688,10 +686,6 @@ A structured documentation of test cases aiming to validate various functionalit
 #### 7. Test Case Name: testWhenCallIsValidMove_thenReturnCorrectResult
 
 - **Goal**: Validate the behavior of the `isValidMove` method when provided with various row, column, and value inputs.
-
-- **Characteristics**:
-  - **Interface-Based**: Ensuring the method `isValidMove` returns the expected boolean value according to the input validity.
-  - **Functionality-Based**: Verifying the method's ability to correctly determine valid and invalid moves based on the inputs.
 
 - **Testable Functions**: `isValidMove(int row, int col, String value)`
 
@@ -712,15 +706,64 @@ A structured documentation of test cases aiming to validate various functionalit
         - `false`: If the specified move is valid.
   - **Exceptional Behavior**: The function should return `false` when provided with invalid input, such as negative or out-of-bounds indices, and `true` for valid input.
 
-- **Input Domain**:
-  - `row` and `col`: Integer values representing position on the board.
-  - `value`: String representing the intended move value.
+- **Characteristics**:
+  - **Interface-Based**: Ensuring the method `isValidMove` returns the expected boolean value according to the input validity.
+      - **Develop characteristics**
+        - **C1** = Validity of `row`
+        - **C2** = Validity of `col`
+        - **C3** = Validity of `value`
+      - **Partition characteristics**
+        | Characteristics          | b1           | b2         | b3             | b4         |
+        |-------------------       |-----------   |------------|----------      |------------|
+        | C1 = Validity of `row`   | Less than 0  | 0 - 8      | Greater than 8 |            |
+        | C2 = Validity of `col`   | Less than 0  | 0 - 8      | Greater than 8 |            |
+        | C3 = Validity of `value` | Less than 1  | 1 - 9      | Greater than 9 | Non-number |
+      - **Identify possible value**:
+        | Characteristics            | b1         | b2     |  b3    | b4         |
+        |-------------------         |------------|--------|--------|------------|
+        | C1 = Validity of `row`     | -1         | 1      | 9      |            |
+        | C2 = Validity of `col`     | -1         | 1      | 9      |            |
+        | C3 = Validity of `value`   | "0"        | "1"    | "10"   | "A"        |
+      - **Approaches Used**: BCC (Base Choice Coverage)
+        - **Test requirements:** 
+      - **Derive test values and expected values.**
+        | Test                      | `row` | `col` | `value` | Expected Result |
+        |---------------------------|-------|-------|---------|-----------------|
+        | T1(Invalid, Invalid, Invalid) | -1    | -1    | "A"     | false           |
+        | T2(Valid, Invalid, Invalid)   | 1     | -1    | "A"     | false           |
+        | T3(Invalid, Valid, Invalid)   | -1    | 1     | "A"     | false           |
+        | T4(Invalid, Invalid, Valid)   | -1    | -1    | "5"     | false           |
+    
+    - **Functionality-Based**: Verifying the method's ability to correctly determine valid and invalid moves based on the inputs.
+        - **Develop Characteristics**:
+          - **C4** = The boolean result of `isValidMove`
+          - **C5** = The validity of the board state after the move
+    
+        - **Partition Characteristics**:
+    
+          | Characteristics                     | b1        | b2         |
+          |-------------------------            |-----------|------------|
+          | C4 = Result of `isValidMove`        | True      | False      |
+          | C5 = Board state after move         | Unchanged | Changed    |
+    
+        - **Identify Possible Values**:
+    
+          | Characteristics                  | b1        | b2         |
+          |-------------------------         |---------  |------------|
+          | C4 = Result of `isValidMove`     | true      | false      |
+          | C5 = Board state after move      | Unchanged | Changed    |
+    
+        - **Approaches Used**: BCC (Base Choice Coverage)
+          - **Test requirements:** 
+    
+        - **Derive Test Values and Expected Values**:
+    
+          | Test                  | `row` | `col` | Expected Result                           |
+          |-----------------------|-------|-------|-------------------------------------------|
+          | T5(True, Unchanged)   | 1     | 1     | true, Unchanged                           |
+          | T6(False, Unchanged)  | -1    | 1     | false, Unchanged                          |
+          | T7(True, Unchanged)   | 1     | 1     | false, Unchanged                          |
 
-- **Approaches Used**:
-
-- **Test and Expected Values**:
-  - The `isValidMove` method should return `false` for invalid moves, such as when `row` or `col` are negative or exceed the board's size.
-  - The method should return `true` for valid moves, where `row` and `col` are within the board's size and `value` is permissible.
 
 ### 📝 Test Scenarios
 
@@ -742,10 +785,6 @@ A structured documentation of test cases aiming to validate various functionalit
 #### 8. Test Case Name: testNumInRowColBox
 
 - **Goal**: Validate that the puzzle correctly identifies the presence of a number in a specific row, column, and box after a move has been made.
-
-- **Characteristics**:
-  - **Interface-Based**: Ensuring methods like `numInRow`, `numInCol`, and `numInBox` return accurate boolean values indicating the presence of a number.
-  - **Functionality-Based**: Verifying that the puzzle’s state is accurately reflected in methods identifying number placement.
 
 - **Testable Functions**:
   - `makeMove(int row, int col, String value, boolean isModifiable)`
@@ -783,17 +822,44 @@ A structured documentation of test cases aiming to validate various functionalit
         - `true`: If the specified number is not found when it should be.
         - `false`: If the specified number is found when it should not be.
   - **Exceptional Behavior**: The methods should accurately return whether a number is present in a specific row, column, or box, reflecting the current state of the puzzle.
-
-- **Input Domain**: Row, column indices, and string values representing moves and checks on the board.
-
-- **Approaches Used**:
-
-- **Test and Expected Values**:
-  - After a number "5" is placed in position (0, 0), `numInRow`, `numInCol`, and `numInBox` should return `true` when checking for "5" in the respective row, column, and box.
-  - Checks for "5" in different rows, columns, and boxes should return `false`, ensuring the number placement is accurately identified.
-
+    
+  - **Characteristics**:
+    - **Interface-Based && Functionality-Based**: Ensuring methods like `numInRow`, `numInCol`, and `numInBox` return accurate boolean values indicating the presence of a number.
+      - **Develop Characteristics**:
+        - **C4**: Validity of `numInRow` check
+        - **C5**: Validity of `numInCol` check
+        - **C6**: Validity of `numInBox` check
+        
+      - **Partition Characteristics**:
+        | Characteristics              | b1             | b2               |
+        |------------------------------|----------------|------------------|
+        | C4 = Validity of `numInRow`  | Valid          | Invalid          |
+        | C5 = Validity of `numInCol`  | Valid          | Invalid          |
+        | C6 = Validity of `numInBox`  | Valid          | Invalid          |
+      - **Identify Possible Values**:
+        | Characteristics              | b1             | b2               |
+        |------------------------------|----------------|------------------|
+        | C4 = Validity of `numInRow`  | (0, 5)       | (1, 5)         |
+        | C5 = Validity of `numInCol`  | (0, 5)       | (1, 5)         |
+        | C6 = Validity of `numInBox`  | (0, 0, 5)    | (3, 3, 5)      |
+      - **Approaches Used**: BCC (Base Choice Coverage)
+        - **Test Requirements**:
+          - T1: (Valid, Valid, Valid)
+          - T2: (Invalid, Valid, Valid)
+          - T3: (Valid, Invalid, Valid)
+          - T4: (Valid, Valid, Invalid)
+      - **Derive Test Values and Expected Values**:  
+        | Test     | Input Values                     | Expected Result |
+        |----------|------------------                |-----------------|
+        | T1       | [(0, 5),(0,5),(0,0,5)]           | true            |
+        | T2       | [(1, 5),(0,5),(0,0,5)]           | false           |
+        | T3       | [(0, 5),(1,5),(0,0,5)]           | false           |
+        | T4       | [(0, 5),(0,5),(3,3,5)]           | false           |
+        
 ### 📝 Test Scenarios
-
+  ```java
+  puzzle.makeMove(0, 0, "5", true);
+  ```
 - **Positive Test Scenarios**:
   Confirm the number "5" is identified in the correct row, column, and box after being placed at (0, 0):
   ```java
