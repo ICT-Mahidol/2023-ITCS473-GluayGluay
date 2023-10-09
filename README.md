@@ -454,9 +454,8 @@ A structured documentation of test cases aiming to validate various functionalit
       | C2 = Value        | "-1"    | "5"     | "10"        |
       | C3 = isMutable    | true   | false    |             |   
 
-    - **Combine Partitions to Define Test Requirements - PWC**
-      - **Assumption:** Pair-Wise Coverage (PWC)
-      - **Test Requirements**: Number of tests = 9
+    - **Approaches Used**: PWC
+      - **Test Requirements**:
         - T1(Valid, Valid, True)
         - T2(Valid, Valid, False)
         - T3(Valid, Invalid, True)
@@ -464,12 +463,12 @@ A structured documentation of test cases aiming to validate various functionalit
           
     - **Derive Test Values and Expected Values**
 
-      | Test                          | (row, col) | value | isMutable | Expected Result (Post-Conditions)      |
+      | Test                          | (row, col) | value | isMutable | Expected Result                        |
       |-------------------------------|------------|-------|-----------|----------------------------------------|
       | T1(Valid, Valid, True)        | (0, 0)     | "5"   | true      | Value at (0,0) is "5"                  |
       | T2(Valid, Valid, False)       | (0, 0)     | "5"   | false     | Value at (0,0) is "5"                  |
       | T3(Valid, Invalid, True)      | (0, 0)     | "10"  | true      | Value at (0,0) is not changed          |
-      | T4(Invalid, Valid, True)      | (-1, -1)   | "5"   | true      | Value at (-1,-1) is not changed/valid   |
+      | T4(Invalid, Valid, True)      | (-1, -1)   | "5"   | true      | Value at (-1,-1) is not changed/valid  |
 
   - **Functionality-Based**: Verifying that the move-making functionality updates the board correctly.
     - **Develop Characteristics**
@@ -490,16 +489,15 @@ A structured documentation of test cases aiming to validate various functionalit
       | C4 = The updated value on the board      | "5"     | "10"        |
       | C5 = The mutability status after a move  | true    | false       |
     
-    - **Combine Partitions to Define Test Requirements - PWC**
-      - **Assumption:** Pair-Wise Coverage (PWC)
-      - **Test Requirements**: Number of tests = 4
+    - **Approaches Used**: PWC
+      - **Test Requirements**:
         - T5(Updated, Mutable)
         - T6(Updated, Immutable)
         - T7(Not Updated, Mutable)
         - T8(Not Updated, Immutable)
     - **Derive Test Values and Expected Values**
     
-      | Test                   | (row, col) | Update Value | isMutable | Expected Result (Post-Conditions)           |
+      | Test                   | (row, col) | Update Value | isMutable | Expected Result                             |
       |------------------------|------------|--------------|-----------|---------------------------------------------|
       | T5(Updated, Mutable)   | (0, 0)     | "5"          | true      | Value at (0,0) is "5", and is mutable       |
       | T6(Updated, Immutable) | (0, 0)     | "5"          | false     | Value at (0,0) is "5", and is immutable     |
@@ -530,7 +528,10 @@ A structured documentation of test cases aiming to validate various functionalit
 
 - **Goal**: Validate that invalid values are not accepted in a move and do not alter the puzzle state.
 
-- **Testable Functions**: `makeMove(int row, int col, String value, boolean isModifiable)` and `getValue(int row, int col)`
+- **Testable Functions**:
+    - `makeMove(int row, int col, String value, boolean isModifiable)`
+    - `getValue(int row, int col)`
+    - `numInBox(int row, int col, String value)`
 
 - **Input Domain Modeling**:
   - **Parameters**:
@@ -542,10 +543,15 @@ A structured documentation of test cases aiming to validate various functionalit
     - `getValue`:
       - `row` (`int`): Row index to retrieve the value.
       - `col` (`int`): Column index to retrieve the value.
+    - `numInBox`:
+      - `row` (`int`): The row index where the presence of the value is being checked.
+      - `col` (`int`): The column index where the presence of the value is being checked.
+      - `value` (`String`): The numerical value being checked for in the specified box.
 
   - **Return Types**:
     - `makeMove`: Does not return a value (void).
     - `getValue`: Returns a `String` indicating the value in the specified cell.
+    - `numInBox`: Returns a boolean indicating whether the value is present in the specified location.
 
   - **Return Values**:
     - `makeMove`: No return value (void).
@@ -554,13 +560,94 @@ A structured documentation of test cases aiming to validate various functionalit
       - **Unexpected**:
         - A different value that was not placed in the specified position.
         - If indices are out of bounds or invalid, the return might be an empty string, `null`, or it might throw an exception, depending on implementation.
+    - `numInBox`:
+      - **Expected**:
+        - `true`: If the specified number is found in the respective location.
+        - `false`: If the specified number is not found in the respective location.
+      - **Unexpected**:
+        - `true`: If the specified number is not found when it should be.
+        - `false`: If the specified number is found when it should not be.
   - **Exceptional Behavior**:
     - `makeMove`: If invalid values or indexes are used, the state of the puzzle should not change.
     - `numInBox`: If indexes are out of bounds or invalid, it might throw an exception depending on implementation.
  
   - **Characteristics**:
       - **Interface-Based**: Ensuring invalid moves are not reflected in the puzzle state.
+          - **Develop Characteristics**
+              - **C1** = Validity of `row` and `col`
+              - **C2** = Validity of `value`
+              - **C3** = State of `isModifiable`
+          - **Partition Characteristics**:
+
+            | Characteristics    | b1    | b2       | 
+            |--------------------|-------|----------|
+            | C1 = Cell position | Valid | Invalid  |  
+            | C2 = Value         | Valid | Invalid  |        
+            | C3 = isModifiable  | True  | False    |        
+
+          - **Identify Possible Values**:
+    
+            | Characteristics    | b1     | b2        |
+            |--------------------|--------|-----------|
+            | C1 = Cell position | (0, 0) | (-1, -1)  |
+            | C2 = Value         | "5"    | "A", "10" |
+            | C3 = isModifiable  | true   | false     |
+
+          - **Approaches Used**: PWC
+            - **Test Requirements**: 
+                - T1(Valid, Valid, True)
+                - T2(Valid, Invalid, True)
+                - T3(Invalid, Valid, True)
+                - T4(Valid, Valid, False)
+                - T5(Valid, Invalid, False)
+                - T6(Invalid, Valid, False)
+          
+        - **Derive Test Values and Expected Values**:
+    
+          | Test                          | (row, col) | value    | isModifiable | Expected Result                        |
+          |-------------------------------|------------|----------|--------------|----------------------------------------|
+          | T1(Valid, Valid, True)        | (0, 0)     | "5"      | true         | Value at (0,0) is "5"                  |
+          | T2(Valid, Invalid, True)      | (0, 0)     | "A"      | true         | Value at (0,0) is not "A"              |
+          | T3(Invalid, Valid, True)      | (-1, -1)   | "5"      | true         | No change/exception                    |
+          | T4(Valid, Valid, False)       | (0, 0)     | "5"      | false        | No change if immutable                 |
+          | T5(Valid, Invalid, False)     | (0, 0)     | "A"      | false        | No change/exception                    |
+          | T6(Invalid, Valid, False)     | (-1, -1)   | "5"      | false        | No change/exception                    |
+
       - **Functionality-Based**: Verifying that the move-making functionality rejects invalid inputs.
+          - **Develop Characteristics**
+            - **C4** = The updated value on the board
+            - **C5** = Whether `numInBox` returns expected boolean
+        
+          - **Partition Characteristics**:
+
+            | Characteristics             | b1     | b2      |
+            |-----------------------------|--------|---------|
+            | C4 = Updated value on board | Updated| Not Updated|
+            | C5 = `numInBox` result      | True   | False   |
+
+          - **Identify Possible Values**:
+       
+            | Characteristics                          | b1      | b2          |
+            |------------------------------------------|---------|-------------|
+            | C4 = Updated value on board              | "5"     | "A"        |
+            | C5 = `numInBox` result                   | true    | false       |
+       
+          - **Approaches Used**: PWC
+              - **Test Requirements**:
+                - T7(Updated, True)
+                - T8(Updated, False)
+                - T9(Not Updated, True)
+                - T10(Not Updated, False)
+               
+          - **Derive Test Values and Expected Values**:
+       
+            | Test                     | (row, col) | value    | isModifiable | Expected Result                                    |
+            |--------------------------|------------|----------|--------------|----------------------------------------------------|
+            | T7(Updated, True)        | (0, 0)     | "5"      | true         | Value at (0,0) is "5", and `numInBox` returns true  |
+            | T8(Updated, False)       | (0, 0)     | "5"      | true         | Value at (0,0) is "5", and `numInBox` returns false |
+            | T9(Not Updated, True)    | (0, 0)     | "A"      | true         | Value at (0,0) is not "A", and `numInBox` returns true |
+            | T10(Not Updated, False)  | (0, 0)     | "A"      | true         | Value at (0,0) is not "A", and `numInBox` returns false |
+
 
 #### 📝 Test Scenarios
 - **Positive Test Scenarios**:
