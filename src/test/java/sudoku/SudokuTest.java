@@ -206,28 +206,34 @@ public class SudokuTest {
     }
 
     //#9
-    @Test
+    @Test // Test that the puzzle correct identifies slot availability after a move is made.
     public void testIsSlotAvailable() {
-        // Test that the puzzle correct identifies slot availability after a move is made.
+
+        // T3: (0 - 8, Available)  True
         puzzle.makeMove(0, 0, "5", true);
+        assertTrue(puzzle.isSlotAvailable(1, 1));
+
+        // T4: (0 - 8, Not Available)  False
+        puzzle.makeMove(0, 0, "6", true);
         assertFalse(puzzle.isSlotAvailable(0, 0));
-        puzzle.makeMove(0, 2, "6", true);
-        assertFalse(puzzle.isSlotAvailable(0, 2));
-        puzzle.makeMove(4, 5, "9", true);
-        assertTrue(puzzle.isSlotAvailable(8, 3));
     }
 
     //#10
-    @Test
+    @Test // Test that the puzzle state correct updates and retrieves a value after a move.
     public void testGetValue() {
-        // Test that the puzzle state correct updates and retrieves a value after a move.
-        puzzle.makeMove(0, 0, "5", true);
-        assertEquals("5", puzzle.getValue(0, 0));
 
-        puzzle.makeMove(0, 7, "8", true);
-        assertEquals("8", puzzle.getValue(0, 7));
+        // T1: 0 - 8, "0-9", True (valid)
+        puzzle.makeMove(0, 0, "1", true);
+        assertEquals("1", puzzle.getValue(0, 0));
 
+        // T2: 0 - 8, " ", True (Invalid)
+        puzzle.makeMove(0, 0, "8", true);
+        assertNotEquals(" ", puzzle.getValue(0, 0));
+
+        // T4: Less than 0, " ", True (valid)
         assertEquals("", puzzle.getValue(-1, -1));
+
+        // T6: Greater than 8, " ", True (valid)
         assertEquals("", puzzle.getValue(100, 100));
     }
 }
