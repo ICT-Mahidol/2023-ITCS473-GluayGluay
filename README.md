@@ -60,13 +60,13 @@ public void setUp() {
     - **Partition characteristics**
 
       | Characteristics               | b1          | b2         | b3              |
-            |-------------------------------|-------------|------------|-----------------|
+      |-------------------------------|-------------|------------|-----------------|
       | C1 = Length of Sudoku board   | Equal to 6  | Not 6      | Any other value |
 
     - **Identify possible value**:
 
       | Characteristics               | b1   | b2    | b3     |
-            |-------------------------------|------|-------|--------|
+      |-------------------------------|------|-------|--------|
       | C1 = Length of Sudoku board   | 6    | 9     | 12     |
 
     - **Approaches Used**: ACoC
@@ -78,7 +78,7 @@ public void setUp() {
     - **Derive test values and expected values.**
 
       | Test                         | Length | Expected Result                           |
-            |------------------------------|--------|-------------------------------------------|
+      |------------------------------|--------|-------------------------------------------|
       | T1(Equal 6)                  | 6      | True (board length equals 6)              |
       | T2(Not 6)                    | 9      | False (board length should not be 6)      |
       | T3(Any other value)          | 12     | False (board length should not be 6)      |
@@ -91,14 +91,14 @@ public void setUp() {
     - **Partition characteristics**
 
       | Characteristics                    | b1   | b2    |
-            |------------------------------------|------|-------|
+      |------------------------------------|------|-------|
       | C1 = Generate a valid Sudoku board | True | False |
       | C2 = Match specified type          | True | False |
 
     - **Identify possible value**
 
       | Characteristics                          | b1        | b2         |
-            |------------------------------------------|-----------|------------|
+      |------------------------------------------|-----------|------------|
       | C1 = Generate a valid Sudoku board       | 6         | 9          |
       | C2 = Match specified type                | SIXBYSIX  | NINEBYNINE |
 
@@ -112,7 +112,7 @@ public void setUp() {
     - **Derive test values and expected values.**
 
       | Test            | Valid Sudoku | Type Match             | Expected Result                          |
-            |-----------------|--------------|----------              |-----------------------------------------|
+      |-----------------|--------------|----------              |-----------------------------------------|
       | T1(True, True)  | 6            | SIXBYSIX               | True (valid Sudoku, type matches input) |
       | T2(True, False) | 6            | NINEBYNINE             | False (valid Sudoku, type doesn't match)|
       | T3(False, True) | 9            | SIXBYSIX               | False (invalid Sudoku)                  |
@@ -154,13 +154,13 @@ public void setUp() {
     - **Partition characteristics**
 
       | Characteristics               | b1          | b2         | b3              |
-            |-------------------------------|-------------|------------|-----------------|
+      |-------------------------------|-------------|------------|-----------------|
       | C1 = Length of Sudoku board   | Equal to 9  | Not 9      | Any other value |
 
     - **Identify possible value**:
 
       | Characteristics               | b1   | b2    | b3     |
-            |-------------------------------|------|-------|--------|
+      |-------------------------------|------|-------|--------|
       | C1 = Length of Sudoku board   | 9    | 6     | 12     |
 
     - **Approaches Used**: ACoC
@@ -172,7 +172,7 @@ public void setUp() {
     - **Derive test values and expected values.**
 
       | Test                         | Length | Expected Result                           |
-            |------------------------------|--------|-------------------------------------------|
+      |------------------------------|--------|-------------------------------------------|
       | T1(Equal 9)                  | 9      | True (board length equals 9)              |
       | T2(Not 9)                    | 6      | False (board length should not be 9)      |
       | T3(Any other value)          | 12     | False (board length should not be 9)      |
@@ -185,14 +185,14 @@ public void setUp() {
     - **Partition characteristics**
 
       | Characteristics                    | b1   | b2    |
-            |------------------------------------|------|-------|
+      |------------------------------------|------|-------|
       | C1 = Generate a valid Sudoku board | True | False |
       | C2 = Match specified type          | True | False |
 
     - **Identify possible value**
 
       | Characteristics                          | b1          | b2         |
-            |------------------------------------------|-------------|------------|
+      |------------------------------------------|-------------|------------|
       | C1 = Generate a valid Sudoku board       | 9           | 6          |
       | C2 = Match specified type                | NINEBYNINE  | SIXBYSIX   |
 
@@ -206,7 +206,7 @@ public void setUp() {
     - **Derive test values and expected values.**
 
       | Test            | Valid Sudoku | Type Match     | Expected Result                          |
-            |-----------------|--------------|----------------|-----------------------------------------|
+      |-----------------|--------------|----------------|-----------------------------------------|
       | T1(True, True)  | 9            | NINEBYNINE      | True (valid Sudoku, type matches input) |
       | T2(True, False) | 9            | SIXBYSIX       | False (valid Sudoku, type doesn't match)|
       | T3(False, True) | 6            | NINEBYNINE     | False (invalid Sudoku)                  |
@@ -247,13 +247,13 @@ public void setUp() {
     - **Partition characteristics**
 
       | Characteristics               | b1          | b2         | b3              |
-            |-------------------------------|-------------|------------|-----------------|
+      |-------------------------------|-------------|------------|-----------------|
       | C1 = Length of Sudoku board   | Equal to 12 | Not 12     | Any other value |
 
     - **Identify possible value**:
 
       | Characteristics               | b1   | b2    | b3     |
-            |-------------------------------|------|-------|--------|
+      |-------------------------------|------|-------|--------|
       | C1 = Length of Sudoku board   | 12   | 9     | 6     |
 
     - **Approaches Used**: ECC
@@ -265,7 +265,7 @@ public void setUp() {
     - **Derive test values and expected values.**
 
       | Test                         | Length | Expected Result                           |
-            |------------------------------|--------|-------------------------------------------|
+      |------------------------------|--------|-------------------------------------------|
       | T1(Equal 12)                 | 12     | True (board length equals 12)             |
       | T2(Not 12)                   | 9      | False (board length should not be 12)     |
       | T3(Any other value)          | 6      | False (board length should not be 12)     |
@@ -278,14 +278,14 @@ public void setUp() {
     - **Partition characteristics**
 
       | Characteristics                    | b1   | b2    |
-            |------------------------------------|------|-------|
+      |------------------------------------|------|-------|
       | C1 = Generate a valid Sudoku board | True | False |
       | C2 = Match specified type          | True | False |
 
     - **Identify possible value**
 
       | Characteristics                          | b1          | b2         |
-            |------------------------------------------|-------------|------------|
+      |------------------------------------------|-------------|------------|
       | C1 = Generate a valid Sudoku board       | 12          | 6          |
       | C2 = Match specified type                | TWELVEBYTWELVE  | SIXBYSIX   |
 
@@ -297,7 +297,7 @@ public void setUp() {
     - **Derive test values and expected values.**
 
       | Test             | Valid Sudoku | Type Match     | Expected Result                          |
-            |------------------|--------------|----------------|-----------------------------------------|
+      |------------------|--------------|----------------|-----------------------------------------|
       | T1(True, True)   | 12           | TWELVEBYTWELVE | True (valid Sudoku, type matches input) |
       | T2(False, False) | 6            | SIXBYSIX       | False (invalid Sudoku, type doesn't match)|
 
@@ -336,13 +336,13 @@ public void setUp() {
     - **Partition characteristics**
 
       | Characteristics               | b1          | b2         | b3              |
-            |-------------------------------|-------------|------------|-----------------|
+      |-------------------------------|-------------|------------|-----------------|
       | C1 = Length of Sudoku board   | Equal to 16 | Not 16     | Any other value |
 
     - **Identify possible value**:
 
       | Characteristics               | b1   | b2    | b3     |
-            |-------------------------------|------|-------|--------|
+      |-------------------------------|------|-------|--------|
       | C1 = Length of Sudoku board   | 16   | 9     | 6     |
 
     - **Approaches Used**: ECC
@@ -354,7 +354,7 @@ public void setUp() {
     - **Derive test values and expected values.**
 
       | Test                         | Length | Expected Result                           |
-            |------------------------------|--------|-------------------------------------------|
+      |------------------------------|--------|-------------------------------------------|
       | T1(Equal 16)                 | 16     | True (board length equals 16)             |
       | T2(Not 16)                   | 9      | False (board length should not be 16)     |
       | T3(Any other value)          | 6      | False (board length should not be 16)     |
@@ -367,14 +367,14 @@ public void setUp() {
     - **Partition characteristics**
 
       | Characteristics                    | b1   | b2    |
-            |------------------------------------|------|-------|
+      |------------------------------------|------|-------|
       | C1 = Generate a valid Sudoku board | True | False |
       | C2 = Match specified type          | True | False |
 
     - **Identify possible value**
 
       | Characteristics                          | b1          | b2         |
-            |------------------------------------------|-------------|------------|
+      |------------------------------------------|-------------|------------|
       | C1 = Generate a valid Sudoku board       | 16          | 6          |
       | C2 = Match specified type                | SIXTEENBYSIXTEEN  | SIXBYSIX   |
 
@@ -386,7 +386,7 @@ public void setUp() {
     - **Derive test values and expected values.**
 
       | Test            | Valid Sudoku | Type Match       | Expected Result                          |
-            |-----------------|--------------|------------------|-----------------------------------------|
+      |-----------------|--------------|------------------|-----------------------------------------|
       | T1(True, True)  | 16           | SIXTEENBYSIXTEEN | True (valid Sudoku, type matches input) |
       | T2(False, False)| 6            | SIXBYSIX         | False (invalid Sudoku, type doesn't match)|
 
@@ -441,7 +441,7 @@ public void setUp() {
     - **Partition Characteristics**
 
       | Characteristics   | b1         | b2          | b3          |
-            |-------------------|------------|-------------|-------------|
+      |-------------------|------------|-------------|-------------|
       | C1 = Cell position| Less than 0| 0 - 8       | Greater than 8 |
       | C2 = Value        | Less than 1| 1 - 9       | Greater than 9 |
       | C3 = isMutable    | True       | False       |             |
@@ -449,7 +449,7 @@ public void setUp() {
     - **Identify Possible Values**
 
       | Characteristics   | b1       | b2       | b3          |
-            |-------------------|--------  |----------|-------------|
+      |-------------------|--------  |----------|-------------|
       | C1 = Cell position| (-1, -1) | (0, 0)   | (10, 10)    |
       | C2 = Value        | "-1"     | "5"      | "10"        |
       | C3 = isMutable    | true     | false    |             |   
@@ -469,7 +469,7 @@ public void setUp() {
     - **Derive Test Values and Expected Values**
 
       | Test                                      | (row, col) | value | isMutable | Expected Result                        |
-            |-------------------------------            |------------|-------|-----------|----------------------------------------|
+      |-------------------------------            |------------|-------|-----------|----------------------------------------|
       | T1 (Less than 0, Less than 1, True)       | (-1, -1)   | "0"   | true      | Value at (-1,-1) is not changed/valid  |
       | T2 (Less than 0, 1 - 9, False)            | (-1, -1)   | "5"   | false     | Value at (-1,-1) is not changed/valid  |
       | T3 (Less than 0, Greater than 9, False)   | (-1, -1)   | "10"  | false     | Value at (-1,-1) is not changed/valid  |
@@ -488,14 +488,14 @@ public void setUp() {
     - **Partition Characteristics**
 
       | Characteristics                          | b1        | b2         |
-            |------------------------------------------|-----------|------------|
+      |------------------------------------------|-----------|------------|
       | C4 = The updated value on the board      | Updated   | Not Updated|
       | C5 = The mutability status after a move  | Mutable   | Immutable  |
 
     - **Identify Possible Values**
 
       | Characteristics                          | b1      | b2          |
-            |------------------------------------------|---------|-------------|
+      |------------------------------------------|---------|-------------|
       | C4 = The updated value on the board      | "5"     | "10"        |
       | C5 = The mutability status after a move  | true    | false       |
 
@@ -508,7 +508,7 @@ public void setUp() {
     - **Derive Test Values and Expected Values**
 
       | Test                       | Update Value | isMutable | Expected Result                             |
-            |------------------------    |--------------|-----------|---------------------------------------------|
+      |------------------------    |--------------|-----------|---------------------------------------------|
       | T5(Updated, Mutable)       | "5"          | true      | Value at (0,0) is "5", and is mutable       |
       | T6(Updated, Immutable)     | "5"          | false     | Value at (0,0) is "5", and is immutable     |
       | T7(Not Updated, Mutable)   | "10"         | true      | Value at (0,0) is not "10", and is mutable  |
@@ -589,7 +589,7 @@ public void setUp() {
       - **Partition Characteristics**:
 
         | Characteristics    | b1           | b2             | b3             |
-                    |--------------------|-------       |----------      |----------------|
+        |--------------------|-------       |----------      |----------------|
         | C1 = Cell position | Less than 0  | 0 - 8          | Greater than 8 |  
         | C2 = Value         | Less than 1  | Greater than 9 | Non-number     |       
         | C3 = isMutable     | True         | False          |                |             
@@ -597,7 +597,7 @@ public void setUp() {
       - **Identify Possible Values**:
 
         | Characteristics    | b1       | b2        | b3          |
-                    |--------------------|--------  |-----------|---------    |
+        |--------------------|--------  |-----------|---------    |
         | C1 = Cell position | (-1, -1) | (0, 0)    | (10, 10)    |       
         | C2 = Value         | "-1"     | "10"      | "A"         |       
         | C3 = isMutable     | true     | false     |             |       
@@ -617,7 +617,7 @@ public void setUp() {
       - **Derive Test Values and Expected Values**:
 
         | Test                                      | (row, col) | value  | isMutable | Expected Result                        |
-                  |-------------------------------            |------------|------- |-----------|----------------------------------------|
+        |-------------------------------            |------------|------- |-----------|----------------------------------------|
         | T1 (Less than 0, Less than 1, True)       | (-1, -1)   | "-1"   | true      | Value at (-1,-1) is invalid            |
         | T2 (Less than 0, Greater than 9, False)   | (-1, -1)   | "10"   | false     | Value at (-1,-1) is invalid            |
         | T3 (Less than 0, Non-number, False)       | (-1, -1)   | "A"    | false     | Value at (-1,-1) is invalid            |
@@ -636,14 +636,14 @@ public void setUp() {
       - **Partition Characteristics**:
 
         | Characteristics             | b1     | b2      |
-                    |-----------------------------|--------|---------|
+        |-----------------------------|--------|---------|
         | C4 = Updated value on board | Updated| Not Updated|
         | C5 = `numInBox` result      | True   | False   |
 
       - **Identify Possible Values**:
 
         | Characteristics                          | b1      | b2          |
-                    |------------------------------------------|---------|-------------|
+        |------------------------------------------|---------|-------------|
         | C4 = Updated value on board              | "5"     | "A"         |
         | C5 = `numInBox` result                   | true    | false       |
 
@@ -657,7 +657,7 @@ public void setUp() {
       - **Derive Test Values and Expected Values**:
 
         | Test                     | (row, col) | value    | isModifiable | Expected Result                                    |
-                    |--------------------------|------------|----------|--------------|----------------------------------------------------|
+        |--------------------------|------------|----------|--------------|----------------------------------------------------|
         | T7(Updated, True)        | (0, 0)     | "5"      | true         | Value at (0,0) is "5", and `numInBox` returns true  |
         | T8(Updated, False)       | (0, 0)     | "5"      | false        | Value at (0,0) is "5", and `numInBox` returns false |
         | T9(Not Updated, True)    | (0, 0)     | "A"      | true         | Value at (0,0) is not "A", and `numInBox` returns true |
@@ -715,7 +715,7 @@ public void setUp() {
     - **Partition characteristics**
 
       | Characteristics          | b1           | b2         | b3             | b4         |
-              |-------------------       |-----------   |------------|----------      |------------|
+      |-------------------       |-----------   |------------|----------      |------------|
       | C1 = Validity of `row`   | Less than 0  | 0 - 9      | Greater than 9 |            |
       | C2 = Validity of `col`   | Less than 0  | 0 - 9      | Greater than 9 |            |
       | C3 = Validity of `value` | Less than 1  | 1 - 9      | Greater than 9 | Non-number |
@@ -723,7 +723,7 @@ public void setUp() {
     - **Identify possible value**:
 
       | Characteristics            | b1         | b2     |  b3    | b4         |
-              |-------------------         |------------|--------|--------|------------|
+      |-------------------         |------------|--------|--------|------------|
       | C1 = Validity of `row`     | -1         | 1      | 10     |            |
       | C2 = Validity of `col`     | -1         | 1      | 10     |            |
       | C3 = Validity of `value`   | 0          | 1      | 10     | A          |
@@ -742,7 +742,7 @@ public void setUp() {
     - **Derive test values and expected values.**
 
       | Test                                              | `row` | `col` | `value` | Expected Result |
-              |---------------------------                        |-------|-------|---------|-----------------|
+      |---------------------------                        |-------|-------|---------|-----------------|
       | T1(Less than 0, 0-8, 1-9)                         | -1    | 1     | 1       | false           |
       | T2(Greater than 9, 0-8, 1-9)                      | 10    | 1     | 1       | false           |
       | T3(0-8 , Less than 0,  1-9)                       | 1     | -1    | 1       | false           |
@@ -759,13 +759,13 @@ public void setUp() {
       - **Partition Characteristics**:
 
         | Characteristics             | b1  | b2    |
-                |-----------------------------|-----|-------|
+        |-----------------------------|-----|-------|
         | C4 = Result of `isValidMove`| True| False |
 
       - **Identify Possible Values**:
 
         | Characteristics             | b1   | b2    |
-                |-----------------------------|------|-------|
+        |-----------------------------|------|-------|
         | C4 = Result of `isValidMove`| true | false |
 
       - **Approaches Used**: BCC (Base Choice Coverage)
@@ -776,7 +776,7 @@ public void setUp() {
       - **Derive Test Values and Expected Values**:
 
         | Test | Input Values (row, col, value) | Expected Result |
-                |------|--------------------------------|-----------------|
+        |------|--------------------------------|-----------------|
         | T1   | (1, 1, 5)                      | true            |
         | T2   | (-1, 0, 5)                     | false           |
 
@@ -849,7 +849,7 @@ public void setUp() {
       - **Partition Characteristics**:
 
         | Characteristics              | b1             | b2               |
-                |------------------------------|----------------|------------------|
+        |------------------------------|----------------|------------------|
         | C4 = Validity of `numInRow`  | Valid          | Invalid          |
         | C5 = Validity of `numInCol`  | Valid          | Invalid          |
         | C6 = Validity of `numInBox`  | Valid          | Invalid          |
@@ -857,7 +857,7 @@ public void setUp() {
       - **Identify Possible Values**:
 
         | Characteristics              | b1             | b2               |
-                |------------------------------|----------------|------------------|
+        |------------------------------|----------------|------------------|
         | C4 = Validity of `numInRow`  | (0, 5)         | (1, 5)           |
         | C5 = Validity of `numInCol`  | (0, 5)         | (1, 5)           |
         | C6 = Validity of `numInBox`  | (0, 0, 5)      | (3, 3, 5)        |
@@ -872,7 +872,7 @@ public void setUp() {
       - **Derive Test Values and Expected Values**:
 
         | Test     | Input Values                     | Expected Result |
-                |----------|------------------                |-----------------|
+        |----------|------------------                |-----------------|
         | T1       | [(0, 5),(0,5),(0,0,5)]           | true            |
         | T2       | [(1, 5),(0,5),(0,0,5)]           | false           |
         | T3       | [(0, 5),(1,5),(0,0,5)]           | false           |
