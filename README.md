@@ -1082,7 +1082,7 @@ public void setUp() {
 
 ## 🎯 Test Results
 
-![Test Results](https://github.com/Waariss/Sudoku_ICT/blob/e17a8a5aef7edbaf0537d665b9e38c8e0ad4ef8e/Screenshot%202566-10-09%20at%2001.21.38.png)
+![Test Results](https://github.com/Waariss/GluayGluay_project1/blob/master/Result.png)
 
 --- 
 
