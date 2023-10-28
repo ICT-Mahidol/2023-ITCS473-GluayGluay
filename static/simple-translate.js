@@ -265,3 +265,44 @@ microphoneButton.addEventListener("click", function () {
   recognition.start();
 });
 
+
+const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
+const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))
+
+// JavaScript to set a delay timer and auto-hide the popover on click
+// JavaScript to show popover on click and hide after a delay
+$(document).ready(function () {
+    var popoverDelayTimer;
+    var $copyToClipboard = $("#copyToClipboard");
+
+    $copyToClipboard.popover({
+        trigger: "manual" // Set trigger to manual
+    });
+
+    $copyToClipboard.on("click", function (e) {
+        e.preventDefault(); // Prevent the link from navigating
+        clearTimeout(popoverDelayTimer); // Clear any previous timers
+
+        $copyToClipboard.popover("show");
+
+        // Set a delay timer for auto-hiding the popover after 2000 milliseconds (2 seconds)
+        popoverDelayTimer = setTimeout(function () {
+            $copyToClipboard.popover("hide");
+        }, 1000);
+    });
+});
+
+$('#shareOnFacebook').on('click', () => {
+    let text = document.getElementById('translated_text').value + '\n\ntranslated by\n'
+    if (navigator.share) {
+        navigator.share({
+            title: 'Translate Result',
+            text: text,
+            url: '',
+        })
+            .then(() => console.log('Successful share'))
+            .catch((error) => console.log('Error sharing', error));
+    } else {
+        console.log('Share not supported on this browser, do it the old way.');
+    }
+});

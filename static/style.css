@@ -41,3 +41,20 @@ a{
     top: 10px;
     right: 18px;
 }
+
+li{
+    list-style-type: none;
+
+}
+
+.nav-user svg{
+    margin-bottom: 3px;
+    margin-right: 3px;
+    
+}
+#regis{
+    margin-left: 3px;
+}
+h5{
+    font-weight: 200;
+}
