@@ -27,3 +27,12 @@ a{
 .icon a{
     margin:1em;
 }
+.new-container{
+    position: relative;
+}
+
+.icon-container {
+    position: absolute;
+    bottom: 15px;
+    right: 18px;
+}

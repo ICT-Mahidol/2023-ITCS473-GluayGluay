@@ -44,7 +44,18 @@
                         <option value="fr">French</option>
                     </select>
                 </div>
-                <textarea id="input_text" class="form-control" placeholder="Enter text to translate"></textarea>
+                <div class="new-container">
+                    <textarea id="input_text" class="form-control mb-2" placeholder="Translated text">{{translated_text}}</textarea>
+                    <div class="icon-container">
+                        <a id="pronounceButtonSource" href="#">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-megaphone-fill" viewBox="0 0 16 16">
+                                <path d="M13 2.5a1.5 1.5 0 0 1 3 0v11a1.5 1.5 0 0 1-3 0v-11zm-1 .724c-2.067.950-4.539 1.481-7 1.656v6.237a25.222 25.222 0 0 1 1.088.085c2.053.204 4.038.668 5.912 1.56V3.224zm-8 7.841V4.934c-.680.027-1.399.043-2.008.053A2.02 2.02 0 0 0 0 7v2c0 1.106.896 1.996 1.994 2.009a68.14 68.14 0 0 1 .496.008 64 64 0 0 1 1.51.048zm1.39 1.081c.285.021.569.047.85.078l.253 1.69a1 1 0 0 1-.983 1.187h-.548a1 1 0 0 1-.916-.599l-1.314-2.48a65.81 65.81 0 0 1 1.692.064c.327.017.65.037.966.06z"/>
+                            </svg>
+                        </a>
+                    </div>
+
+                </div>
+            
                 <div id="suggestion_list" class="mt-2"></div>
 
             </div>
@@ -68,8 +79,17 @@
                         <option value="fr">French</option>
                     </select>
                 </div>
-                <textarea id="translated_text" class="form-control mb-2"
-                    placeholder="Translated text">{{translated_text}}</textarea>
+                <div class="new-container">
+                    <textarea id="translated_text" class="form-control mb-2" placeholder="Translated text">{{translated_text}}</textarea>
+                    <div class="icon-container">
+                        <a id="pronounceButtonTarget" href="#">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-megaphone-fill" viewBox="0 0 16 16">
+                                <path d="M13 2.5a1.5 1.5 0 0 1 3 0v11a1.5 1.5 0 0 1-3 0v-11zm-1 .724c-2.067.950-4.539 1.481-7 1.656v6.237a25.222 25.222 0 0 1 1.088.085c2.053.204 4.038.668 5.912 1.56V3.224zm-8 7.841V4.934c-.680.027-1.399.043-2.008.053A2.02 2.02 0 0 0 0 7v2c0 1.106.896 1.996 1.994 2.009a68.14 68.14 0 0 1 .496.008 64 64 0 0 1 1.51.048zm1.39 1.081c.285.021.569.047.85.078l.253 1.69a1 1 0 0 1-.983 1.187h-.548a1 1 0 0 1-.916-.599l-1.314-2.48a65.81 65.81 0 0 1 1.692.064c.327.017.65.037.966.06z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                
                 <div class="mt-2 text-end icon">
                     <a id="shareOnFacebook" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                             fill="currentColor" class="bi bi-send-fill" viewBox="0 0 16 16">
@@ -95,6 +115,7 @@
                 </div>
             </div>
         </div>
+
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
@@ -103,65 +124,68 @@
     <script src="{{ url_for('static', filename='simple-translate.js') }}"></script>
     <script src="{{ url_for('static', filename='suggestion.js') }}"></script>
     <script>
-        // Function to handle the download
-        function downloadText() {
-            var selectedOption = $("#target_lang option:selected").text();
-            var textToDownload = "Selected Text: " + selectedOption;
+        const textToSpeakSource = document.getElementById('input_text');
+        const speakButtonSource = document.getElementById('pronounceButtonSource');
+        const textToSpeakTarget = document.getElementById('translated_text');
+        const speakButtonTarget = document.getElementById('pronounceButtonTarget');
+        const synth = window.speechSynthesis;
+    
+        // Check if the SpeechSynthesis API is available in the browser.
+        if ('speechSynthesis' in window) {
+            const voices = synth.getVoices(); // Fetch available voices.
+    
+            speakButtonTarget.addEventListener('click', function () {
+                const text = textToSpeakTarget.value;
+                if (text && text.length > 0) {
+                    const message = new SpeechSynthesisUtterance(text);
+    
+                    // Get the selected language code from the select element.
+                    const select = document.getElementById('target_lang');
+                    const selectedOption = select.options[select.selectedIndex];
+                    const lang = selectedOption.value; // Language code
+    
+                    // Find the voice that starts with the selected language code.
+                    const voice = voices.find(voice => voice.lang.startsWith(lang));
+    
+                    if (voice) {
+                        message.voice = voice;
+                    } else {
+                        console.log(`Voice for language '${lang}' not found. Using default voice.`);
+                    }
+    
+                    synth.speak(message);
+                }
+            });
 
-            // Create a Blob with the text content
-            var blob = new Blob([textToDownload], { type: "text/plain" });
-
-            // Create a URL for the Blob
-            var url = URL.createObjectURL(blob);
-
-            // Set the href and click the link to trigger the download
-            $("#downloadTextLink").attr("href", url).show();
+            speakButtonSource.addEventListener('click', function () {
+                const text = textToSpeakSource.value;
+                if (text && text.length > 0) {
+                    const message = new SpeechSynthesisUtterance(text);
+    
+                    // Get the selected language code from the select element.
+                    const select = document.getElementById('source_lang');
+                    const selectedOption = select.options[select.selectedIndex];
+                    const lang = selectedOption.value; // Language code
+    
+                    // Find the voice that starts with the selected language code.
+                    const voice = voices.find(voice => voice.lang.startsWith(lang));
+    
+                    if (voice) {
+                        message.voice = voice;
+                    } else {
+                        console.log(`Voice for language '${lang}' not found. Using default voice.`);
+                    }
+    
+                    synth.speak(message);
+                }
+            });
+        } else {
+            // Handle the case where the SpeechSynthesis API is not supported.
+            console.log('Speech synthesis is not supported in this browser.');
         }
-
-        // Trigger the download when the target_lang select changes
-        $("#target_lang").change(downloadText);
     </script>
-    <script>
-        // Function to share text on Facebook
-        function shareOnFacebook() {
-            var textToShare = $("#input_text").val();
-            var urlToShare = "https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(textToShare);
-
-            // Open a new window or tab for Facebook sharing
-            window.open(urlToShare, "_blank");
-        }
-
-        // Bind the function to the "Share on Facebook" button
-        $("#shareOnFacebook").click(shareOnFacebook);
-    </script>
-    <script>
-        // Function to copy text to clipboard
-        function copyToClipboard() {
-            var textToCopy = $("#translated_text").val();
-            var textArea = document.createElement("textarea");
-
-            // Set the text to be copied
-            textArea.value = textToCopy;
-
-            // Append the textarea element to the document
-            document.body.appendChild(textArea);
-
-            // Select the text in the textarea
-            textArea.select();
-
-            // Copy the selected text to the clipboard
-            document.execCommand("copy");
-
-            // Remove the temporary textarea
-            document.body.removeChild(textArea);
-
-            // Provide user feedback
-            alert("Text copied to clipboard: " + textToCopy);
-        }
-
-        // Bind the function to the "Copy to Clipboard" button
-        $("#copyToClipboard").click(copyToClipboard);
-    </script>
+    
+    
 
 
 </body>
