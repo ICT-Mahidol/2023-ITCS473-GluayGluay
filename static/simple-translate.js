@@ -29,7 +29,7 @@ function translateText() {
           }
         }
       );
-    }, 800); // Translate after 1 second of idle time
+    }, 500); // Translate after 1 second of idle time
   }
 }
 
@@ -86,6 +86,16 @@ $(document).ready(function () {
       translateText();
     }
   });
+  $("#source_lang").change(function () {
+    // Call translateText when the source language selection changes
+    translateText();
+  });
+
+  // Event handler for the target_lang select element
+  $("#target_lang").change(function () {
+    // Call translateText when the target language selection changes
+    translateText();
+  });
 
   
 
@@ -122,8 +132,9 @@ $(document).ready(function () {
     updateSuggestions();
   });
 
-  $("#source_lang").change(translateText);
 });
+
+
 
 // Function to handle the download
 function downloadText() {
@@ -143,22 +154,12 @@ function downloadText() {
 // Trigger the download when the target_lang select changes
 $("#target_lang").change(downloadText);
 
-// Function to share text on Facebook
-function shareOnFacebook() {
-  var textToShare = $("#input_text").val();
-  var urlToShare =
-    "https://www.facebook.com/sharer/sharer.php?u=" +
-    encodeURIComponent(textToShare);
-
-  // Open a new window or tab for Facebook sharing
-  window.open(urlToShare, "_blank");
-}
-
-// Bind the function to the "Share on Facebook" button
-$("#shareOnFacebook").click(shareOnFacebook);
-
 function copyToClipboard() {
   var textToCopy = $("#translated_text").val();
+
+  if  (textToCopy === ''){
+    textToCopy = ''
+  }
   var textArea = document.createElement("textarea");
 
   textArea.value = textToCopy;
@@ -166,8 +167,6 @@ function copyToClipboard() {
   textArea.select();
   document.execCommand("copy");
   document.body.removeChild(textArea);
-
-  alert("Text copied to clipboard: " + textToCopy);
 }
 
 // Bind the function to the "Copy to Clipboard" button
