@@ -42,20 +42,44 @@
                         <option value="th">Thai</option>
                         <option value="es">Spanish</option>
                         <option value="fr">French</option>
+                        <option value="ja">Japanese</option>
+                        <option value="zh-CN">Chinese (Simplified)</option>
+                        <option value="zh-TW">Chinese (Traditional)</option>
+                        <option value="de">German</option>
+                        <option value="it">Italian</option>
+                        <option value="nl">Dutch</option>
+                        <option value="ru">Russian</option>
+                        <option value="pt">Portuguese</option>
+                        <option value="ko">Korean</option>
+                        <option value="ar">Arabic</option>
                     </select>
                 </div>
                 <div class="new-container">
-                    <textarea id="input_text" class="form-control mb-2" placeholder="Translated text">{{translated_text}}</textarea>
+                    <textarea id="input_text" class="form-control mb-2"
+                        placeholder="Translated text">{{translated_text}}</textarea>
+                    <div class="mic-container">
+                        <a id="microphone" href="#">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-mic-mute-fill" viewBox="0 0 16 16">
+                                <path
+                                    d="M13 8c0 .564-.094 1.107-.266 1.613l-.814-.814A4.02 4.02 0 0 0 12 8V7a.5.5 0 0 1 1 0v1zm-5 4c.818 0 1.578-.245 2.212-.667l.718.719a4.973 4.973 0 0 1-2.43.923V15h3a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1h3v-2.025A5 5 0 0 1 3 8V7a.5.5 0 0 1 1 0v1a4 4 0 0 0 4 4zm3-9v4.879L5.158 2.037A3.001 3.001 0 0 1 11 3z" />
+                                <path
+                                    d="M9.486 10.607 5 6.12V8a3 3 0 0 0 4.486 2.607zm-7.84-9.253 12 12 .708-.708-12-12-.708.708z" />
+                            </svg>
+                        </a>
+                    </div>
                     <div class="icon-container">
                         <a id="pronounceButtonSource" href="#">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-megaphone-fill" viewBox="0 0 16 16">
-                                <path d="M13 2.5a1.5 1.5 0 0 1 3 0v11a1.5 1.5 0 0 1-3 0v-11zm-1 .724c-2.067.950-4.539 1.481-7 1.656v6.237a25.222 25.222 0 0 1 1.088.085c2.053.204 4.038.668 5.912 1.56V3.224zm-8 7.841V4.934c-.680.027-1.399.043-2.008.053A2.02 2.02 0 0 0 0 7v2c0 1.106.896 1.996 1.994 2.009a68.14 68.14 0 0 1 .496.008 64 64 0 0 1 1.51.048zm1.39 1.081c.285.021.569.047.85.078l.253 1.69a1 1 0 0 1-.983 1.187h-.548a1 1 0 0 1-.916-.599l-1.314-2.48a65.81 65.81 0 0 1 1.692.064c.327.017.65.037.966.06z"/>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-megaphone-fill" viewBox="0 0 16 16">
+                                <path
+                                    d="M13 2.5a1.5 1.5 0 0 1 3 0v11a1.5 1.5 0 0 1-3 0v-11zm-1 .724c-2.067.950-4.539 1.481-7 1.656v6.237a25.222 25.222 0 0 1 1.088.085c2.053.204 4.038.668 5.912 1.56V3.224zm-8 7.841V4.934c-.680.027-1.399.043-2.008.053A2.02 2.02 0 0 0 0 7v2c0 1.106.896 1.996 1.994 2.009a68.14 68.14 0 0 1 .496.008 64 64 0 0 1 1.51.048zm1.39 1.081c.285.021.569.047.85.078l.253 1.69a1 1 0 0 1-.983 1.187h-.548a1 1 0 0 1-.916-.599l-1.314-2.48a65.81 65.81 0 0 1 1.692.064c.327.017.65.037.966.06z" />
                             </svg>
                         </a>
                     </div>
 
                 </div>
-            
+
                 <div id="suggestion_list" class="mt-2"></div>
 
             </div>
@@ -77,19 +101,33 @@
                         <option selected value="th">Thai</option>
                         <option value="es">Spanish</option>
                         <option value="fr">French</option>
+                        <option value="ja">Japanese</option>
+                        <option value="zh-CN">Chinese (Simplified)</option>
+                        <option value="zh-TW">Chinese (Traditional)</option>
+                        <option value="de">German</option>
+                        <option value="it">Italian</option>
+                        <option value="nl">Dutch</option>
+                        <option value="ru">Russian</option>
+                        <option value="pt">Portuguese</option>
+                        <option value="ko">Korean</option>
+                        <option value="ar">Arabic</option>
                     </select>
                 </div>
                 <div class="new-container">
-                    <textarea id="translated_text" class="form-control mb-2" placeholder="Translated text">{{translated_text}}</textarea>
+                    <textarea id="translated_text" class="form-control mb-2"
+                        placeholder="Translated text">{{translated_text}}</textarea>
+
                     <div class="icon-container">
                         <a id="pronounceButtonTarget" href="#">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-megaphone-fill" viewBox="0 0 16 16">
-                                <path d="M13 2.5a1.5 1.5 0 0 1 3 0v11a1.5 1.5 0 0 1-3 0v-11zm-1 .724c-2.067.950-4.539 1.481-7 1.656v6.237a25.222 25.222 0 0 1 1.088.085c2.053.204 4.038.668 5.912 1.56V3.224zm-8 7.841V4.934c-.680.027-1.399.043-2.008.053A2.02 2.02 0 0 0 0 7v2c0 1.106.896 1.996 1.994 2.009a68.14 68.14 0 0 1 .496.008 64 64 0 0 1 1.51.048zm1.39 1.081c.285.021.569.047.85.078l.253 1.69a1 1 0 0 1-.983 1.187h-.548a1 1 0 0 1-.916-.599l-1.314-2.48a65.81 65.81 0 0 1 1.692.064c.327.017.65.037.966.06z"/>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-megaphone-fill" viewBox="0 0 16 16">
+                                <path
+                                    d="M13 2.5a1.5 1.5 0 0 1 3 0v11a1.5 1.5 0 0 1-3 0v-11zm-1 .724c-2.067.950-4.539 1.481-7 1.656v6.237a25.222 25.222 0 0 1 1.088.085c2.053.204 4.038.668 5.912 1.56V3.224zm-8 7.841V4.934c-.680.027-1.399.043-2.008.053A2.02 2.02 0 0 0 0 7v2c0 1.106.896 1.996 1.994 2.009a68.14 68.14 0 0 1 .496.008 64 64 0 0 1 1.51.048zm1.39 1.081c.285.021.569.047.85.078l.253 1.69a1 1 0 0 1-.983 1.187h-.548a1 1 0 0 1-.916-.599l-1.314-2.48a65.81 65.81 0 0 1 1.692.064c.327.017.65.037.966.06z" />
                             </svg>
                         </a>
                     </div>
                 </div>
-                
+
                 <div class="mt-2 text-end icon">
                     <a id="shareOnFacebook" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                             fill="currentColor" class="bi bi-send-fill" viewBox="0 0 16 16">
@@ -124,69 +162,9 @@
     <script src="{{ url_for('static', filename='simple-translate.js') }}"></script>
     <script src="{{ url_for('static', filename='suggestion.js') }}"></script>
     <script>
-        const textToSpeakSource = document.getElementById('input_text');
-        const speakButtonSource = document.getElementById('pronounceButtonSource');
-        const textToSpeakTarget = document.getElementById('translated_text');
-        const speakButtonTarget = document.getElementById('pronounceButtonTarget');
-        const synth = window.speechSynthesis;
-    
-        // Check if the SpeechSynthesis API is available in the browser.
-        if ('speechSynthesis' in window) {
-            const voices = synth.getVoices(); // Fetch available voices.
-    
-            speakButtonTarget.addEventListener('click', function () {
-                const text = textToSpeakTarget.value;
-                if (text && text.length > 0) {
-                    const message = new SpeechSynthesisUtterance(text);
-    
-                    // Get the selected language code from the select element.
-                    const select = document.getElementById('target_lang');
-                    const selectedOption = select.options[select.selectedIndex];
-                    const lang = selectedOption.value; // Language code
-    
-                    // Find the voice that starts with the selected language code.
-                    const voice = voices.find(voice => voice.lang.startsWith(lang));
-    
-                    if (voice) {
-                        message.voice = voice;
-                    } else {
-                        console.log(`Voice for language '${lang}' not found. Using default voice.`);
-                    }
-    
-                    synth.speak(message);
-                }
-            });
+        
 
-            speakButtonSource.addEventListener('click', function () {
-                const text = textToSpeakSource.value;
-                if (text && text.length > 0) {
-                    const message = new SpeechSynthesisUtterance(text);
-    
-                    // Get the selected language code from the select element.
-                    const select = document.getElementById('source_lang');
-                    const selectedOption = select.options[select.selectedIndex];
-                    const lang = selectedOption.value; // Language code
-    
-                    // Find the voice that starts with the selected language code.
-                    const voice = voices.find(voice => voice.lang.startsWith(lang));
-    
-                    if (voice) {
-                        message.voice = voice;
-                    } else {
-                        console.log(`Voice for language '${lang}' not found. Using default voice.`);
-                    }
-    
-                    synth.speak(message);
-                }
-            });
-        } else {
-            // Handle the case where the SpeechSynthesis API is not supported.
-            console.log('Speech synthesis is not supported in this browser.');
-        }
     </script>
-    
-    
-
 
 </body>
 

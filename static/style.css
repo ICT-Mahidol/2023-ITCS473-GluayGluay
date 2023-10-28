@@ -36,3 +36,8 @@ a{
     bottom: 15px;
     right: 18px;
 }
+.mic-container {
+    position: absolute;
+    top: 10px;
+    right: 18px;
+}
