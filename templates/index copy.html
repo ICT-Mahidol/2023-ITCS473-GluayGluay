@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Language Translator</title>
+</head>
+<body>
+    <h1>Language Translator</h1>
+    <form method="post" action="/translate">
+        <textarea name="text" rows="4" cols="50" placeholder="Enter text to translate"></textarea>
+        <br>
+        <select name="source_lang">
+            <option value="en">English</option>
+            <option value="es">Spanish</option>
+            <option value="fr">French</option>
+            <!-- Add more languages as needed -->
+        </select>
+        <select name="target_lang">
+            <option value="en">English</option>
+            <option value="es">Spanish</option>
+            <option value="fr">French</option>
+            <!-- Add more languages as needed -->
+        </select>
+        <br>
+        <input type="submit" value="Translate">
+    </form>
+    {% if translated_text %}
+    <h2>Translated Text:</h2>
+    <p>{{ translated_text }}</p>
+    {% endif %}
+</body>
+</html>

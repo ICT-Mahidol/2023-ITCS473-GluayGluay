@@ -1,0 +1,29 @@
+.card{
+    padding: 2em;
+    margin: 2em;
+}
+.navbar{
+    padding: 1em 2em;
+}
+
+#change{
+    display: flex;
+    justify-content: center;
+    margin-top: 0.6em;
+}
+#suggestion_list{
+    color: rgb(116, 114, 114);
+}
+textarea{
+    height: 200px;
+    resize: none;
+}
+.container{
+    height: auto;
+}
+a{
+    font-size: 0.8em;
+}
+.icon svg{
+    margin:1em;
+}
