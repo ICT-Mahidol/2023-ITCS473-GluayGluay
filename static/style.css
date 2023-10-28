@@ -42,19 +42,26 @@ a{
     right: 18px;
 }
 
-li{
-    list-style-type: none;
 
-}
 
-.nav-user svg{
-    margin-bottom: 3px;
-    margin-right: 3px;
-    
-}
 #regis{
     margin-left: 3px;
 }
 h5{
     font-weight: 200;
+}
+nav img{
+    height: 33px;
+    width: 33px;
+    margin-right: 3px;
+}
+#translate{
+    width: 16px;
+    height: 16px;
+    margin-bottom: 3px;
+    margin-right: 7px;
+}
+.nav-link svg{
+    margin-bottom: 3px;
+    margin-right: 3px;
 }
