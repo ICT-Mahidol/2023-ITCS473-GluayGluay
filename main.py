@@ -178,5 +178,10 @@ def logout():
     flash('You have been logged out.', 'success')
     return redirect(url_for('login'))
 
+@app.route('/docs')
+def how_to_use():
+    return render_template('docs.html')  
+
+
 if __name__ == '__main__':
     app.run(debug=True)
