@@ -4,11 +4,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Jelly Translator</title>
+    <title>Jelly Translator | Docs</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 </head>
 
 <body>
@@ -24,21 +23,25 @@
             <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link " href="/docs"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
-                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-                            <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
-                          </svg>  Docs</a>
+                        <a class="nav-link " href="/docs"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
+                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                <path
+                                    d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
+                            </svg> Docs</a>
                     </li>
-                    <li class="nav-item ">
-                        <a class="nav-link active" href="#">
-                            <img src="{{ url_for('static', filename='translate.png') }}" id="translate"/>Translator
-                        </a> 
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">
+                            <img src="{{ url_for('static', filename='translate.png') }}" id="translate" />Translator
+                        </a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-book" viewBox="0 0 16 16">
-                            <path d="M1 2.828c.885-.37 2.154-.769 3.388-.893 1.33-.134 2.458.063 3.112.752v9.746c-.935-.53-2.12-.603-3.213-.493-1.18.12-2.37.461-3.287.811V2.828zm7.5-.141c.654-.689 1.782-.886 3.112-.752 1.234.124 2.503.523 3.388.893v9.923c-.918-.35-2.107-.692-3.287-.81-1.094-.111-2.278-.039-3.213.492V2.687zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783z"/>
-                          </svg>  Dictionary</a>
+                        <a class="nav-link" href="/dictionary"><svg xmlns="http://www.w3.org/2000/svg" width="16"
+                                height="16" fill="currentColor" class="bi bi-book" viewBox="0 0 16 16">
+                                <path
+                                    d="M1 2.828c.885-.37 2.154-.769 3.388-.893 1.33-.134 2.458.063 3.112.752v9.746c-.935-.53-2.12-.603-3.213-.493-1.18.12-2.37.461-3.287.811V2.828zm7.5-.141c.654-.689 1.782-.886 3.112-.752 1.234.124 2.503.523 3.388.893v9.923c-.918-.35-2.107-.692-3.287-.81-1.094-.111-2.278-.039-3.213.492V2.687zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783z" />
+                            </svg> Dictionary</a>
                     </li>
                 </ul>
                 <hr>
@@ -46,7 +49,7 @@
                 <div class="d-flex">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="/login">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                     class="bi bi-box-arrow-in-right" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd"
@@ -57,7 +60,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link active" href="/register">
                                 <svg id="regis" xmlns="http://www.w3.org/2000/svg" width="14" height="14"
                                     fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
                                     <path
@@ -72,63 +75,100 @@
             </div>
         </div>
     </nav>
-    <div class="container mt-5 mb-5">
-        <div class="container">
-            <h2 class="mt-3">What is Jelly Translator ?</h2>
-            <div class="description">
-                <br>
-                Jelly Translator is a user-friendly translation platform that offers a wide range of language options. <br>
-                You can create a personal account, input long paragraphs, and enjoy features like language detection and offline dictionary downloads. <br>
-                You can also share translations via social media and save your favorite translations. <br>
-                The application works on both desktop and mobile devices, making it accessible for everyone.<br>
-                <br>
-                <h5>Hope you enjoy exploring Jelly Translator!</h5>
-                <br>
-            </div>
-            <button type="button" class="btn btn-outline-info" onclick="window.location.href='/'" >Get Start!</button>
-        </div>
-        <div class="container">
-            <h2 class="mt-3">How To Use ?</h2>
-            <div class="description" id="how-to-use">
-                <div class="card" style="width: 18rem;">
-                    <div class="card-body">
-                      <h5 class="card-title">Microphone</h5>
-                      <i class="bi bi-mic-fill"></i>
-                      <p class="card-text"><br>Allow you to speak what you want to translate</p>
-                    </div>
-                </div>
-                <div class="card" style="width: 18rem;">
-                    <div class="card-body">
-                      <h5 class="card-title">Audio</h5>
-                      <i class="bi bi-volume-up-fill"></i>
-                      <p class="card-text"><br>Try to listen to the text pronounciation</p>
-                    </div>
-                </div>
-                <div class="card" style="width: 18rem;">
-                    <div class="card-body">
-                      <h5 class="card-title">Share</h5>
-                      <i class="bi bi-send-fill"></i>
-                      <p class="card-text"><br>You can share the translated text to your Social Media</p>
-                    </div>
-                </div>
-                <div class="card" style="width: 18rem;">
-                    <div class="card-body">
-                      <h5 class="card-title">Download</h5>
-                      <i class="bi bi-download"></i>
-                      <p class="card-text"><br>You can download translated as a file .txt to your device</p>
-                    </div>
-                </div>
-                <div class="card" style="width: 18rem;">
-                    <div class="card-body">
-                      <h5 class="card-title">Copy</h5>
-                      <i class="bi bi-clipboard"></i>
-                      <p class="card-text"><br>Copy text to your Clipboard</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div class="container mt-5 mb-5 px-5 definitions">
 
+
+        <h1>Translate Web App Documentation</h1>
+
+        
+
+        <h4 class="mt-3">Table of Contents</h4>
+        <ol>
+        <li>
+            <h4><a href="#getting-started">Getting Started</a></h4>
+            <ul>
+                <li><a href="#introduction">Introduction to Jelly Translator</a></li>
+            </ul>
+        </li>
+        <li>
+            <h4><a href="#using-the-web-app">Using the Web App</a></h4>
+            <ul>
+                <li><a href="#translation">Translating Text</a></li>
+                <li><a href="#history">Viewing Translation History</a></li>
+                <li><a href="#language-preference">Customizing Language Preferences</a></li>
+                <li><a href="#theme">Personalizing the Theme</a></li>
+            </ul>
+        </li>
+        <li>
+            <h4><a href="#dictionary">Dictionary</a></h4>
+            <ul>
+                <li><a href="#dictionary-feature">Exploring the Dictionary Feature</a></li>
+            </ul>
+        </li>
+        <li>
+            <h4><a href="#profile-management">Profile Management</a></h4>
+            <ul>
+                <li><a href="#edit-profile">Editing Your Profile</a></li>
+            </ul>
+        </li>
+    </ol>
+
+        <h2 id="introduction">Getting Started</h2>
+        <p class="mb-4 mt-3">
+                Jelly Translator is a user-friendly translation platform that offers a wide range of language options. 
+                You can create a personal account, input long paragraphs, and enjoy features like language detection and offline dictionary downloads. 
+                You can also share translations via social media and save your favorite translations. 
+                The application works on both desktop and mobile devices, making it accessible for everyone.
+
+        </p>
+
+        <h3 id="using-the-web-app" class="mt-4">Using the Web App</h3>
+
+        <h6 id="translation" class="mt-4">Translation</h6>
+        <p>The web app offers a translation feature that allows you to translate text from one language to another.
+            Simply enter the text, select the source and target languages, and click "Translate."</p>
+
+        <h6 id="translation-history" class="mt-3">Translation History</h6>
+        <p>If you're logged in, your translation history is saved. You can review your past translations on the main
+            page.</p>
+
+        <h6 id="language-preference" class="mt-3">Language Preference</h6>
+        <p>You can set your language preference in your profile. This setting affects the language in which the web app
+            is displayed.</p>
+
+        <h6 id="theme-customization" class="mt-3">Theme Customization</h6>
+        <p>Choose your preferred color theme in your profile settings. The web app offers both light and dark themes.
+        </p>
+
+        <h3 id="dictionary" class="mt-4">Dictionary</h3>
+
+        <h6 id="browsing-the-dictionary">Browsing the Dictionary</h6>
+        <p>You can access the dictionary feature from the navigation menu. Look up words and their meanings quickly.</p>
+
+        <h3 id="profile-management" class="mt-4">Profile Management</h3>
+
+        <h6 id="editing-your-profile">Editing Your Profile</h6>
+        <p>You can change your phone number, language preference, and color theme from your profile. Make sure to save
+            your changes to apply them.</p>
     </div>
+    <input id="currentTheme" type="hidden" value="{{ user.color_setting }}">
+    {% if user.color_setting != 'light' %}
+    <script src="{{ url_for('static', filename='theme.js') }}"></script>
+    {% else %}
+    <script>
+        var buttonElements = document.getElementsByClassName("btn");
+        for (var i = 0; i < buttonElements.length; i++) {
+            buttonElements[i].classList.add('btn-primary')
+        }
+    </script>
+    {% endif %}
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 </body>
 
