@@ -84,6 +84,7 @@ h4{
 .theme img{
     border-radius: 10px;
     width: 100%;
+    object-fit: cover;
 }
 .theme img:hover{
     border: 2px solid rgb(28, 95, 177);
