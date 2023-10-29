@@ -83,11 +83,11 @@ def translate():
 
     try:
         translation = translator.translate(text, src=source_lang, dest=target_lang)
-        translated_text = translation.text
-        print(translated_text)
-
-        if current_user.is_authenticated:
-            try:
+        if translation is not None and translation.text is not None:
+            translated_text = translation.text
+            print(translated_text)
+            
+            if current_user.is_authenticated:
                 user_id = current_user.id
                 new_translation = TranslationHistory(
                     user_id=user_id,
@@ -96,15 +96,15 @@ def translate():
                     target_lang=target_lang,
                     translation=translated_text
                 )
-
                 db.session.add(new_translation)
                 db.session.commit()
-            except Exception as e:
-                print(f"An error occurred while saving the translation to the database: {str(e)}")
 
-        return translated_text
-    except Exception as e:
-        return f'An error occurred during translation: {str(e)}'
+            return translated_text
+        else:
+            return 'Translation not available'
+    except:
+        return 'Unknown'
+
 
 
 
