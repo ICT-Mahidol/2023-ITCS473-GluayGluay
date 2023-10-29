@@ -75,81 +75,98 @@
             </div>
         </div>
     </nav>
-    <div class="container mt-5 mb-5 px-5 definitions">
+    <div class="container mt-5 mb-5 px-5 docs">
 
 
-        <h1>Translate Web App Documentation</h1>
+        <h1 class="mb-2">Translate Web App Documentation</h1>
+        <hr/>
 
-        
 
-        <h4 class="mt-3">Table of Contents</h4>
-        <ol>
-        <li>
-            <h4><a href="#getting-started">Getting Started</a></h4>
-            <ul>
-                <li><a href="#introduction">Introduction to Jelly Translator</a></li>
-            </ul>
-        </li>
-        <li>
-            <h4><a href="#using-the-web-app">Using the Web App</a></h4>
-            <ul>
-                <li><a href="#translation">Translating Text</a></li>
-                <li><a href="#history">Viewing Translation History</a></li>
-                <li><a href="#language-preference">Customizing Language Preferences</a></li>
-                <li><a href="#theme">Personalizing the Theme</a></li>
-            </ul>
-        </li>
-        <li>
-            <h4><a href="#dictionary">Dictionary</a></h4>
-            <ul>
-                <li><a href="#dictionary-feature">Exploring the Dictionary Feature</a></li>
-            </ul>
-        </li>
-        <li>
-            <h4><a href="#profile-management">Profile Management</a></h4>
-            <ul>
-                <li><a href="#edit-profile">Editing Your Profile</a></li>
-            </ul>
-        </li>
-    </ol>
-
-        <h2 id="introduction">Getting Started</h2>
-        <p class="mb-4 mt-3">
+        <h2 id="introduction" class="mt-5">Getting Started</h2>
+        <p class="mb-5 mt-3">
                 Jelly Translator is a user-friendly translation platform that offers a wide range of language options. 
                 You can create a personal account, input long paragraphs, and enjoy features like language detection and offline dictionary downloads. 
                 You can also share translations via social media and save your favorite translations. 
                 The application works on both desktop and mobile devices, making it accessible for everyone.
-
         </p>
 
-        <h3 id="using-the-web-app" class="mt-4">Using the Web App</h3>
+        <h2 id="using-the-web-app" class="mt-4">Using the Web App</h2>
 
-        <h6 id="translation" class="mt-4">Translation</h6>
+        <h6 id="translation" class="mt-4"><svg  xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="m-1 mb-2 bi bi-arrows-collapse-vertical" viewBox="0 0 16 16">
+            <path d="M8 15a.5.5 0 0 1-.5-.5v-13a.5.5 0 0 1 1 0v13a.5.5 0 0 1-.5.5ZM0 8a.5.5 0 0 1 .5-.5h3.793L3.146 6.354a.5.5 0 1 1 .708-.708l2 2a.5.5 0 0 1 0 .708l-2 2a.5.5 0 0 1-.708-.708L4.293 8.5H.5A.5.5 0 0 1 0 8Zm11.707.5 1.147 1.146a.5.5 0 0 1-.708.708l-2-2a.5.5 0 0 1 0-.708l2-2a.5.5 0 0 1 .708.708L11.707 7.5H15.5a.5.5 0 0 1 0 1h-3.793Z"/>
+          </svg> Translation</h6>
         <p>The web app offers a translation feature that allows you to translate text from one language to another.
             Simply enter the text, select the source and target languages, and click "Translate."</p>
+        <div class="row">
+            <div class="col-lg-3 mt-3">
+                <div class="card d-flex text-center pt-4 pb-4 justify-content-center align-items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-megaphone-fill" viewBox="0 0 16 16">
+                        <path d="M13 2.5a1.5 1.5 0 0 1 3 0v11a1.5 1.5 0 0 1-3 0v-11zm-1 .724c-2.067.95-4.539 1.481-7 1.656v6.237a25.222 25.222 0 0 1 1.088.085c2.053.204 4.038.668 5.912 1.56V3.224zm-8 7.841V4.934c-.68.027-1.399.043-2.008.053A2.02 2.02 0 0 0 0 7v2c0 1.106.896 1.996 1.994 2.009a68.14 68.14 0 0 1 .496.008 64 64 0 0 1 1.51.048zm1.39 1.081c.285.021.569.047.85.078l.253 1.69a1 1 0 0 1-.983 1.187h-.548a1 1 0 0 1-.916-.599l-1.314-2.48a65.81 65.81 0 0 1 1.692.064c.327.017.65.037.966.06z"/>
+                      </svg>
+                    <p class="mt-3 mb-0"><b>Listen to pronouciation</b></p>
+                </div>
 
-        <h6 id="translation-history" class="mt-3">Translation History</h6>
+            </div>
+            <div class="col-lg-3 mt-3">
+                <div class="card d-flex text-center pt-4 pb-4 justify-content-center align-items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-mic-fill" viewBox="0 0 16 16">
+                        <path d="M5 3a3 3 0 0 1 6 0v5a3 3 0 0 1-6 0V3z"/>
+                        <path d="M3.5 6.5A.5.5 0 0 1 4 7v1a4 4 0 0 0 8 0V7a.5.5 0 0 1 1 0v1a5 5 0 0 1-4.5 4.975V15h3a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1h3v-2.025A5 5 0 0 1 3 8V7a.5.5 0 0 1 .5-.5z"/>
+                      </svg>
+                    <p class="mt-3 mb-0"><b>Text-To-Speech Enable</b></p>
+                </div>
+
+            </div>
+            <div class="col-lg-3 mt-3">
+                <div class="card d-flex text-center pt-4 pb-4 justify-content-center align-items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-box-arrow-up" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M3.5 6a.5.5 0 0 0-.5.5v8a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5v-8a.5.5 0 0 0-.5-.5h-2a.5.5 0 0 1 0-1h2A1.5 1.5 0 0 1 14 6.5v8a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 14.5v-8A1.5 1.5 0 0 1 3.5 5h2a.5.5 0 0 1 0 1h-2z"/>
+                        <path fill-rule="evenodd" d="M7.646.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 1.707V10.5a.5.5 0 0 1-1 0V1.707L5.354 3.854a.5.5 0 1 1-.708-.708l3-3z"/>
+                      </svg>
+                    <p class="mt-3 mb-0"><b>Share Option</b></p>
+                </div>
+
+            </div>
+            <div class="col-lg-3 mt-3">
+                <div class="card d-flex text-center pt-4 pb-4 justify-content-center align-items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
+                        <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
+                        <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
+                      </svg>
+                    <p class="mt-3 mb-0"><b>Copy & Download</b></p>
+                </div>
+
+            </div>
+
+        </div>
+
+        <h6 id="translation-history" class="mt-4"> <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="m-1 mb-2 bi bi-clock-history" viewBox="0 0 16 16">
+            <path d="M8.515 1.019A7 7 0 0 0 8 1V0a8 8 0 0 1 .589.022l-.074.997zm2.004.45a7.003 7.003 0 0 0-.985-.299l.219-.976c.383.086.76.2 1.126.342l-.36.933zm1.37.71a7.01 7.01 0 0 0-.439-.27l.493-.87a8.025 8.025 0 0 1 .979.654l-.615.789a6.996 6.996 0 0 0-.418-.302zm1.834 1.79a6.99 6.99 0 0 0-.653-.796l.724-.69c.27.285.52.59.747.91l-.818.576zm.744 1.352a7.08 7.08 0 0 0-.214-.468l.893-.45a7.976 7.976 0 0 1 .45 1.088l-.95.313a7.023 7.023 0 0 0-.179-.483zm.53 2.507a6.991 6.991 0 0 0-.1-1.025l.985-.17c.067.386.106.778.116 1.17l-1 .025zm-.131 1.538c.033-.17.06-.339.081-.51l.993.123a7.957 7.957 0 0 1-.23 1.155l-.964-.267c.046-.165.086-.332.12-.501zm-.952 2.379c.184-.29.346-.594.486-.908l.914.405c-.16.36-.345.706-.555 1.038l-.845-.535zm-.964 1.205c.122-.122.239-.248.35-.378l.758.653a8.073 8.073 0 0 1-.401.432l-.707-.707z"/>
+            <path d="M8 1a7 7 0 1 0 4.95 11.95l.707.707A8.001 8.001 0 1 1 8 0v1z"/>
+            <path d="M7.5 3a.5.5 0 0 1 .5.5v5.21l3.248 1.856a.5.5 0 0 1-.496.868l-3.5-2A.5.5 0 0 1 7 9V3.5a.5.5 0 0 1 .5-.5z"/>
+          </svg> Translation History</h6>
         <p>If you're logged in, your translation history is saved. You can review your past translations on the main
             page.</p>
 
-        <h6 id="language-preference" class="mt-3">Language Preference</h6>
+        <h6 id="language-preference" class="mt-4"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="m-1 mb-2 bi bi-bookmarks" viewBox="0 0 16 16">
+            <path d="M2 4a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v11.5a.5.5 0 0 1-.777.416L7 13.101l-4.223 2.815A.5.5 0 0 1 2 15.5V4zm2-1a1 1 0 0 0-1 1v10.566l3.723-2.482a.5.5 0 0 1 .554 0L11 14.566V4a1 1 0 0 0-1-1H4z"/>
+            <path d="M4.268 1H12a1 1 0 0 1 1 1v11.768l.223.148A.5.5 0 0 0 14 13.5V2a2 2 0 0 0-2-2H6a2 2 0 0 0-1.732 1z"/>
+          </svg> Language Preference</h6>
         <p>You can set your language preference in your profile. This setting affects the language in which the web app
             is displayed.</p>
 
-        <h6 id="theme-customization" class="mt-3">Theme Customization</h6>
+        <h6 id="theme-customization" class="mt-4"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="m-1 mb-2  bi bi-palette" viewBox="0 0 16 16">
+            <path d="M8 5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm4 3a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM5.5 7a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm.5 6a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/>
+            <path d="M16 8c0 3.15-1.866 2.585-3.567 2.07C11.42 9.763 10.465 9.473 10 10c-.603.683-.475 1.819-.351 2.92C9.826 14.495 9.996 16 8 16a8 8 0 1 1 8-8zm-8 7c.611 0 .654-.171.655-.176.078-.146.124-.464.07-1.119-.014-.168-.037-.37-.061-.591-.052-.464-.112-1.005-.118-1.462-.01-.707.083-1.61.704-2.314.369-.417.845-.578 1.272-.618.404-.038.812.026 1.16.104.343.077.702.186 1.025.284l.028.008c.346.105.658.199.953.266.653.148.904.083.991.024C14.717 9.38 15 9.161 15 8a7 7 0 1 0-7 7z"/>
+          </svg>  Theme Customization</h6>
         <p>Choose your preferred color theme in your profile settings. The web app offers both light and dark themes.
         </p>
 
-        <h3 id="dictionary" class="mt-4">Dictionary</h3>
-
-        <h6 id="browsing-the-dictionary">Browsing the Dictionary</h6>
+        <h6 id="dictionary" class="mt-4"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="m-1 mb-2 bi bi-binoculars" viewBox="0 0 16 16">
+            <path d="M3 2.5A1.5 1.5 0 0 1 4.5 1h1A1.5 1.5 0 0 1 7 2.5V5h2V2.5A1.5 1.5 0 0 1 10.5 1h1A1.5 1.5 0 0 1 13 2.5v2.382a.5.5 0 0 0 .276.447l.895.447A1.5 1.5 0 0 1 15 7.118V14.5a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 14.5v-3a.5.5 0 0 1 .146-.354l.854-.853V9.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v.793l.854.853A.5.5 0 0 1 7 11.5v3A1.5 1.5 0 0 1 5.5 16h-3A1.5 1.5 0 0 1 1 14.5V7.118a1.5 1.5 0 0 1 .83-1.342l.894-.447A.5.5 0 0 0 3 4.882V2.5zM4.5 2a.5.5 0 0 0-.5.5V3h2v-.5a.5.5 0 0 0-.5-.5h-1zM6 4H4v.882a1.5 1.5 0 0 1-.83 1.342l-.894.447A.5.5 0 0 0 2 7.118V13h4v-1.293l-.854-.853A.5.5 0 0 1 5 10.5v-1A1.5 1.5 0 0 1 6.5 8h3A1.5 1.5 0 0 1 11 9.5v1a.5.5 0 0 1-.146.354l-.854.853V13h4V7.118a.5.5 0 0 0-.276-.447l-.895-.447A1.5 1.5 0 0 1 12 4.882V4h-2v1.5a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5V4zm4-1h2v-.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5V3zm4 11h-4v.5a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5V14zm-8 0H2v.5a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5V14z"/>
+          </svg> Dictionary</h6>
         <p>You can access the dictionary feature from the navigation menu. Look up words and their meanings quickly.</p>
 
-        <h3 id="profile-management" class="mt-4">Profile Management</h3>
-
-        <h6 id="editing-your-profile">Editing Your Profile</h6>
-        <p>You can change your phone number, language preference, and color theme from your profile. Make sure to save
-            your changes to apply them.</p>
     </div>
     <input id="currentTheme" type="hidden" value="{{ user.color_setting }}">
     {% if user.color_setting != 'light' %}

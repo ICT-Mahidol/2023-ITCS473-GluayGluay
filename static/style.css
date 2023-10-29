@@ -113,3 +113,11 @@ h4{
     max-height: 300px;
     overflow-y: scroll;
 }
+
+.docs h6{
+    font-size: 1.2em!important;
+}
+.docs .card{
+    height: 100%;
+    margin: 0;
+}
