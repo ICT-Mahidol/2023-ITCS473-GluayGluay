@@ -1,18 +1,42 @@
 import requests
 from PyDictionary import PyDictionary
-from flask import Flask, render_template, request, Response, jsonify
+from flask import Flask, render_template, request, Response, jsonify, redirect, flash, session, url_for
 from googletrans import Translator
 from langdetect import DetectorFactory
 from langdetect import detect
 
-app = Flask(__name__)
-app.secret_key = 'your_secret_key'  # Replace with your own secret key
+from flask_sqlalchemy import SQLAlchemy
+from flask_bcrypt import Bcrypt
+from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
 
+
+app = Flask(__name__)
+app.secret_key = 'your_secret_key' 
+
+#simple translate
 translator = Translator()
 dictionary = PyDictionary()
-
-# Set a higher confidence threshold to avoid false detections
 DetectorFactory.seed = 0
+
+#login, register
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://netgluayadmin:netgluay@db4free.net/netgluaydb'
+db = SQLAlchemy(app)
+bcrypt = Bcrypt(app)
+login_manager = LoginManager(app)
+login_manager.login_view = "login"
+
+class User(db.Model, UserMixin):
+    __tablename__ = 'translate_user'
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(120), unique=True, nullable=False)
+    password = db.Column(db.String(60), nullable=False)
+    language = db.Column(db.String(10), default='en')  # Language preference (default is 'en')
+    phone_number = db.Column(db.String(15), unique=True, nullable=True)  # Phone number (optional)
+    color_setting = db.Column(db.String(10), default='light')  # Color setting (default is 'light')
+
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
 
 @app.route('/words-en.txt')
 def word_en():
@@ -89,6 +113,70 @@ def lookup_word(word):
     except Exception as e:
         return jsonify({'error': 'Unknown'})
 
+# Registration route
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    if current_user.is_authenticated:
+        return redirect(url_for('dashboard'))
+    
+    if request.method == 'POST':
+        username = request.form.get('username')
+        password = request.form.get('password')
+        phone_number = request.form.get('phone_number')
+
+        # Check if the username is already in use
+        existing_user = User.query.filter_by(username=username).first()
+        if existing_user:
+            flash('Username is already in use. Please choose a different username.', 'danger')
+            return redirect(url_for('register'))
+
+        hashed_password = bcrypt.generate_password_hash(password).decode('utf-8')
+
+        user = User(username=username, password=hashed_password, language='en', phone_number=phone_number, color_setting='light')
+        db.session.add(user)
+        db.session.commit()
+
+        flash('Your account has been created!', 'success')
+        return redirect(url_for('login'))
+
+    return render_template('register.html')
+
+
+# Login route
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if current_user.is_authenticated:
+        return redirect(url_for('dashboard'))
+
+    if request.method == 'POST':
+        username = request.form.get('username')
+        password = request.form.get('password')
+        user = User.query.filter_by(username=username).first()
+        if user and bcrypt.check_password_hash(user.password, password):
+            login_user(user)
+            return redirect(url_for('dashboard'))
+        else:
+            flash('Login unsuccessful. Please check your username and password.', 'danger')
+    return render_template('login.html')
+
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
+
+@app.route('/dashboard')
+@login_required
+def dashboard():
+    user = current_user
+    print(current_user)
+    return render_template('dashboard.html', user=user)
+
+# Logout route
+@app.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    flash('You have been logged out.', 'success')
+    return redirect(url_for('login'))
 
 if __name__ == '__main__':
     app.run(debug=True)

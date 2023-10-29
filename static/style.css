@@ -68,3 +68,9 @@ nav img{
 .definitions .card{
     margin: 1em;
 }
+.example{
+    margin-bottom: 0;
+}
+h4{
+    font-weight: 200;
+}
