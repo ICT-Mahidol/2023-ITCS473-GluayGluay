@@ -18,22 +18,29 @@ The **Translation Web App** is a user-friendly web application that allows users
 1. **Clone the repository** or download the source code.
 
 2. Install required Python libraries and dependencies:
-```pip install -r requirements.txt``
+
+```pip install -r requirements.txt```
 
 3. Update Google Translate library:
+
 ```pip install googletrans==4.0.0rc1```
 
 4. Install MySQL database driver:
+
 ```pip install pymysql```
 
 5. Update the Werkzeug library:
+
 ```pip uninstall werkzeug```
+
 ```pip install werkzeug==2.3.0```
 
 6. Change the database url on main.py:
+
 ```app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://username:password@host/database'```
 
 7. Start the application:
+
 ```python app.py```
 
 8. Access the web app through a web browser.
