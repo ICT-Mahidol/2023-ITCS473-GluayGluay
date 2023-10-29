@@ -1,5 +1,6 @@
+import requests
 from PyDictionary import PyDictionary
-from flask import Flask, render_template, request, Response
+from flask import Flask, render_template, request, Response, jsonify
 from googletrans import Translator
 from langdetect import DetectorFactory
 from langdetect import detect
@@ -57,6 +58,36 @@ def detect_language():
         return lang_code
     except:
         return 'Unknown'
+    
+@app.route('/dictionary')
+def dictionary():
+    with open('words-en.txt', 'r') as file:
+        word_options = file.read().splitlines()  # Change the file path as needed
+    return render_template('dictionary.html', word_options=word_options)
+
+@app.route('/lookup-word/<word>', methods=['GET'])
+def lookup_word(word):
+    url = "https://mashape-community-urban-dictionary.p.rapidapi.com/define"
+    querystring = {"term": word}
+    headers = {
+        "X-RapidAPI-Key": "b4d041fd73mshbbdd415ae5ff3b8p119786jsn1c0d3093630d",
+        "X-RapidAPI-Host": "mashape-community-urban-dictionary.p.rapidapi.com"
+    }
+
+    try:
+        response = requests.get(url, headers=headers, params=querystring)
+        if response.status_code == 200:
+            data = response.json()
+            definitions = []
+            for definition in data['list']:
+                definitions.append({
+                    'definition': definition['definition'],
+                    'example': definition['example']
+                })
+            return render_template('definitions.html', word=word, definitions=definitions)
+        return "No words"
+    except Exception as e:
+        return jsonify({'error': 'Unknown'})
 
 
 if __name__ == '__main__':
