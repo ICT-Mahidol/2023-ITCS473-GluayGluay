@@ -170,6 +170,19 @@ def dashboard():
     print(current_user)
     return render_template('dashboard.html', user=user)
 
+@app.route('/change-color-setting', methods=['GET'])
+@login_required  # Ensure that the user is logged in to access this route
+def change_color_setting():
+    new_color_setting = request.args.get('color_setting')
+
+    # Assuming the user is already logged in, you can update the color_setting
+    current_user.color_setting = new_color_setting
+    db.session.commit()
+    flash('Color setting has been updated.', 'success')
+
+    return redirect(url_for('dashboard'))
+
+
 # Logout route
 @app.route('/logout')
 @login_required

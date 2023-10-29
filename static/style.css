@@ -74,3 +74,35 @@ nav img{
 h4{
     font-weight: 200;
 }
+.dashboard .card{
+    margin: 0;
+}
+.dashboard .col-sm-6,.col-sm-5{
+    margin-top : 1em;
+    
+}
+.theme img{
+    border-radius: 10px;
+    width: 100%;
+}
+.theme img:hover{
+    border: 2px solid rgb(28, 95, 177);
+}
+.theme #color0{
+    border-radius: 10px;
+    width: 100%;
+    height: 50px;
+    border: 2px solid gray;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    text-decoration: none;
+    color: black;
+    background-color: white;
+}
+.theme #color0:hover{
+    border: 2px solid rgb(28, 95, 177);
+    border-radius: 10px;
+
+}
