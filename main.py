@@ -224,6 +224,29 @@ def change_color_setting():
 
     return redirect(url_for('dashboard'))
 
+@app.route('/edit-profile', methods=['POST'])
+def edit_profile():
+    if current_user.is_authenticated:
+        user = current_user
+        new_language = request.form.get('language')
+        new_phone = request.form.get('phone')
+
+        if new_language:
+            user.language = new_language
+        if new_phone:
+            user.phone_number = new_phone
+
+        db.session.commit()
+
+        # Optionally, you can add a success flash message
+        flash('Profile updated successfully', 'success')
+
+        # Redirect the user back to their dashboard or profile page
+        return redirect(url_for('dashboard'))
+    else:
+        # Handle the case where the user is not authenticated (not logged in)
+        # You may want to redirect them to a login page or show an error message
+        return "You must be logged in to edit your profile."
 
 # Logout route
 @app.route('/logout')

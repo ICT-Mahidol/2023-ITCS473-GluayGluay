@@ -50,9 +50,11 @@
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
                             <a class="nav-link" href="/dashboard">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
-                                    <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z"/>
-                                  </svg> Profile
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-person" viewBox="0 0 16 16">
+                                    <path
+                                        d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z" />
+                                </svg> Profile
                             </a>
                         </li>
                         <li class="nav-item">
@@ -73,35 +75,67 @@
     </nav>
     <div class="container mt-5 mb-5 px-5">
         <h2 class="mt-3">Welcome to Your Dashboard</h2>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        {% set message = messages[0] %}
+        {% set message_type = message[0] %}
+        {% set message_text = message[1] %}
+
+        {% if message_type == 'success' %}
+        <div class="alert alert-success text-center" role="alert">
+            {{ message_text }}
+        </div>
+        {% elif message_type == 'danger' %}
+        <div class="alert alert-warning text-center" role="alert">
+            {{ message_text }}
+        </div>
+        {% else %}
+        <div class="alert alert-info text-center" role="alert">
+            {{ message_text }}
+        </div>
+        {% endif %}
+        {% endif %}
+        {% endwith %}
 
         <div class="row dashboard">
             <div class="col-sm-6 ">
-                <div class="card w-100 h-100">
-                    <h4 class="mb-3">Profile</h4>
-                    <div class="input-group mb-3">
-                        <span class="input-group-text" id="basic-addon1">Username</span>
-                        <input type="text" class="form-control" value="{{ user.username }}" placeholder="Username"
-                            name="username" disabled>
+                <form action="/edit-profile" method="POST">
+                    <div class="card w-100 h-100">
+                        <h4 class="mb-3">Profile</h4>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="usernameSpan">Username</span>
+                            <input type="text" class="form-control" value="{{ user.username }}" placeholder="Username"
+                                name="username" disabled>
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="phoneSpan">Phone</span>
+                            <input type="tel" class="form-control" value="{{ user.phone_number }}"
+                                placeholder="Phone" name="phone">
+                        </div>
+                        <div class="input-group mb-3">
+                            <label class="input-group-text" for="language">Language Peference</label>
+                            <select class="form-select" id="language" name="language">
+                                <option value="en" {% if user.language=="en" %}selected{% endif %}>English</option>
+                                <option value="th" {% if user.language=="th" %}selected{% endif %}>Thai</option>
+                                <option value="es" {% if user.language=="es" %}selected{% endif %}>Spanish</option>
+                                <option value="fr" {% if user.language=="fr" %}selected{% endif %}>French</option>
+                                <option value="ja" {% if user.language=="ja" %}selected{% endif %}>Japanese</option>
+                                <option value="zh-CN" {% if user.language=="zh-CN" %}selected{% endif %}>Chinese (Simplified)
+                                </option>
+                                <option value="zh-TW" {% if user.language=="zh-TW" %}selected{% endif %}>Chinese (Traditional)
+                                </option>
+                                <option value="de" {% if user.language=="de" %}selected{% endif %}>German</option>
+                                <option value="it" {% if user.language=="it" %}selected{% endif %}>Italian</option>
+                                <option value="nl" {% if user.language=="nl" %}selected{% endif %}>Dutch</option>
+                                <option value="ru" {% if user.language=="ru" %}selected{% endif %}>Russian</option>
+                                <option value="pt" {% if user.language=="pt" %}selected{% endif %}>Portuguese</option>
+                                <option value="ko" {% if user.language=="ko" %}selected{% endif %}>Korean</option>
+                                <option value="ar" {% if user.language=="ar" %}selected{% endif %}>Arabic</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn mt-2">Save Changes</button>
                     </div>
-                    <div class="input-group mb-3">
-                        <span class="input-group-text" id="basic-addon1">Phone</span>
-                        <input type="tel" class="form-control" value="{{ user.phone_number }}" placeholder="Username"
-                            name="username">
-                    </div>
-                    <div class="input-group mb-3">
-                        <label class="input-group-text" for="inputGroupSelect01">Language Peference</label>
-                        <select class="form-select" id="inputGroupSelect01">
-                            <option selected>Choose...</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
-                        </select>
-                    </div>
-                    <button type="submit" class="btn mt-2">Save Changes</button>
-
-
-                </div>
-
+                </form>
             </div>
             <div class="col-1">
 
