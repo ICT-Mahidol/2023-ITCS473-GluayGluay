@@ -1,3 +1,5 @@
+from datetime import datetime
+
 import requests
 from PyDictionary import PyDictionary
 from flask import Flask, render_template, request, Response, jsonify, redirect, flash, session, url_for
@@ -9,21 +11,21 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
 
-
 app = Flask(__name__)
-app.secret_key = 'your_secret_key' 
+app.secret_key = 'your_secret_key'
 
-#simple translate
+# simple translate
 translator = Translator()
 dictionary = PyDictionary()
 DetectorFactory.seed = 0
 
-#login, register
+# login, register
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://netgluayadmin:netgluay@db4free.net/netgluaydb'
 db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
 login_manager = LoginManager(app)
 login_manager.login_view = "login"
+
 
 class User(db.Model, UserMixin):
     __tablename__ = 'translate_user'
@@ -34,9 +36,21 @@ class User(db.Model, UserMixin):
     phone_number = db.Column(db.String(15), unique=True, nullable=True)  # Phone number (optional)
     color_setting = db.Column(db.String(10), default='light')  # Color setting (default is 'light')
 
+
+class TranslationHistory(db.Model):
+    __tablename__ = 'translation_history'
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('translate_user.id'), nullable=False)
+    text = db.Column(db.String(255), nullable=False)
+    source_lang = db.Column(db.String(10), nullable=False)
+    target_lang = db.Column(db.String(10), nullable=False)
+    translation = db.Column(db.String(255), nullable=False)
+    timestamp = db.Column(db.DateTime, default=datetime.utcnow)
+
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))
+
 
 @app.route('/words-en.txt')
 def word_en():
@@ -44,32 +58,53 @@ def word_en():
         file_content = file.read()
     return Response(file_content, mimetype='text/plain')
 
+
 @app.route('/words-th.txt')
 def word_th():
     with open('words-th.txt', 'r') as file:
         file_content = file.read()
     return Response(file_content, mimetype='text/plain')
 
+
 @app.route('/')
 def index():
-    return render_template('index.html')
+    translation_history = []
 
+    if current_user.is_authenticated:
+        translation_history = TranslationHistory.query.filter_by(user_id=current_user.id).all()
+
+    return render_template('index.html', user=current_user, translation_history=translation_history)
 
 @app.route('/translate', methods=['POST'])
 def translate():
     text = request.form['text']
     source_lang = request.form['source_lang']
     target_lang = request.form['target_lang']
-    print(text)
 
     try:
         translation = translator.translate(text, src=source_lang, dest=target_lang)
         translated_text = translation.text
-        print("Translated : " + translated_text)
+        print(translated_text)
+
+        if current_user.is_authenticated:
+            try:
+                user_id = current_user.id
+                new_translation = TranslationHistory(
+                    user_id=user_id,
+                    text=text,
+                    source_lang=source_lang,
+                    target_lang=target_lang,
+                    translation=translated_text
+                )
+
+                db.session.add(new_translation)
+                db.session.commit()
+            except Exception as e:
+                print(f"An error occurred while saving the translation to the database: {str(e)}")
 
         return translated_text
-    except:
-        return 'Unknown'
+    except Exception as e:
+        return f'An error occurred during translation: {str(e)}'
 
 
 
@@ -82,12 +117,14 @@ def detect_language():
         return lang_code
     except:
         return 'Unknown'
-    
+
+
 @app.route('/dictionary')
 def dictionary():
     with open('words-en.txt', 'r') as file:
         word_options = file.read().splitlines()  # Change the file path as needed
-    return render_template('dictionary.html', word_options=word_options)
+    return render_template('dictionary.html', word_options=word_options, user=current_user)
+
 
 @app.route('/lookup-word/<word>', methods=['GET'])
 def lookup_word(word):
@@ -108,17 +145,19 @@ def lookup_word(word):
                     'definition': definition['definition'],
                     'example': definition['example']
                 })
-            return render_template('definitions.html', word=word, definitions=definitions)
+            return render_template('definitions.html', word=word, definitions=definitions, user=current_user)
         return "No words"
     except Exception as e:
+        print(e)
         return jsonify({'error': 'Unknown'})
+
 
 # Registration route
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if current_user.is_authenticated:
         return redirect(url_for('dashboard'))
-    
+
     if request.method == 'POST':
         username = request.form.get('username')
         password = request.form.get('password')
@@ -132,7 +171,8 @@ def register():
 
         hashed_password = bcrypt.generate_password_hash(password).decode('utf-8')
 
-        user = User(username=username, password=hashed_password, language='en', phone_number=phone_number, color_setting='light')
+        user = User(username=username, password=hashed_password, language='en', phone_number=phone_number,
+                    color_setting='light')
         db.session.add(user)
         db.session.commit()
 
@@ -159,16 +199,18 @@ def login():
             flash('Login unsuccessful. Please check your username and password.', 'danger')
     return render_template('login.html')
 
+
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))
+
 
 @app.route('/dashboard')
 @login_required
 def dashboard():
     user = current_user
-    print(current_user)
     return render_template('dashboard.html', user=user)
+
 
 @app.route('/change-color-setting', methods=['GET'])
 @login_required  # Ensure that the user is logged in to access this route
@@ -190,6 +232,7 @@ def logout():
     logout_user()
     flash('You have been logged out.', 'success')
     return redirect(url_for('login'))
+
 
 if __name__ == '__main__':
     app.run(debug=True)

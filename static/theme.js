@@ -3,8 +3,10 @@ var navElements = document.getElementsByClassName("navbar");
 var cardElements = document.getElementsByClassName("card");
 var buttonElements = document.getElementsByClassName("btn");
 
-document.getElementById("color0").style.border = "none";
-
+var element = document.getElementById("color0");
+if (element) {
+    element.style.border = "none";
+}
 if (currentTheme === "color1") {
     for (var i = 0; i < navElements.length; i++) {
         navElements[i].style.setProperty(
