@@ -104,16 +104,16 @@
           
 
         <div class="row">
-            <form method="POST" class="col-sm-6">
+            <form method="POST" class="col-sm-6" id="registration-form">
                 <label for="inputUsername" class="form-label">Username</label>
                 <input type="text" name="username" id="inputUsername" class="form-control mb-3" required>
                 <label for="inputPassword" class="form-label" >Password</label>
                 <input type="password" name="password" id="inputPassword" class="form-control mb-3" required>
                 <label for="inputConfirmPassword" class="form-label">Confirm Password</label>
                 <input type="password" name="password" id="inputConfirmPassword" class="form-control mb-3" required>
-                <label for="inputUsername" class="form-label">Phone</label>
-                <input type="tel" name="username" id="inputUsername" class="form-control mb-3" required>
-
+                <p id="password-match-message" style="color: red;"></p>
+                <label for="phone_number" class="form-label">Phone</label>
+                <input type="tel" name="phone_number" id="phone_number" class="form-control mb-3" required>
                 <button class="btn btn-primary form-control mt-2" type="submit">Register</button>
             </form>
             <div class="col-1">
@@ -131,6 +131,29 @@
         integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
         crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        const registrationForm = document.getElementById("registration-form");
+        const inputPassword = document.getElementById("inputPassword");
+        const inputConfirmPassword = document.getElementById("inputConfirmPassword");
+        const passwordMatchMessage = document.getElementById("password-match-message");
+
+        inputConfirmPassword.addEventListener("input", function () {
+            if (inputPassword.value === inputConfirmPassword.value) {
+                passwordMatchMessage.innerHTML = "Passwords match";
+                passwordMatchMessage.style.color = "green";
+            } else {
+                passwordMatchMessage.innerHTML = "Passwords do not match";
+                passwordMatchMessage.style.color = "red";
+            }
+        });
+
+        registrationForm.addEventListener("submit", function (event) {
+            if (inputPassword.value !== inputConfirmPassword.value) {
+                event.preventDefault();
+                alert("Passwords do not match. Please make sure they match before submitting.");
+            }
+        });
+    </script>
 </body>
 
 </html>

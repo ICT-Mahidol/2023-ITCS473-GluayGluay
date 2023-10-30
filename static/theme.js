@@ -6,7 +6,7 @@ var textareaElements = document.querySelectorAll("textarea");
 var selectElements = document.querySelectorAll("select");
 var labelElements = document.querySelectorAll("label");
 var liElements = document.querySelectorAll(".list-group-item");
-var spanElements = document.querySelectorAll("span");
+var spanElements = document.querySelectorAll(".input-group span");
 var inputElements = document.querySelectorAll("input");
 
 
