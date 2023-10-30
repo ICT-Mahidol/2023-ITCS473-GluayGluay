@@ -240,7 +240,6 @@ let isMicrophoneActive = false; // Flag to track microphone status
 let recognition = null; // Store the recognition instance
 
 microphoneButton.addEventListener("click", function () {
-  console.log(isMicrophoneActive)
   if (isMicrophoneActive) {
     // Stop the microphone if it's active
     recognition.stop();
