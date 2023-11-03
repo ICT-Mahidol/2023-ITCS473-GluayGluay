@@ -1,0 +1,124 @@
+.card{
+    padding: 2em;
+    margin: 2em;
+}
+.navbar{
+    padding: 1em 2em;
+}
+
+#change{
+    display: flex;
+    justify-content: center;
+    margin-top: 0.6em;
+}
+#suggestion_list{
+    color: rgb(116, 114, 114);
+}
+textarea{
+    height: 200px;
+    resize: none;
+}
+.container{
+    height: auto;
+}
+a{
+    font-size: 0.8em;
+}
+.icon a{
+    margin:1em;
+}
+.new-container{
+    position: relative;
+}
+
+.icon-container {
+    position: absolute;
+    bottom: 15px;
+    right: 18px;
+}
+.mic-container {
+    position: absolute;
+    top: 10px;
+    right: 18px;
+}
+
+
+
+#regis{
+    margin-left: 3px;
+}
+h5{
+    font-weight: 200;
+}
+nav img{
+    height: 33px;
+    width: 33px;
+    margin-right: 3px;
+}
+#translate{
+    width: 16px;
+    height: 16px;
+    margin-bottom: 3px;
+    margin-right: 7px;
+}
+.nav-link svg{
+    margin-bottom: 3px;
+    margin-right: 3px;
+}
+.definitions .card{
+    margin: 1em;
+}
+.example{
+    margin-bottom: 0;
+}
+h4{
+    font-weight: 200;
+}
+.dashboard .card{
+    margin: 0;
+}
+.dashboard .col-sm-6,.col-sm-5{
+    margin-top : 1em;
+    
+}
+.theme img{
+    border-radius: 10px;
+    width: 100%;
+    object-fit: cover;
+}
+.theme img:hover{
+    border: 2px solid rgb(28, 95, 177);
+}
+.theme #color0{
+    border-radius: 10px;
+    width: 100%;
+    height: 50px;
+    border: 2px solid gray;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    text-decoration: none;
+    color: black;
+    background-color: white;
+}
+.theme #color0:hover{
+    border: 2px solid rgb(28, 95, 177);
+    border-radius: 10px;
+
+}
+.history .card{
+    padding: 0;
+    width: 100%;
+    margin: 0;
+    max-height: 300px;
+    overflow-y: scroll;
+}
+
+.docs h6{
+    font-size: 1.2em!important;
+}
+.docs .card{
+    height: 100%;
+    margin: 0;
+}
