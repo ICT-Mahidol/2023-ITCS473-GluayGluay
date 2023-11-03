@@ -1,83 +1,104 @@
-# Translation Web App
+---
 
-## Overview
+# 🌐🐈 **GluayGluay 🍌: Testing for Jelly-Translator: Translation Web App** 🪼
 
-The **Translation Web App** is a user-friendly web application that allows users to perform language translations, access a dictionary, and personalize their experience by customizing themes and language preferences. This application is designed to serve both guests and registered users.
+### 👉 [Live View Project](https://jellytranslator.siranuta13.repl.co/) 🪼
 
-## Features
+## 🎓 **ITCS473 - Software Quality Assurance and Testing**
+### 🏫 **Mahidol University, ICT**
 
-- **Translation:** Translate text from one language to another with support for various languages using the Google Translate API.
-- **User Registration:** Register an account to access additional features. Register with a unique username.
-- **User Login:** Log in to your account with secure password hashing.
-- **Personalization:** Customize the web app with theme selection and preferred language settings.
-- **Translation History:** For registered users, view a history of your translations, including timestamps. For guest users, perform translations without saving a history.
-- **Dictionary:** Explore word meanings with a dedicated dictionary feature.
+---
 
-## Installation
+## 🌟 **Overview**
 
-1. **Clone the repository** or download the source code.
+The **Translation Web App** is a user-friendly 🖥️ web application that empowers users to effortlessly translate languages 🌐, explore dictionaries 📖, and personalize their experience 🎨. Catering to both guests 👥 and registered users 📝, it aims to deliver seamless translations and a rich user experience.
 
-2. Install required Python libraries and dependencies:
+---
 
-```pip install -r requirements.txt```
+## 🚀 **Features**
 
-3. Update Google Translate library:
+- **🌐 Translation:** Seamlessly translate text between languages using the Google Translate API.
+- **📝 User Registration:** Register with a unique username to unlock additional features.
+- **🔐 User Login:** Securely log in with password hashing.
+- **🎨 Personalization:** Tailor the web app to your liking with theme selection and language preferences.
+- **🕰️ Translation History:** Registered users can track their translation history, while guests can translate without saving history.
+- **📖 Dictionary:** Delve into word meanings with a dedicated dictionary feature.
 
-```pip install googletrans==4.0.0rc1```
+---
 
-4. Install MySQL database driver:
+## 💻 **Installation**
 
-```pip install pymysql```
+1. **🔗 Clone the repository** or download the source code.
+2. **📦 Install dependencies:**
 
-5. Update the Werkzeug library:
+    ```bash
+    pip install -r requirements.txt
+    ```
 
-```pip uninstall werkzeug```
+3. **🔄 Update Google Translate library:**
 
-```pip install werkzeug==2.3.0```
+    ```bash
+    pip install googletrans==4.0.0rc1
+    ```
 
-6. Change the database url on main.py:
+4. **🗄️ Install MySQL database driver:**
 
-```app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://username:password@host/database'```
+    ```bash
+    pip install pymysql
+    ```
 
-7. Start the application:
+5. **🛠️ Update the Werkzeug library:**
 
-```python app.py```
+    ```bash
+    pip uninstall werkzeug
+    pip install werkzeug==2.3.0
+    ```
 
-8. Access the web app through a web browser.
+6. **🔄 Change the database URL in `main.py`:**
 
-## Usage
+    ```python
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://username:password@host/database'
+    ```
 
-1. **As a Guest:**
+7. **🚀 Start the application:**
 
-   - Access the translation page to perform translations without a login.
-   - Use the dictionary page to explore word meanings.
+    ```bash
+    python app.py
+    ```
 
-2. **As a Registered User:**
+8. **🌐 Access the web app** through your web browser.
 
-   - Register an account or log in with your existing credentials.
-   - Access the translation page to perform translations and save your history.
-   - Customize your web app by selecting themes and setting your preferred language.
+---
 
-## Contributing
+## 📘 **Usage**
 
-Contributions to this project are welcome. Please follow these guidelines:
+1. **👥 As a Guest:**
+   - Perform translations and explore word meanings without logging in.
 
-1. **Fork the repository.**
-2. **Create a new branch** for your feature or bug fix.
-3. **Make your changes** and commit them.
-4. **Create a pull request**.
+2. **📝 As a Registered User:**
+   - Register, log in, save your translation history, and personalize your experience.
 
-## Issues
+---
 
-If you encounter any issues or have suggestions for improvements, please **create a new issue** on this repository.
+## 🤝 **Contributing**
 
-## License
+Contributions are welcome! 🌟 Please follow these steps:
 
-This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for more details.
+1. **🍴 Fork the repository.**
+2. **🌿 Create a new branch** for your feature or bug fix.
+3. **💻 Make your changes** and commit them.
+4. **🔄 Create a pull request**.
 
+---
 
+## ❗ **Issues**
 
+Encounter any issues or have suggestions? **🛠️ Create a new issue** on this repository.
 
+---
 
+## 📜 **License**
 
+This project is licensed under the **MIT License** 🏛️. See the [LICENSE](LICENSE) file for more details.
 
+---
