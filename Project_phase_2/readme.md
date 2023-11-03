@@ -54,19 +54,13 @@ The **Translation Web App** is a user-friendly 🖥️ web application that empo
     pip install werkzeug==2.3.0
     ```
 
-6. **🔄 Change the database URL in `main.py`:**
-
-    ```python
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://username:password@host/database'
-    ```
-
-7. **🚀 Start the application:**
+6. **🚀 Start the application:**
 
     ```bash
-    python app.py
+    python main.py
     ```
 
-8. **🌐 Access the web app** through your web browser.
+7. **🌐 Access the web app** through your web browser.
 
 ---
 
