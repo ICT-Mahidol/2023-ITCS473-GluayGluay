@@ -1,5 +1,6 @@
 # 🐈 GluayGluay 🍌: Testing for Sudoku
 
+#### 👉 [Navigate to Project Phase 2](./Project_phase_2)
 ## ITCS473 - Software Quality Assurance and Testing
 ### 🏫 Mahidol University, ICT
 
