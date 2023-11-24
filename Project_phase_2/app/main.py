@@ -47,6 +47,7 @@ class TranslationHistory(db.Model):
     translation = db.Column(db.String(255), nullable=False)
     timestamp = db.Column(db.DateTime, default=datetime.utcnow)
 
+
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))
@@ -75,6 +76,7 @@ def index():
 
     return render_template('index.html', user=current_user, translation_history=translation_history)
 
+
 @app.route('/translate', methods=['POST'])
 def translate():
     text = request.form['text']
@@ -86,7 +88,7 @@ def translate():
         if translation is not None and translation.text is not None:
             translated_text = translation.text
             print(translated_text)
-            
+
             if current_user.is_authenticated:
                 user_id = current_user.id
                 new_translation = TranslationHistory(
@@ -104,8 +106,6 @@ def translate():
             return 'Translation not available'
     except:
         return 'Unknown'
-
-
 
 
 @app.route('/detect-lang', methods=['POST'])
@@ -224,6 +224,7 @@ def change_color_setting():
 
     return redirect(url_for('dashboard'))
 
+
 @app.route('/edit-profile', methods=['POST'])
 def edit_profile():
     if current_user.is_authenticated:
@@ -248,6 +249,7 @@ def edit_profile():
         # You may want to redirect them to a login page or show an error message
         return "You must be logged in to edit your profile."
 
+
 # Logout route
 @app.route('/logout')
 @login_required
@@ -256,9 +258,11 @@ def logout():
     flash('You have been logged out.', 'success')
     return redirect(url_for('login'))
 
+
 @app.route('/docs')
 def how_to_use():
-    return render_template('docs.html',user=current_user) 
+    return render_template('docs.html', user=current_user)
+
 
 if __name__ == '__main__':
     app.run()

@@ -7,5 +7,5 @@
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="web" url="file://$PROJECT_DIR$" />
   </component>
-  <component name="ProjectRootManager" version="2" project-jdk-name="waaris_m" project-jdk-type="Python SDK" />
+  <component name="ProjectRootManager" version="2" project-jdk-name="waaris-m" project-jdk-type="Python SDK" />
 </project>
