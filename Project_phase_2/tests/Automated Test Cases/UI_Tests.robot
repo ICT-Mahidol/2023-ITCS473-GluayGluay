@@ -7,7 +7,7 @@ Library           String
 ${REGISTRATION URL}    https://jellytranslator.siranuta13.repl.co/register
 ${LOGIN URL}           https://jellytranslator.siranuta13.repl.co/login
 ${BROWSER}             Chrome
-${BASE USERNAME}       Fifa_TEST
+${BASE USERNAME}       Fifa_Test
 ${PASSWORD}            TestPassword123
 
 *** Test Cases ***
