@@ -157,6 +157,7 @@ These tests ensure the reliability and functionality of key features in the Jell
 
 #### 🎯 Test Report
 
+![Test Report](https://github.com/ICT-Mahidol/2023-ITCS473-GluayGluay/blob/master/Project_phase_2/tests/Report/UI_REPORT.png)
 ------
 ## 🤝 **Contributing**
 
