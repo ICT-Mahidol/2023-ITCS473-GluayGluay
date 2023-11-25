@@ -11,6 +11,9 @@ on:
 jobs:
   robot-test:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: Project_phase_2
 
     steps:
     - name: Checkout repository
@@ -31,4 +34,4 @@ jobs:
 
     - name: Run Robot Framework tests
       run: |
-        robot Project_phase_2/tests/Unit_Test_Cases/test.robot
+          robot ./tests/Unit_Test_Cases/test.robot

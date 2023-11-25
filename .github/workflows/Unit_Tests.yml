@@ -49,10 +49,23 @@ jobs:
         run: |
           git config --global user.name 'Waariss'
           git config --global user.email 'waris.dam@student.mahidol.ac.th'
+
+          # Stash any local changes
+          git stash --include-untracked
+
+          # Pull latest changes from the remote repository
           git pull origin master --rebase
-          git add -A  # Add all changes
+
+          # Apply the stashed changes
+          git stash pop
+
+          # Add all changes to staging
+          git add -A
+
+          # Commit and push only if there are changes
           git diff --staged --quiet || git commit -m "Update coverage badge"
           git push
+      
 
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v2
