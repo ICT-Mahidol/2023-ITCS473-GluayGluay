@@ -122,7 +122,7 @@ This command initiates all unit tests, providing verbose output for each test ca
 - **Method:** `test_profile_update`
 - **Expected Result:** Successful update of the user's phone number and other profile details.
 
-## 🎯 Test Report
+#### 🎯 Test Report
 ![Test Report](https://github.com/ICT-Mahidol/2023-ITCS473-GluayGluay/blob/master/Project_phase_2/tests/Report/Unit_Report.png)
 
 --------------
