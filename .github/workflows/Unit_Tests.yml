@@ -30,6 +30,14 @@ jobs:
           pip install googletrans==4.0.0rc1
           pip install pymysql
           pip install werkzeug==2.3.0
+          pip install sys
+          pip install random
+          pip install pytest
+          pip install flask                  
+          pip install flask-bcrypt 
+          pip install flask-login 
+          pip install flask-sqlalchemy 
+          pip install flask-testing 
           
       - name: Test App code
         run: |
