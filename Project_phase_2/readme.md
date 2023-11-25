@@ -94,13 +94,13 @@ This will run all the test cases and generate a report in the results directory.
 
 The test suite includes the following key scenarios:
 
-- User Registration Test: Verifies that the user registration process is functional.
-- User Login Test: Checks if a user can log in with valid credentials.
-- Translate Text In Different Languages: Ensures the accuracy of translations for multiple language pairs.
-- Docs Page Test: Confirms that the documentation page is accessible and displays the correct content.
-- Verify Download, Copy, And Swap Button Functionality: Tests the download, copy, and language swap features.
-- Dictionary Page Word Search: Verifies the dictionary search functionality.
-- Full User Scenario Test: Simulates a full user scenario including login, translation, and theme change.
+- **User Registration Test:** Verifies that the user registration process is functional.
+- **User Login Test:** Checks if a user can log in with valid credentials.
+- **Translate Text In Different Languages:** Ensures the accuracy of translations for multiple language pairs.
+- **Docs Page Test:** Confirms that the documentation page is accessible and displays the correct content.
+- **Verify Download, Copy, And Swap Button Functionality:** Tests the download, copy, and language swap features.
+- **Dictionary Page Word Search:** Verifies the dictionary search functionality.
+- **Full User Scenario Test:** Simulates a full user scenario including login, translation, and theme change.
 
 These tests help maintain the reliability and efficiency of the web application, ensuring a seamless experience for all users.
 
