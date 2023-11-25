@@ -1,37 +1,27 @@
-name: Automated Tests
+name: Robot Framework
 
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
 
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Set up Python
-      uses: actions/setup-python@v2
+    - name: Execute tests
+      uses: joonvena/robotframework-docker-action@v0.1
+      env:
+        BROWSER: chrome
+        ROBOT_TESTS_DIR: ${{ github.workspace }}/Project_phase_2/tests/Automated\ Test\ Cases/UI_Tests.robot
+        ROBOT_REPORTS_DIR: ${{ github.workspace }}/results
+
+    - name: Upload test results
+      uses: actions/upload-artifact@v1
       with:
-        python-version: 3.10.13
-
-    - name: Install dependencies
-      run: |
-        pip install -r requirements.txt  # Install Python dependencies
-        # Install Chrome and ChromeDriver
-        wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-        sudo dpkg -i google-chrome-stable_current_amd64.deb
-        CHROME_VERSION=$(google-chrome --version | awk '{print $3}' | cut -d '.' -f 1)
-        CHROMEDRIVER_VERSION=$(curl -sS https://chromedriver.storage.googleapis.com/LATEST_RELEASE_$CHROME_VERSION)
-        wget https://chromedriver.storage.googleapis.com/$CHROMEDRIVER_VERSION/chromedriver_linux64.zip
-        unzip chromedriver_linux64.zip
-        sudo mv chromedriver /usr/local/bin/
-
-    - name: Run tests
-      run: |
-        robot -d ./results/ Project_phase_2/tests/Automated\ Test\ Cases/UI_Tests.robot
-        working-directory: ${{ github.workspace }}
-
+        name: reports
+        path: ${{ github.workspace }}/results
