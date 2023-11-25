@@ -31,4 +31,4 @@ jobs:
 
     - name: Run Robot Framework tests
       run: |
-        robot ./Project_phase_2/tests/Unit_Test_Cases/test.robot
+        robot Project_phase_2/tests/Unit_Test_Cases/test.robot

@@ -49,8 +49,9 @@ jobs:
         run: |
           git config --global user.name 'Waariss'
           git config --global user.email 'waris.dam@student.mahidol.ac.th'
-          git add ./tests/Unit_Test_Cases/coverage.svg
-          git commit -m "Update coverage badge"
+          git pull origin master --rebase
+          git add -A  # Add all changes
+          git diff --staged --quiet || git commit -m "Update coverage badge"
           git push
 
       - name: Upload coverage to Codecov
