@@ -1,9 +1,11 @@
 name: Unit Test
 
 on:
-  pull request:
+  push:
     branches:
       - master
+    paths-ignore:
+      - '**.md'
 jobs:
   test:
     runs-on: ubuntu-latest
