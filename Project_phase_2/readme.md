@@ -1,5 +1,3 @@
----
-
 # 🌐🐈 **GluayGluay 🍌: Testing for Jelly-Translator: Translation Web App** 🪼
 
 ### 👉 [Live View Project](https://jellytranslator.siranuta13.repl.co/) 🪼
@@ -74,6 +72,38 @@ The **Translation Web App** is a user-friendly 🖥️ web application that empo
 
 ---
 
+## 🔍 **Automated UI Testing**
+
+### Overview
+Our web application includes a comprehensive suite of Automated UI Tests to ensure the highest quality of user experience and functionality. These tests are built using the SeleniumLibrary and Robot Framework, providing robust and repeatable test scenarios. They cover a wide range of functionalities including user registration, login, language translation, and dictionary usage.
+
+### Test Environment Setup
+To run these tests, you need to have the following setup:
+- SeleniumLibrary and Robot Framework installed.
+- A supported web browser (tests are configured for Chrome).
+- Access to the live version of the web app or a local deployment.
+
+### Running the Tests
+To execute the tests, navigate to the test directory and run the following command:
+```bash
+robot -d results tests/
+```
+This will run all the test cases and generate a report in the results directory.
+
+### Test Cases Summary
+
+The test suite includes the following key scenarios:
+
+- User Registration Test: Verifies that the user registration process is functional.
+- User Login Test: Checks if a user can log in with valid credentials.
+- Translate Text In Different Languages: Ensures the accuracy of translations for multiple language pairs.
+- Docs Page Test: Confirms that the documentation page is accessible and displays the correct content.
+- Verify Download, Copy, And Swap Button Functionality: Tests the download, copy, and language swap features.
+- Dictionary Page Word Search: Verifies the dictionary search functionality.
+- Full User Scenario Test: Simulates a full user scenario including login, translation, and theme change.
+
+These tests help maintain the reliability and efficiency of the web application, ensuring a seamless experience for all users.
+------
 ## 🤝 **Contributing**
 
 Contributions are welcome! 🌟 Please follow these steps:
