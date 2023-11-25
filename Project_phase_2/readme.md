@@ -90,19 +90,72 @@ robot -d results tests/
 ```
 This will run all the test cases and generate a report in the results directory.
 
-### Test Cases Summary
+### 📝 Test Cases Summary
 
-The test suite includes the following key scenarios:
+#### 1. User Registration Test
+**Purpose:** ✅ Verifies the functionality of the user registration process.
 
-- **User Registration Test:** Verifies that the user registration process is functional.
-- **User Login Test:** Checks if a user can log in with valid credentials.
-- **Translate Text In Different Languages:** Ensures the accuracy of translations for multiple language pairs.
-- **Docs Page Test:** Confirms that the documentation page is accessible and displays the correct content.
-- **Verify Download, Copy, And Swap Button Functionality:** Tests the download, copy, and language swap features.
-- **Dictionary Page Word Search:** Verifies the dictionary search functionality.
-- **Full User Scenario Test:** Simulates a full user scenario including login, translation, and theme change.
+**Procedure:**
+- 🌐 Opens the registration page.
+- 🆕 Generates random credentials for a new user.
+- 📝 Fills the registration form with these credentials.
+- 🔍 Submits the form.
+- ✔️ Verifies successful registration by checking for a confirmation message.
 
-These tests help maintain the reliability and efficiency of the web application, ensuring a seamless experience for all users.
+#### 2. User Login Test
+**Purpose:** ✅ Ensures that users can log in with valid credentials.
+
+**Procedure:**
+- 🌐 Navigates to the login page.
+- 🔑 Inputs the test user's credentials.
+- 🔍 Submits the login form.
+- ✔️ Confirms successful login by verifying the presence of a dashboard welcome message.
+
+#### 3. Translate Text In Different Languages
+**Purpose:** ✅ Checks the accuracy of translations for multiple language pairs.
+
+**Procedure:**
+- 🌍 Performs translations between various language pairs like English to Spanish, Thai, French, etc.
+- 🔎 Compares the translated output with expected results for accuracy.
+
+#### 4. Docs Page Test
+**Purpose:** ✅ Confirms that the documentation page is accessible and displays the correct content.
+
+**Procedure:**
+- 🌐 Opens the documentation page.
+- 🔍 Verifies the presence of specific content related to the app's documentation.
+
+#### 5. Verify Download, Copy, And Swap Button Functionality
+**Purpose:** ✅ Tests the functionality of the download, copy, and language swap features on the translation page.
+
+**Procedure:**
+- 🌐 Sets initial languages for translation.
+- 🔁 Enters text for translation and swaps languages.
+- 🔎 Verifies the swap.
+- 📋 Inputs and translates text, then copies the translated text.
+- 💾 Verifies the ability to download translated text.
+
+#### 6. Dictionary Page Word Search
+**Purpose:** ✅ Verifies the dictionary search functionality for various words.
+
+**Procedure:**
+- 🌐 Opens the dictionary page.
+- 🔍 Searches for specific words.
+- ✔️ Confirms that the search results are correct and relevant.
+
+#### 7. Full User Scenario Test
+**Purpose:** ✅ Simulates a full user scenario including login, translation, and theme change.
+
+**Procedure:**
+- 🔑 Logs in with a test user.
+- 🔄 Generates and sets random user credentials and preferences.
+- 📝 Edits user information and changes the app theme.
+- 🌐 Performs a word translation and verifies it.
+- 🔚 Logs out of the application.
+
+These tests ensure the reliability and functionality of key features in the Jelly Translator web app, providing a smooth experience for users.
+
+#### 🎯 Test Report
 
 ------
 ## 🤝 **Contributing**
