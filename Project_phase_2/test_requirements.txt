@@ -54,5 +54,4 @@ SQLAlchemy==2.0.23
 tomli==2.0.1
 trio==0.23.1
 trio-websocket==0.11.1
-Werkzeug==2.3.0
 wsproto==1.2.0
