@@ -1,27 +1,31 @@
-import pytest
 from flask_testing import TestCase
 from flask_login import current_user
 import sys
 import random
 
 sys.path.append("../..")
-try:
-    from app.main import app, db, User
-except ImportError as e:
-    print("Import Error: ", e)
-
+def import_app_modules():
+    try:
+        from app.main import app, db, User
+        return app, db, User
+    except ImportError as e:
+        print("Import Error: ", e)
+        raise
 
 class MyTest(TestCase):
 
     def create_app(self):
+        app, db, User = import_app_modules()
         app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://netgluayadmin:netgluay@db4free.net/netgluaydb'
         app.config['TESTING'] = True
         return app
 
     def setUp(self):
+        app, db, User = import_app_modules()
         db.create_all()
 
     def tearDown(self):
+        app, db, User = import_app_modules()
         db.session.remove()
         # db.drop_all()
 
@@ -33,6 +37,7 @@ class MyTest(TestCase):
 
     # Test Case 2: Ensure registration creates a new user
     def test_registration(self):
+        app, db, User = import_app_modules()
         random_phone_suffix = random.randint(100000, 999999)
         response = self.client.post('/register', data=dict(
             username="testuser",
@@ -130,7 +135,3 @@ class MyTest(TestCase):
         ), follow_redirects=True)
         self.assertEqual(response.status_code, 200)
         self.assertEqual(current_user.phone_number, new_phone)
-
-
-if __name__ == '__main__':
-    pytest.main(['-v', 'Unit_Test.py'])
