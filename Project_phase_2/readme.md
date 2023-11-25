@@ -103,6 +103,7 @@ The test suite includes the following key scenarios:
 - Full User Scenario Test: Simulates a full user scenario including login, translation, and theme change.
 
 These tests help maintain the reliability and efficiency of the web application, ensuring a seamless experience for all users.
+
 ------
 ## 🤝 **Contributing**
 

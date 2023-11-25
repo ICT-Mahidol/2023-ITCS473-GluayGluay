@@ -22,7 +22,7 @@ class MyTest(TestCase):
 
     def tearDown(self):
         db.session.remove()
-        db.drop_all()
+        # db.drop_all()
 
     # Test Case 1: Ensure the home page is accessible
     def test_home_page(self):
