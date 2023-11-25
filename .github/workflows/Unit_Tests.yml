@@ -48,7 +48,7 @@ jobs:
         run: |
           git config --global user.name 'Waariss'
           git config --global user.email 'waris.dam@student.mahidol.ac.th'
-          git add ./Project_phase_2/tests/Unit_Test_Cases/coverage.svg
+          git add ./tests/Unit_Test_Cases/coverage.svg
           git commit -m "Update coverage badge"
           git push
 
