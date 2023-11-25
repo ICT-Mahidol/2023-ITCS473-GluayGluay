@@ -123,6 +123,31 @@ This command initiates all unit tests, providing verbose output for each test ca
 - **Expected Result:** Successful update of the user's phone number and other profile details.
 
 #### 🎯 Test Report
+After running your unit tests, the test framework generates a report that includes statement coverage and branch coverage metrics. Here's how to calculate the overall coverage:
+
+#### 📊 Calculating Statement Coverage:
+
+Statement Coverage = (Number of statements executed / Total number of statements) * 100% 🧮
+
+#### 🌉 Calculating Branch Coverage:
+
+Branch Coverage = (Number of branches executed / Total number of branches) * 100% 🌳
+
+The report shows:
+
+- 📝 Total Statements: 245
+- ❌ Total Missed Statements: 61
+- 🔀 Total Branches: 48
+- 🚫 Total Missed Branches: 12
+
+Then the Statement Coverage would be:
+
+Statement Coverage = ((245 - 61) / 245) * 100% = **75.1%** ✅
+
+And the Branch Coverage would be:
+
+Branch Coverage = ((48 - 12) / 48) * 100% = **75%** ✅
+
 ![Test Report](https://github.com/ICT-Mahidol/2023-ITCS473-GluayGluay/blob/master/Project_phase_2/tests/Report/Unit_Report.png)
 
 --------------
