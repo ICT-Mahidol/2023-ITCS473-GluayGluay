@@ -29,7 +29,6 @@ jobs:
           pip install -r requirements.txt
           pip install googletrans==4.0.0rc1
           pip install pymysql
-          pip uninstall werkzeug
           pip install werkzeug==2.3.0
           
       - name: Test App code
