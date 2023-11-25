@@ -1,6 +1,6 @@
 # 🌐🐈 **GluayGluay 🍌: Testing for Jelly-Translator: Translation Web App** 🪼
 
-![Coverage](./Project_phase_2/tests/Unit_Test_Cases/coverage.svg)
+![Coverage](./tests/Unit_Test_Cases/coverage.svg)
 ### 👉 [Live View Project](https://jellytranslator.siranuta13.repl.co/) 🪼
 
 ## 🎓 **ITCS473 - Software Quality Assurance and Testing**
