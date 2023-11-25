@@ -6,6 +6,9 @@ on:
       - master
     paths-ignore:
       - '**.md'
+  pull_request:
+    branches:  
+      - master 
 
 jobs:
   test:
@@ -35,11 +38,11 @@ jobs:
         run: |
           cd tests/Unit_Test_Cases
           coverage run -m pytest Unit_Test.py
-          coverage html 
-
+          coverage xml -o coverage.xml 
+      
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v2
         with:
-          files: ./coverage.html  # Adjust the path if needed
-          fail_ci_if_error: true  # Optional: specify if CI should fail on upload error
+          file: ./Project_phase_2/tests/Unit_Test_Cases/coverage.xml 
+          fail_ci_if_error: true
 
