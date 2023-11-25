@@ -1,26 +1,37 @@
-name: Robot Framework UI Tests
+name: Automated Tests
 
-on: [push, pull_request]
+on:
+  push:
+    branches:
+      - main
 
 jobs:
-  robot-tests:
+  build:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Check out repository code
+    - name: Checkout code
       uses: actions/checkout@v2
 
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
-        python-version: '3.10.13'  # Use the Python version that matches your project requirements
+        python-version: 3.10.13
 
-    - name: Install Robot Framework and SeleniumLibrary
+    - name: Install dependencies
       run: |
-        pip install robotframework robotframework-seleniumlibrary
+        pip install -r requirements.txt  # Install Python dependencies
+        # Install Chrome and ChromeDriver
+        wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+        sudo dpkg -i google-chrome-stable_current_amd64.deb
+        CHROME_VERSION=$(google-chrome --version | awk '{print $3}' | cut -d '.' -f 1)
+        CHROMEDRIVER_VERSION=$(curl -sS https://chromedriver.storage.googleapis.com/LATEST_RELEASE_$CHROME_VERSION)
+        wget https://chromedriver.storage.googleapis.com/$CHROMEDRIVER_VERSION/chromedriver_linux64.zip
+        unzip chromedriver_linux64.zip
+        sudo mv chromedriver /usr/local/bin/
 
-    - name: Run Robot Framework tests
+    - name: Run tests
       run: |
         robot -d ./results/ Project_phase_2/tests/Automated\ Test\ Cases/UI_Tests.robot
-      working-directory: ${{ github.workspace }}
+        working-directory: ${{ github.workspace }}
 
