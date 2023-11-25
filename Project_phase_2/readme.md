@@ -71,6 +71,61 @@ The **Translation Web App** is a user-friendly 🖥️ web application that empo
    - Register, log in, save your translation history, and personalize your experience.
 
 ---
+## 🧪 **Unit Testing**
+
+### Overview
+Our Jelly Translator web app includes a robust unit testing framework designed to ensure the highest quality and reliability of our application. These tests rigorously validate various functionalities, from user authentication to core translation features, safeguarding the integrity and performance of our app.
+
+### Test Environment Setup
+To run these unit tests, make sure you have the following setup:
+- Python environment with the necessary dependencies installed.
+- Access to the application's codebase and a MySQL database configured as specified in the application settings.
+
+### Running the Tests
+Execute the unit tests by navigating to the root directory of the project and running the following command:
+```bash
+cd Project_phase_2/tests/Unit\ Test\ Cases/
+pytest Unit_Test.py
+```
+
+This command initiates all unit tests, providing verbose output for each test case, including pass/fail status.
+
+## 📝 Test Cases Summary
+
+### 1. Home Page Accessibility
+**Purpose:** Tests if the home page is accessible and ensures the correct template is rendered.
+- **Method:** `test_home_page`
+- **Expected Result:** HTTP 200 status and usage of 'index.html' template.
+
+### 2. User Registration
+**Purpose:** Verifies the user registration process, creating a new user with randomly generated credentials.
+- **Method:** `test_registration`
+- **Expected Result:** Successful addition of a new user to the database, confirmed by querying the user.
+
+### 3. User Login
+**Purpose:** Ensures successful user login with valid credentials and proper session management.
+- **Method:** `test_login`
+- **Expected Result:** Successful login with HTTP 200 status and authenticated user session.
+
+### 4. Language Detection
+**Purpose:** Tests the accuracy of language detection for various language inputs.
+- **Method:** `test_language_detection`
+- **Expected Result:** Correct detection of the language for each provided text sample.
+
+### 5. Translation Functionality
+**Purpose:** Checks the translation feature for different language pairs, ensuring accurate translations.
+- **Method:** `test_translation_to_various_languages`
+- **Expected Result:** Correct translation of a given text into various target languages.
+
+### 6. Profile Update
+**Purpose:** Validates the functionality of updating user profiles.
+- **Method:** `test_profile_update`
+- **Expected Result:** Successful update of the user's phone number and other profile details.
+
+## 🎯 Test Report
+Upon completion, pytest provides a detailed report for each test case, indicating their success or failure. This report is crucial for continuous improvement and maintenance of the app's quality.
+
+--------------
 
 ## 🔍 **Automated UI Testing**
 
@@ -157,6 +212,7 @@ These tests ensure the reliability and functionality of key features in the Jell
 
 #### 🎯 Test Report
 
+![Test Report](https://github.com/ICT-Mahidol/2023-ITCS473-GluayGluay/blob/master/Project_phase_2/tests/Report/UI_REPORT.png)
 ------
 ## 🤝 **Contributing**
 

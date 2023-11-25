@@ -2,8 +2,9 @@ import pytest
 from flask_testing import TestCase
 from flask_login import current_user
 import sys
+import random
 
-sys.path.append("..")
+sys.path.append("../..")
 try:
     from app.main import app, db, User
 except ImportError as e:
@@ -32,17 +33,28 @@ class MyTest(TestCase):
 
     # Test Case 2: Ensure registration creates a new user
     def test_registration(self):
+        random_phone_suffix = random.randint(100000, 999999)
         response = self.client.post('/register', data=dict(
             username="testuser",
             password="testpass",
-            phone_number="1234567890"
+            phone_number=f"1111{random_phone_suffix}"
         ), follow_redirects=True)
         user = User.query.filter_by(username="testuser").first()
         self.assertIsNotNone(user)
         self.assertTrue(current_user.is_anonymous)
-        self.assert_template_used('login.html')
+        self.assert_template_used('register.html')
 
-    # Test Case 3: Test language detection
+    # Test Case 3: Ensure Login is successful
+    def test_login(self):
+        with self.client:
+            response = self.client.post('/login', data=dict(
+                username='testuser',
+                password='testpass'
+            ), follow_redirects=True)
+            self.assertEqual(response.status_code, 200)
+            self.assertTrue(current_user.is_authenticated)
+
+    # Test Case 4: Test language detection
     def test_language_detection(self):
         samples = {
             "en": "Hello, how are you?",
@@ -69,7 +81,7 @@ class MyTest(TestCase):
             detected_lang = response.data.decode('utf-8')
             self.assertEqual(detected_lang, expected_lang)
 
-    # Test Case 4: Test translation from English to various languages
+    # Test Case 5: Test translation from English to various languages
     def test_translation_to_various_languages(self):
         translations = {
             "th": "สวัสดี",
@@ -103,6 +115,21 @@ class MyTest(TestCase):
                 self.assertTrue(translated_text in expected_translation)
             else:
                 self.assertEqual(translated_text, expected_translation)
+
+    # Test Case 6: Test Update Profile
+    def test_profile_update(self):
+        with self.client:
+            response = self.client.post('/login', data=dict(
+                username='testuser',
+                password='testpass'
+            ), follow_redirects=True)
+
+        new_phone = '9876543210'
+        response = self.client.post('/edit-profile', data=dict(
+            phone=new_phone
+        ), follow_redirects=True)
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(current_user.phone_number, new_phone)
 
 
 if __name__ == '__main__':
