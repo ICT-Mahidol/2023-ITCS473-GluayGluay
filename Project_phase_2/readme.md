@@ -123,7 +123,7 @@ This command initiates all unit tests, providing verbose output for each test ca
 - **Expected Result:** Successful update of the user's phone number and other profile details.
 
 ## 🎯 Test Report
-Upon completion, pytest provides a detailed report for each test case, indicating their success or failure. This report is crucial for continuous improvement and maintenance of the app's quality.
+![Test Report](https://github.com/ICT-Mahidol/2023-ITCS473-GluayGluay/blob/master/Project_phase_2/tests/Report/Unit_Report.png)
 
 --------------
 
