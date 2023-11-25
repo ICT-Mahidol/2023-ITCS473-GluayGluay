@@ -1,5 +1,6 @@
 # 🌐🐈 **GluayGluay 🍌: Testing for Jelly-Translator: Translation Web App** 🪼
 
+![Build Status](https://github.com/ICT-Mahidol/2023-ITCS473-GluayGluay/actions/workflows/Unit_Test.yml/badge.svg)
 ### 👉 [Live View Project](https://jellytranslator.siranuta13.repl.co/) 🪼
 
 ## 🎓 **ITCS473 - Software Quality Assurance and Testing**
