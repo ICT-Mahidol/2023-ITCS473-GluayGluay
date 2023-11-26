@@ -40,4 +40,4 @@ jobs:
     - name: Run Robot Framework tests
       run: |
          cd tests/Automated_Test_Cases
-         robot UI_Tests.robot
+         robot Action_UI_Tests.robot
