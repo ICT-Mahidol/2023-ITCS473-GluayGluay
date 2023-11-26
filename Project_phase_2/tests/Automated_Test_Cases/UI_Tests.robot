@@ -81,7 +81,7 @@ Dictionary Page Word Search
     linux
 
 Full User Scenario Test
-    [Documentation]    Test Case 7: Simulates a full user scenario including login, translation, and theme change.
+    [Documentation]    Test Case 7: Simulates a full user scenario including login, translation, history, and theme change.
     User Login For Scenario
     Generate Random Credentials information
     Select Random Language
@@ -317,7 +317,7 @@ Change Theme
     Sleep    2s
 
 Translate Word And Verify
-    [Documentation]    Translates a word and verifies the translation with a page reload.
+    [Documentation]    Translates a word and reload a page, then check the history of translation.
     Go To    ${HOME URL}
     Select From List By Label    id=source_lang    English
     Select From List By Label    id=target_lang    Thai
