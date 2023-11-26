@@ -226,7 +226,7 @@ This will run all the test cases and generate a report in the results directory.
 - ✔️ Confirms that the search results are correct and relevant.
 
 #### 7. Full User Scenario Test
-**Purpose:** ✅ Simulates a full user scenario including login, translation, and theme change.
+**Purpose:** ✅ Simulates a full user scenario including login, translation, history, and theme change.
 
 **Procedure:**
 - 🔑 Logs in with a test user.
