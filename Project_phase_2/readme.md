@@ -1,5 +1,6 @@
 # 🌐🐈 **GluayGluay 🍌: Testing for Jelly-Translator: Translation Web App** 🪼
-![Unit Test](https://github.com/ICT-Mahidol/2023-ITCS473-GluayGluay/actions/workflows/Unit_Tests.yml/badge.svg?branch=master)
+[![Robot Framework UI Tests](https://github.com/ICT-Mahidol/2023-ITCS473-GluayGluay/actions/workflows/robot.yml/badge.svg?branch=master)](https://github.com/ICT-Mahidol/2023-ITCS473-GluayGluay/actions/workflows/robot.yml)
+![Pytest Unit Tests](https://github.com/ICT-Mahidol/2023-ITCS473-GluayGluay/actions/workflows/Unit_Tests.yml/badge.svg?branch=master)
 ![Coverage](./tests/Unit_Test_Cases/coverage.svg)
 ### 👉 [Live View Project](https://jellytranslator.siranuta13.repl.co/) 🪼
 
