@@ -39,4 +39,5 @@ jobs:
 
     - name: Run Robot Framework tests
       run: |
-        robot ./tests/Unit_Test_Cases/test.robot
+         cd tests/Automated_Test_Cases
+         robot UI_Tests.robot
