@@ -1,0 +1,42 @@
+name: Robot Framework UI Tests
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  robot-test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./Project_phase_2/
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+
+    - name: Install dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y xvfb fluxbox
+        python -m pip install --upgrade pip
+        pip install robotframework robotframework-seleniumlibrary
+
+    - name: Start Xvfb and Fluxbox
+      run: |
+        export DISPLAY=:99
+        Xvfb :99 -screen 0 1920x1080x24 > /dev/null 2>&1 &
+        fluxbox &
+
+    - name: Run Robot Framework tests
+      run: |
+        robot ./tests/Unit_Test_Cases/test.robot
