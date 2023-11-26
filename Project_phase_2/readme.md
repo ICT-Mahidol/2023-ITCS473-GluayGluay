@@ -250,13 +250,14 @@ Branch Coverage = ((48 - 12) / 48) * 100% = **75%** ✅
 
 ### ![Requirements Traceability Matrix (RTM)](https://github.com/ICT-Mahidol/2023-ITCS473-GluayGluay/blob/master/Project_phase_2/tests/Manual_Test_Cases/Requirement_Traceability_Matrix.pdf) 🔗
 
-| Req No. | Requirement Desc | Test Scenario ID             | Test Case Desc                                           | TestCase ID | Status                                     |
-|---------|------------------|------------------------------|----------------------------------------------------------|-------------|--------------------------------------------|
-| 1       | Register the account | Register_1                   | Verifies the functionality of the user registration process | TC01        | TC01 - Pass ✅                              |
-| 2       | Login to the Jelly Translator | Login_1, Full_User_Scenario_1 | Ensures that users can log in with valid credentials.      | TC02, TC07  | TC02 - Pass ✅, TC07 - Pass ✅               |
-| 3       | Translation       | Translate_1, Button_Function_1, Full_User_Scenario_1 | Checks the accuracy of translations for multiple language pairs. | TC03, TC05, TC07 | TC03 - Pass ✅, TC05 - Pass ✅, TC07 - Pass ✅ |
-| 4       | Documentary Page  | Doc_Page_Test_1              | Confirms that the documentation page is accessible and displays the correct content. | TC04        | TC04 - Pass ✅                              |
-| 5       | Dictionary        | Dic_Search_1                 | Verifies the dictionary search functionality for various words. | TC06        | TC06 - Pass ✅                              |
+| Req. No. | Requirement Description | Test Scenario ID | Test Case Description | TestCase ID | Status |
+|----------|-------------------------|------------------|----------------------|-------------|--------|
+| 1        | As a customer, I want to have my personal account. | Register_1 | To verify the functionality of the user registration process | TC01 | TC01 - Pass ✅ |
+| 2        | As a customer, I want to ensure that my account can access into the website | Login_1, Full_User_Scenario_1 | Ensures that users can log in with valid credentials. | TC02, TC07 | TC02 - Pass ✅, TC07 - Pass ✅ |
+| 3        | As a customer, I want to easily translate text from one language to another so I can understand content in languages I’m not familiar with. Moreover, I want the translated text to be accurate and coherent, ensuring that the meaning is preserved. | Translate_1, Button_Function_1, Full_User_Scenario_1 | Checks the accuracy of translations for multiple language pairs. | TC03, TC05, TC07 | TC03 - Pass ✅, TC05 - Pass ✅, TC07 - Pass ✅|
+| 4        | As a customer, I want suggestions on how to use an application. | Doc_Page_Test_1 | Confirms that the documentation page that is page for user to understand how to use Jelly Translator is accessible and displays the correct content. | TC04 | TC04 - Pass ✅ |
+| 5        | As a customer, I want to explore word meanings with a dedicated dictionary feature on the website. | Dic_Search_1 | Verifies the dictionary search functionality for various words. | TC06 | TC06 - Pass ✅|
+
 
 -------------
 
