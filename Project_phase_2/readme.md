@@ -7,29 +7,29 @@
 ## 🎓 **ITCS473 - Software Quality Assurance and Testing**
 ### 🏫 **Mahidol University, ICT**
 ---
-# Table of Contents
-1. [Overview](#overview)
-2. [Features](#features)
-3. [Installation](#installation)
-4. [Usage](#usage)
-5. [Unit Testing](#unit-testing)
-    - [Overview](#overview-1)
+## Table of Contents
+1. [Overview](#-overview)
+2. [Features](#-features)
+3. [Installation](#-installation)
+4. [Usage](#-usage)
+5. [Unit Testing](#-unit-testing)
+    - [Overview](#overview)
     - [Test Environment Setup](#test-environment-setup)
     - [Running the Tests](#running-the-tests)
-    - [Test Cases Summary](#test-cases-summary)
-    - [Test Report](#test-report)
+    - [Test Cases Summary](#-test-cases-summary)
+    - [Test Report](#-test-report)
 6. [System Testing](#system-testing)
     - [Manual System Test Cases](#manual-system-test-cases)
     - [Requirements Traceability Matrix (RTM)](#requirements-traceability-matrix-rtm)
-7. [Automated UI Testing](#automated-ui-testing)
-    - [Overview](#overview-2)
+7. [Automated UI Testing](#-automated-ui-testing)
+    - [Overview](#overview-1)
     - [Test Environment Setup](#test-environment-setup-1)
     - [Running the Tests](#running-the-tests-1)
-    - [Test Cases Summary](#test-cases-summary-1)
-    - [Test Report](#test-report-1)
-8. [Contributing](#contributing)
-9. [Issues](#issues)
-10. [License](#license)
+    - [Test Cases Summary](#-test-cases-summary-1)
+    - [Test Report](#-test-report-1)
+8. [Contributing](#-contributing)
+9. [Issues](#-issues)
+10. [License](#-license)
 ---
 
 ## 🌟 **Overview**
