@@ -155,7 +155,7 @@ Branch Coverage = ((48 - 12) / 48) * 100% = **75%** ✅
 --------------
 ## **System Testing**
 
-### Manual System Test Cases
+### ![Manual System Test Cases](https://github.com/ICT-Mahidol/2023-ITCS473-GluayGluay/blob/master/Project_phase_2/tests/Manual_Test_Cases/System_Testing.pdf)
 
 #### Test Case 1: User Registration Test ✅
 | Test Scenario ID | Test Case ID | Test Case Description                                       | Test Priority | Pre-Requisite |
@@ -248,7 +248,7 @@ Branch Coverage = ((48 - 12) / 48) * 100% = **75%** ✅
 | 7        | Check History           | -                                      | The translated words will be put in the history | The translated words will be put in the history | Pass ✅       |                  |
 | 8        | Logout of the website   | Press Log out                          | The user is taken to a logout confirmation that shows “You have been logged out.” on the login page | Successfully logout, and the user is taken to a logout confirmation that shows “You have been logged out.” on the login page | Pass ✅       |                  |
 
-### Requirements Traceability Matrix (RTM) 🔗
+### ![Requirements Traceability Matrix (RTM)](https://github.com/ICT-Mahidol/2023-ITCS473-GluayGluay/blob/master/Project_phase_2/tests/Manual_Test_Cases/Requirement_Traceability_Matrix.pdf) 🔗
 
 | Req No. | Requirement Desc | Test Scenario ID             | Test Case Desc                                           | TestCase ID | Status                                     |
 |---------|------------------|------------------------------|----------------------------------------------------------|-------------|--------------------------------------------|
