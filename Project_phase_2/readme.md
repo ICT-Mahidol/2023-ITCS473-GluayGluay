@@ -153,6 +153,112 @@ Branch Coverage = ((48 - 12) / 48) * 100% = **75%** ✅
 ![Test Report](https://github.com/ICT-Mahidol/2023-ITCS473-GluayGluay/blob/master/Project_phase_2/tests/Report/Unit_Report.png)
 
 --------------
+## **System Testing**
+
+### Manual Test Cases
+
+#### Test Case 1: User Registration Test ✅
+| Test Scenario ID | Test Case ID | Test Case Description                                       | Test Priority | Pre-Requisite |
+| ---------------- | -------------|-------------------------------------------------------------| ----          |---------------|
+| Register_1       | TC01         | Verifies the functionality of the user registration process | High          | User access to the website.|
+
+| Step No. | Action          | Input                       | Expected Result                             | Actual Result                               | Test Result | Test Comment |
+|----------|-----------------|-----------------------------|--------------------------------------------|--------------------------------------------|-------------|--------------|
+| 1        | Open Website    | https://jellytranslator.siranuta13.repl.co/register | Jelly Translator register page             | Jelly Translator register page             | Pass ✅      |              |
+| 2        | Fill in the registration form | Username, Password, Phone  | The input box will display the username, password, phone | The input box will display the username, password, phone | Pass ✅      |              |
+| 3        | Click on the “Register” button | Click Register            | Sign in successfully and navigate to Login Page | Sign in successfully and navigate to Login Page | Pass ✅       |              |
+
+#### Test Case 2: User Login Test 🔑
+| Test Scenario ID | Test Case ID | Test Case Description                          | Test Priority | Pre-Requisite            |
+| ---------------- | -------------|------------------------------------------------| --------------|--------------------------|
+| Login_1          | TC02         | Ensures that users can log in with valid credentials | High         | The user must have an account |
+
+| Step No. | Action                  | Input                                    | Expected Result                             | Actual Result                               | Test Result | Test Comment |
+|----------|-------------------------|------------------------------------------|--------------------------------------------|--------------------------------------------|-------------|--------------|
+| 1        | Open Website            | https://jellytranslator.siranuta13.repl.co/login | Jelly Translator login page                | Jelly Translator login page                | Pass ✅      |              |
+| 2        | Enter a valid username and password | Username and Password                    | Username and Password                      | Username and Password                      | Pass ✅       |              |
+| 3        | Click on the “login” button | Click login                              | Sign in successfully and navigate to the Jelly Dashboard Page | Sign in successfully and navigate to the Jelly Dashboard Page | Pass ✅       |              |
+
+#### Test Case 3: Translate Text In Different Languages 🌐
+| Test Scenario ID | Test Case ID | Test Case Description                                | Test Priority | Pre-Requisite                 |
+| ---------------- | -------------|------------------------------------------------------| --------------|-------------------------------|
+| Translate_1      | TC03         | Checks the accuracy of translations for multiple language pairs. | High         | The user must access the website. |
+
+| Step No. | Action                | Input                              | Expected Result                         | Actual Result                           | Test Result | Test Comment                                                                                                    |
+|----------|-----------------------|------------------------------------|----------------------------------------|----------------------------------------|-------------|-----------------------------------------------------------------------------------------------------------------|
+| 1        | Open Website          | https://jellytranslator.siranuta13.repl.co/ | Jelly Translator home page             | Jelly Translator home page             | Pass ✅      |                                                                                                                 |
+| 2        | Choose "From” languages (source) | English                            | English                                | English                                | Pass ✅      |                                                                                                                 |
+| 3        | Choose "To" languages (target) | Target languages, Example: Thai   | Target languages, Example: Thai        | Target languages, Example: Thai        | Pass ✅      | Target languages: Spanish, Thai, French, German, Japanese, Korean, Chinese (Simplified), Chinese (Traditional), Dutch, Russian, Portuguese, Arabic |
+| 4        | Enter word in the source box | “hello world”                     | “hello world”                          | “hello world”                          | Pass ✅      |                                                                                                                 |
+| 5        | Check the output in the target box | -                                  | Target languages output, Example: “สวัสดีครับ/ค่ะ” | Target languages output, Example: “สวัสดีครับ/ค่ะ” | Pass ✅       |                                                                                                                 |
+
+#### Test Case 4: Documentation Page Test 📄
+| Test Scenario ID | Test Case ID | Test Case Description                                               | Test Priority | Pre-Requisite                         |
+| ---------------- | -------------|---------------------------------------------------------------------| --------------|---------------------------------------|
+| Doc_Page_Test_1  | TC04         | Confirms that the documentation page is accessible and displays the correct content. | High         | The user must access the website first. |
+
+| Step No. | Action                          | Input                                       | Expected Result                                             | Actual Result                                               | Test Result | Test Comment |
+|----------|---------------------------------|---------------------------------------------|------------------------------------------------------------|------------------------------------------------------------|-------------|--------------|
+| 1        | Go to the documentary page      | https://jellytranslator.siranuta13.repl.co/dictionary | Documentary Page                                            | Documentary Page                                            | Pass ✅      |              |
+| 2        | Check in the documentary page that have “Translate Web App Documentation” Topic | -                                           | Documentary page have “Translate Web App Documentation” Topic | Documentary page have “Translate Web App Documentation” Topic | Pass ✅       |              |
+
+#### Test Case 5: Verify Download, Copy, And Swap Button Functionality 🔄
+| Test Scenario ID | Test Case ID | Test Case Description                                                          | Test Priority | Pre-Requisite                |
+| ---------------- | -------------|--------------------------------------------------------------------------------| --------------|------------------------------|
+| Button_Function_1| TC05         | Tests the functionality of the download, copy, and language swap features on the translation page. | High         | The user must access the website. |
+
+| Step No. | Action                      | Input                                  | Expected Result                          | Actual Result                            | Test Result | Test Comment     |
+|----------|-----------------------------|----------------------------------------|-----------------------------------------|-----------------------------------------|-------------|------------------|
+| 1        | Open Website                | https://jellytranslator.siranuta13.repl.co/ | Jelly Translator home page              | Jelly Translator home page              | Pass ✅      |                  |
+| 2        | Define the source language to “English” | -                                      | Source language is “English”            | Source language is “English”            | Pass ✅      |                  |
+| 3        | Define the target language to “Thai”    | -                                      | The Target language is “Thai”           | The Target language is “Thai”           | Pass ✅      |                  |
+| 4        | Enter the word in source box | “hello world”                          | “hello world”                           | “hello world”                           | Pass ✅      |                  |
+| 5        | Check the output in the target box | -                                      | “สวัสดีครับ/ค่ะ”                        | “สวัสดีครับ/ค่ะ”                        | Pass ✅      |                  |
+| 6        | Press the swap Button        | Press the swap button                  | English becomes the target language, and Thai becomes the source language. | English becomes the target language, and Thai becomes the source language. | Pass ✅       |                  |
+| 7        | Enter the word in Thai language in the source box | “สวัสดีครับ/ค่ะ”                        | “สวัสดีครับ/ค่ะ”                        | “สวัสดีครับ/ค่ะ”                        | Pass ✅       |                  |
+| 8        | Check the output in the target box | -                                      | “hello”                                 | “hello”                                 | Pass ✅       |                  |
+| 9        | Press the copy button        | Press the copy button                  | The translated text “hello” is copied to the clipboard. | The translated text “hello” is copied to the clipboard. | Pass ✅       |                  |
+| 10       | Press the download button    | Press the download button              | The system initiates the download of the translated text (“hello”) to the local machine. | The translated text "hello" is successfully downloaded to the local machine. | Pass ✅       |                  |
+
+#### Test Case 6: Dictionary Page Word Search 📚
+| Test Scenario ID | Test Case ID | Test Case Description                                  | Test Priority | Pre-Requisite                        |
+| ---------------- | -------------|--------------------------------------------------------| --------------|--------------------------------------|
+| Dic_Search_1     | TC06         | Verifies the dictionary search functionality for various words. | High         | The user must access the dictionary page. |
+
+| Step No. | Action                  | Input                                     | Expected Result                            | Actual Result                              | Test Result | Test Comment                        |
+|----------|-------------------------|-------------------------------------------|-------------------------------------------|-------------------------------------------|-------------|------------------------------------|
+| 1        | Go to dictionary page   | https://jellytranslator.siranuta13.repl.co/dictionary | The dictionary page shows up              | The dictionary page shows up              | Pass ✅       |                                    |
+| 2        | Searches for specific words | Input words                               | The words in drop-down list that related to the input word | The words in drop-down list that related to the input word | Pass ✅       | 4 input words: code, notebook, world, linux |
+| 3        | Select the word from drop-down list | The word that selected                     | Definitions of the input words            | Definitions of the input words            | Pass ✅       |                                    |
+| 4        | Check the result        | -                                         | Definitions for Input words page          | Definitions for Input words page          | Pass ✅       |                                    |
+
+#### Test Case 7: Full User Scenario Test 🎭
+| Test Scenario ID | Test Case ID | Test Case Description                                              | Test Priority | Pre-Requisite                             |
+| ---------------- | -------------|--------------------------------------------------------------------| --------------|-------------------------------------------|
+| Full_User_Scenario_1 | TC07         | Simulates a full user scenario including login, translation, and theme change | High         | The user must have an account to access the website. |
+
+| Step No. | Action                  | Input                                  | Expected Result                               | Actual Result                                 | Test Result | Test Comment     |
+|----------|-------------------------|----------------------------------------|----------------------------------------------|----------------------------------------------|-------------|------------------|
+| 1        | Go to Login page        | https://jellytranslator.siranuta13.repl.co/login | The user will be navigated to the login page. | The user will be navigated to the login page. | Pass ✅       |                  |
+| 2        | Enter a valid username and password | Username and Password                    | Username and Password                         | Username and Password                         | Pass ✅       |                  |
+| 3        | Click on the “login” button | Click login                             | Sign in successfully and navigate to the Jelly Dashboard Page | Sign in successfully and navigate to the Jelly Dashboard Page | Pass ✅       |                  |
+| 4        | Edits user information and changes the app theme | User information and change the application theme. | User information is updated, and the app theme is changed accordingly | User information is successfully updated, and the app theme changes as per the user's preference. | Pass ✅       |                  |
+| 5        | Enter the word to translate (English to Thai) | “Hello”                                 | “สวัสดี”                                     | “สวัสดี”                                     | Pass ✅       |                  |
+| 6        | Reload Page             | -                                      | The page successfully reload                  | The page successfully reload                  | Pass ✅       |                  |
+| 7        | Check History           | -                                      | The translated words will be put in the history | The translated words will be put in the history | Pass ✅       |                  |
+| 8        | Logout of the website   | Press Log out                          | The user is taken to a logout confirmation that shows “You have been logged out.” on the login page | Successfully logout, and the user is taken to a logout confirmation that shows “You have been logged out.” on the login page | Pass ✅       |                  |
+
+### Requirements Traceability Matrix (RTM) 🔗
+
+| Req No. | Requirement Desc | Test Scenario ID             | Test Case Desc                                           | TestCase ID | Status                                     |
+|---------|------------------|------------------------------|----------------------------------------------------------|-------------|--------------------------------------------|
+| 1       | Register the account | Register_1                   | Verifies the functionality of the user registration process | TC01        | TC01 - Pass ✅                              |
+| 2       | Login to the Jelly Translator | Login_1, Full_User_Scenario_1 | Ensures that users can log in with valid credentials.      | TC02, TC07  | TC02 - Pass ✅, TC07 - Pass ✅               |
+| 3       | Translation       | Translate_1, Button_Function_1, Full_User_Scenario_1 | Checks the accuracy of translations for multiple language pairs. | TC03, TC05, TC07 | TC03 - Pass ✅, TC05 - Pass ✅, TC07 - Pass ✅ |
+| 4       | Documentary Page  | Doc_Page_Test_1              | Confirms that the documentation page is accessible and displays the correct content. | TC04        | TC04 - Pass ✅                              |
+| 5       | Dictionary        | Dic_Search_1                 | Verifies the dictionary search functionality for various words. | TC06        | TC06 - Pass ✅                              |
+
+-------------
 
 ## 🔍 **Automated UI Testing**
 
@@ -200,7 +306,7 @@ This will run all the test cases and generate a report in the results directory.
 - 🌍 Performs translations between various language pairs like English to Spanish, Thai, French, etc.
 - 🔎 Compares the translated output with expected results for accuracy.
 
-#### 4. Docs Page Test
+#### 4. Documentation Page Test
 **Purpose:** ✅ Confirms that the documentation page is accessible and displays the correct content.
 
 **Procedure:**
