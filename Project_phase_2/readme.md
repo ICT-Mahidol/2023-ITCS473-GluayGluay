@@ -155,7 +155,7 @@ Branch Coverage = ((48 - 12) / 48) * 100% = **75%** ✅
 --------------
 ## **System Testing**
 
-### Manual Test Cases
+### Manual System Test Cases
 
 #### Test Case 1: User Registration Test ✅
 | Test Scenario ID | Test Case ID | Test Case Description                                       | Test Priority | Pre-Requisite |
