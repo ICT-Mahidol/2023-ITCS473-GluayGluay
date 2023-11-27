@@ -12,24 +12,25 @@
 2. [Features](#-features)
 3. [Installation](#-installation)
 4. [Usage](#-usage)
-5. [Unit Testing](#-unit-testing)
+5. [Installation for Testing](#-installation-for-testing)
+6. [Unit Testing](#-unit-testing)
     - [Overview](#overview)
     - [Test Environment Setup](#test-environment-setup)
     - [Running the Tests](#running-the-tests)
     - [Test Cases Summary](#-test-cases-summary)
     - [Test Report](#-test-report)
-6. [System Testing](#system-testing)
+7. [System Testing](#system-testing)
     - [Manual System Test Cases](#manual-system-test-cases)
     - [Requirements Traceability Matrix (RTM)](#requirements-traceability-matrix-rtm)
-7. [Automated UI Testing](#-automated-ui-testing)
+8. [Automated UI Testing](#-automated-ui-testing)
     - [Overview](#overview-1)
     - [Test Environment Setup](#test-environment-setup-1)
     - [Running the Tests](#running-the-tests-1)
     - [Test Cases Summary](#-test-cases-summary-1)
     - [Test Report](#-test-report-1)
-8. [Contributing](#-contributing)
-9. [Issues](#-issues)
-10. [License](#-license)
+9. [Contributing](#-contributing)
+10. [Issues](#-issues)
+11. [License](#-license)
 ---
 
 ## 🌟 **Overview**
@@ -95,6 +96,17 @@ The **Translation Web App** is a user-friendly 🖥️ web application that empo
 2. **📝 As a Registered User:**
    - Register, log in, save your translation history, and personalize your experience.
 
+---
+## 💻 **Installation For Testing**
+
+1. **🔗 Clone the repository** or download the source code.
+2. **📦 Install dependencies:**
+
+    ```bash
+    pip install -r test_requirements.txt
+    ```
+
+3. **🚀 Start testing the application:**
 ---
 ## 🧪 **Unit Testing**
 
