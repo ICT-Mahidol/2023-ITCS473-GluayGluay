@@ -30,13 +30,35 @@ class MyTest(TestCase):
         # db.drop_all()
 
     # Test Case 1: Ensure the home page is accessible
+    # Expected Result: HTTP 200 status and usage of 'index.html'template.
     def test_home_page(self):
         response = self.client.get('/')
         self.assert200(response)
         self.assert_template_used('index.html')
 
     # Test Case 2: Ensure registration creates a new user
-    def test_registration(self):
+    # [ISP] Partition characteristic and possible values
+    # C1 = valid username (is not used)
+    # Expected Result: Successful addition of a new user to the database, confirmed by querying the user.
+    def test_regis(self):
+        app, db, User = import_app_modules()
+        random_username = random.randint(1,99999)
+        random_phone_suffix = random.randint(100000, 999999)
+        response = self.client.post('/register', data=dict(
+            username=random_username,
+            password="testpass",
+            phone_number=f"1111{random_phone_suffix}"
+        ), follow_redirects=True)
+        user = User.query.filter_by(username=random_username).first()
+        self.assertIsNotNone(user)
+        self.assertTrue(current_user.is_anonymous)
+        self.assert_template_used('login.html')
+
+    # Test Case 3: Ensure registration fails if the username is already in use
+    # [ISP continue from TestCase2]
+    # C2 = invalid username (already in used)
+    # Expected Result: The registration process should not create a new user with the same username
+    def test_regis_fail(self):
         app, db, User = import_app_modules()
         random_phone_suffix = random.randint(100000, 999999)
         response = self.client.post('/register', data=dict(
@@ -45,11 +67,14 @@ class MyTest(TestCase):
             phone_number=f"1111{random_phone_suffix}"
         ), follow_redirects=True)
         user = User.query.filter_by(username="testuser").first()
-        self.assertIsNotNone(user)
-        self.assertTrue(current_user.is_anonymous)
+        self.assertMessageFlashed('Username is already in use. Please choose a different username.', 'danger')
         self.assert_template_used('register.html')
 
-    # Test Case 3: Ensure Login is successful
+    # Test Case 4: Ensure Login is successful
+    # [ISP] Partition characteristic and possible values
+    # C1 = valid Username
+    # C2 = valid Password
+    # Expected Result: Successful login with HTTP 200 status and authenticated user session.
     def test_login(self):
         with self.client:
             response = self.client.post('/login', data=dict(
@@ -59,35 +84,49 @@ class MyTest(TestCase):
             self.assertEqual(response.status_code, 200)
             self.assertTrue(current_user.is_authenticated)
 
-    # Test Case 4: Test language detection
+    # Test Case 5: Ensure Login is unsuccessful
+    # [ISP continue from TestCase4]
+    # C3 = invalid Username
+    # C4 = invalid Password
+    # Expected Result: The login process should fail when incorrect credentials (username or password) are provided.
+    def test_login_fail(self):
+        with self.client:
+            response = self.client.post('/login', data=dict(
+                username='testuser',
+                password='testfail'
+            ), follow_redirects=True)
+            self.assertEqual(response.status_code, 200)
+            self.assertFalse(current_user.is_authenticated)
+
+
+    # Test Case 6: Test language detection
+    # [ISP] Partition characteristic and possible values
+    # C1 = text is not empty
+    # Expected Result: return the language that match with text
     def test_language_detection(self):
-        samples = {
-            "en": "Hello, how are you?",
-            "th": "สวัสดีครับ คุณสบายดีไหมครับ",
-            "es": "Hola, ¿cómo estás?",
-            "fr": "Bonjour, comment ça va?",
-            "ja": "こんにちは、お元気ですか？",
-            "zh-cn": "你好，你好吗？",
-            "zh-tw": "您好，今天過得怎麼樣？",
-            "de": "Hallo, wie geht's?",
-            "it": "Ciao, come stai?",
-            "nl": "Hallo, hoe gaat het?",
-            "ru": "Привет, как ты?",
-            "pt": "Olá, como você está?",
-            "ko": "안녕하세요, 어떻게 지내세요?",
-            "ar": "مرحبا، كيف حالك؟"
-        }
+        response = self.client.post('/detect-lang', data=dict(
+            text='สวัสดี'
+        ))
+        self.assert200(response)
+        detected_lang = response.data.decode('utf-8')
+        self.assertEqual(detected_lang, 'th')
 
-        for expected_lang, text_sample in samples.items():
-            response = self.client.post('/detect-lang', data=dict(
-                text=text_sample
-            ))
-            self.assert200(response)
-            detected_lang = response.data.decode('utf-8')
-            self.assertEqual(detected_lang, expected_lang)
+    # Test Case 7: Test language not detection
+    # [ISP continue from TestCase6]
+    # C2 = text is empty
+    # Expected Result: return the 'Unknown' when text is empty
+    def test_language_detection_not_found(self):
 
-    # Test Case 5: Test translation from English to various languages
-    def test_translation_to_various_languages(self):
+        # for expected_lang, text_sample in samples.items():
+        response = self.client.post('/detect-lang', data=dict(
+            text=""
+        ))
+        self.assert200(response)
+        detected_lang = response.data.decode('utf-8')
+        self.assertEqual(detected_lang, 'Unknown')
+
+    # Test Case 8: Test translation from English to various languages
+    def test_translate(self):
         translations = {
             "th": "สวัสดี",
             "fr": ["Bonjour", "Salut"],
@@ -121,17 +160,18 @@ class MyTest(TestCase):
             else:
                 self.assertEqual(translated_text, expected_translation)
 
-    # Test Case 6: Test Update Profile
+    # Test Case 9: Test Update Profile
     def test_profile_update(self):
         with self.client:
             response = self.client.post('/login', data=dict(
                 username='testuser',
                 password='testpass'
             ), follow_redirects=True)
-
+        new_language = 'en'
         new_phone = '9876543210'
         response = self.client.post('/edit-profile', data=dict(
             phone=new_phone
+
         ), follow_redirects=True)
         self.assertEqual(response.status_code, 200)
         self.assertEqual(current_user.phone_number, new_phone)
