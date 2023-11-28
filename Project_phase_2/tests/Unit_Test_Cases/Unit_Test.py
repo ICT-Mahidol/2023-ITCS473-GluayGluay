@@ -175,3 +175,4 @@ class MyTest(TestCase):
         ), follow_redirects=True)
         self.assertEqual(response.status_code, 200)
         self.assertEqual(current_user.phone_number, new_phone)
+        
