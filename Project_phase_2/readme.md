@@ -139,22 +139,37 @@ This command initiates all unit tests, providing verbose output for each test ca
 - **Method:** `test_registration`
 - **Expected Result:** Successful addition of a new user to the database, confirmed by querying the user.
 
-#### 3. User Login
+#### 3. User Registration Fail
+**Purpose:** ✅ Ensure registration creates a new user
+- **Method:** `test_regis_fail`
+- **Expected Result:** The registration process should not create a new user with the same username.
+
+#### 4. User Login
 **Purpose:** ✅ Ensures successful user login with valid credentials and proper session management.
 - **Method:** `test_login`
 - **Expected Result:** Successful login with HTTP 200 status and authenticated user session.
 
-#### 4. Language Detection
+#### 5. User Login Fail
+**Purpose:** ✅ Ensure Login is unsuccessful
+- **Method:** `test_login`
+- **Expected Result:** The login process should fail when incorrect credentials (username or password) are provided.
+
+#### 6. Language Detection
 **Purpose:** ✅ Tests the accuracy of language detection for various language inputs.
 - **Method:** `test_language_detection`
-- **Expected Result:** Correct detection of the language for each provided text sample.
+- **Expected Result:** return the language that match with text
 
-#### 5. Translation Functionality
+#### 7. Language Detection Not Found
+**Purpose:** ✅ Tests the accuracy of language detection for various language inputs.
+- **Method:** `test_language_detection_not_found`
+- **Expected Result:** return the 'Unknown' when text is empty
+
+#### 8. Translation Functionality
 **Purpose:** ✅ Checks the translation feature for different language pairs, ensuring accurate translations.
 - **Method:** `test_translation_to_various_languages`
 - **Expected Result:** Correct translation of a given text into various target languages.
 
-#### 6. Profile Update
+#### 9. Profile Update
 **Purpose:** ✅ Validates the functionality of updating user profiles.
 - **Method:** `test_profile_update`
 - **Expected Result:** Successful update of the user's phone number and other profile details.
