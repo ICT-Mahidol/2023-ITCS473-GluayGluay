@@ -187,18 +187,18 @@ Branch Coverage = (Number of branches executed / Total number of branches) * 100
 
 The report shows:
 
-- 📝 Total Statements: 245
-- ❌ Total Missed Statements: 61
-- 🔀 Total Branches: 48
-- 🚫 Total Missed Branches: 12
+- 📝 Total Statements: 262
+- ❌ Total Missed Statements: 51
+- 🔀 Total Branches: 46
+- 🚫 Total Missed Branches: 9
 
 Then the Statement Coverage would be:
 
-Statement Coverage = ((245 - 61) / 245) * 100% = **75.1%** ✅
+Statement Coverage = ((262 - 51) / 262) * 100% = **80.5%** ✅
 
 And the Branch Coverage would be:
 
-Branch Coverage = ((48 - 12) / 48) * 100% = **75%** ✅
+Branch Coverage = ((46 - 9) / 46) * 100% = **80.4%** ✅
 
 ![Test Report](https://github.com/ICT-Mahidol/2023-ITCS473-GluayGluay/blob/master/Project_phase_2/tests/Report/Unit_Report.png)
 
