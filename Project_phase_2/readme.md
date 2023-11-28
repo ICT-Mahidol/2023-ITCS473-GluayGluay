@@ -133,46 +133,55 @@ This command initiates all unit tests, providing verbose output for each test ca
 **Purpose:** ✅ Tests if the home page is accessible and ensures the correct template is rendered.
 - **Method:** `test_home_page`
 - **Expected Result:** HTTP 200 status and usage of 'index.html' template.
+- **ISP:** N/A (No specific input partitioning applicable)
 
 #### 2. User Registration
 **Purpose:** ✅ Verifies the user registration process, creating a new user with randomly generated credentials.
 - **Method:** `test_registration`
 - **Expected Result:** Successful addition of a new user to the database, confirmed by querying the user.
+- **ISP:** C1 = valid username (not already used)
 
 #### 3. User Registration Fail
-**Purpose:** ✅ Ensure registration creates a new user
+**Purpose:** ✅ Ensure registration fails if the username is already in use.
 - **Method:** `test_regis_fail`
 - **Expected Result:** The registration process should not create a new user with the same username.
+- **ISP:** C2 = invalid username (already in use)
 
 #### 4. User Login
 **Purpose:** ✅ Ensures successful user login with valid credentials and proper session management.
 - **Method:** `test_login`
 - **Expected Result:** Successful login with HTTP 200 status and authenticated user session.
+- **ISP:** C1 = valid Username; C2 = valid Password
 
 #### 5. User Login Fail
-**Purpose:** ✅ Ensure Login is unsuccessful
-- **Method:** `test_login`
+**Purpose:** ✅ Ensure Login is unsuccessful with invalid credentials.
+- **Method:** `test_login_fail`
 - **Expected Result:** The login process should fail when incorrect credentials (username or password) are provided.
+- **ISP:** C3 = invalid Username; C4 = invalid Password
 
 #### 6. Language Detection
 **Purpose:** ✅ Tests the accuracy of language detection for various language inputs.
 - **Method:** `test_language_detection`
-- **Expected Result:** return the language that match with text
+- **Expected Result:** Return the language that matches the text.
+- **ISP:** C1 = text is not empty
 
 #### 7. Language Detection Not Found
-**Purpose:** ✅ Tests the accuracy of language detection for various language inputs.
+**Purpose:** ✅ Tests the response when no language can be detected due to empty input.
 - **Method:** `test_language_detection_not_found`
-- **Expected Result:** return the 'Unknown' when text is empty
+- **Expected Result:** Return the 'Unknown' when text is empty.
+- **ISP:** C2 = text is empty
 
 #### 8. Translation Functionality
 **Purpose:** ✅ Checks the translation feature for different language pairs, ensuring accurate translations.
 - **Method:** `test_translation_to_various_languages`
 - **Expected Result:** Correct translation of a given text into various target languages.
+- **ISP:** N/A (No specific input partitioning applicable)
 
 #### 9. Profile Update
 **Purpose:** ✅ Validates the functionality of updating user profiles.
 - **Method:** `test_profile_update`
 - **Expected Result:** Successful update of the user's phone number and other profile details.
+- **ISP:** N/A (No specific input partitioning applicable)
 
 #### 🎯 Test Report
 After running your unit tests, the test framework generates a report that includes statement coverage and branch coverage metrics. Here's how to calculate the overall coverage:
