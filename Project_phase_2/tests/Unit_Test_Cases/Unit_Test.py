@@ -62,8 +62,8 @@ class MyTest(TestCase):
         app, db, User = import_app_modules()
         random_phone_suffix = random.randint(100000, 999999)
         response = self.client.post('/register', data=dict(
-            username="testuser",
-            password="testpass",
+            username="m",
+            password="1",
             phone_number=f"1111{random_phone_suffix}"
         ), follow_redirects=True)
         user = User.query.filter_by(username="testuser").first()
@@ -78,8 +78,8 @@ class MyTest(TestCase):
     def test_login(self):
         with self.client:
             response = self.client.post('/login', data=dict(
-                username='testuser',
-                password='testpass'
+                username='m',
+                password='1'
             ), follow_redirects=True)
             self.assertEqual(response.status_code, 200)
             self.assertTrue(current_user.is_authenticated)
@@ -164,8 +164,8 @@ class MyTest(TestCase):
     def test_profile_update(self):
         with self.client:
             response = self.client.post('/login', data=dict(
-                username='testuser',
-                password='testpass'
+                username='m',
+                password='1'
             ), follow_redirects=True)
         new_language = 'en'
         new_phone = '9876543210'
@@ -175,4 +175,3 @@ class MyTest(TestCase):
         ), follow_redirects=True)
         self.assertEqual(response.status_code, 200)
         self.assertEqual(current_user.phone_number, new_phone)
-        
