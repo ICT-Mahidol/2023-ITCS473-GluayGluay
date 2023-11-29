@@ -67,7 +67,6 @@ jobs:
           # Commit and push only if there are changes
           git diff --staged --quiet || git commit -m "Update coverage badge"
           git push
-      
 
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v2
