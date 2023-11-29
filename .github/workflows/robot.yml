@@ -35,12 +35,6 @@ jobs:
         python -m pip install --upgrade pip
         pip install robotframework robotframework-seleniumlibrary
 
-    # - name: Start Xvfb and Fluxbox
-    #   run: |
-    #     export DISPLAY=:99
-    #     Xvfb :99 -screen 0 1920x1080x24 > /dev/null 2>&1 &
-    #     fluxbox &
-
     - name: Run Robot Framework tests
       run: |
          cd tests/Automated_Test_Cases
