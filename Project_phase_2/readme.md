@@ -423,18 +423,18 @@ Our project utilizes GitHub Actions for continuous integration, ensuring that th
 
 #### Robot Framework UI Tests
 
-- **Trigger:** This workflow runs on push and pull requests to the `master` branch, excluding markdown files (`**.md`).
+- **Trigger:** This workflow runs on `push` and `pull requests` to the `master` branch, excluding markdown files (`**.md`).
 - **Environment:** Tests are executed in an `ubuntu-latest` environment.
 - **Setup:** The workflow sets up Python 3.10, installs necessary dependencies including Robot Framework and SeleniumLibrary, and headless UI testing.
 - **Execution:** UI tests are performed using Robot Framework, targeting the `Action_UI_Tests.robot` file located in `tests/Automated_Test_Cases`.
 
 #### Unit Test Workflow
 
-- **Trigger:** Similar to the UI tests, this workflow activates on push and pull requests to the `master` branch, excluding markdown files.
+- **Trigger:** This workflow runs on `push` and `pull requests` to the `master` branch, excluding markdown files (`**.md`).
 - **Environment:** Runs on `ubuntu-latest`, using Python 3.10.13.
 - **Setup:** Installs project dependencies, including coverage tools, to measure test coverage.
-- **Execution:** Executes unit tests using pytest. It then generates a coverage report, updating the coverage badge in the repository.
-- **Additional Steps:** Commits and pushes the updated coverage badge to the repository and uploads the coverage report to Codecov for detailed analysis.
+- **Execution:** Conducts unit testing using pytest, located in the `tests/Unit_Test_Cases` directory. Post testing, it generates a coverage report and updates the coverage badge in the repository.
+- **Additional Steps:** Commits and pushes the newly updated coverage badge back to the repository.
 
 #### Integration with Project Development
 
