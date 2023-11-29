@@ -68,8 +68,8 @@ jobs:
           git diff --staged --quiet || git commit -m "Update coverage badge"
           git push
 
-      - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v2
-        with:
-          file: ./Project_phase_2/tests/Unit_Test_Cases/coverage.xml 
-          fail_ci_if_error: true
+      # - name: Upload coverage to Codecov
+      #   uses: codecov/codecov-action@v2
+      #   with:
+      #     file: ./Project_phase_2/tests/Unit_Test_Cases/coverage.xml 
+      #     fail_ci_if_error: true
