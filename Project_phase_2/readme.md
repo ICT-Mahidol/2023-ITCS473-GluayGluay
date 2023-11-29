@@ -28,9 +28,13 @@
     - [Running the Tests](#running-the-tests-1)
     - [Test Cases Summary](#-test-cases-summary-1)
     - [Test Report](#-test-report-1)
-9. [Contributing](#-contributing)
-10. [Issues](#-issues)
-11. [License](#-license)
+9. [CI with GitHub Actions](#-ci-with-github-actions)
+    - [Continuous Integration (CI) Setup](#continuous-integration-ci-setup)
+    - [Robot Framework UI Tests](#robot-framework-ui-tests)
+    - [Unit Test Workflow](#unit-test-workflow)
+10. [Contributing](#-contributing)
+11. [Issues](#-issues)
+12. [License](#-license)
 ---
 
 ## 🌟 **Overview**
@@ -417,14 +421,14 @@ These tests ensure the reliability and functionality of key features in the Jell
 
 Our project utilizes GitHub Actions for continuous integration, ensuring that the codebase remains stable and functional with each new change. We have implemented two key CI workflows: **Robot Framework UI Tests** and **Unit Tests**. These workflows are triggered on `push` and `pull_request` events to the `master` branch, ensuring that all changes are thoroughly tested.
 
-### Robot Framework UI Tests
+#### Robot Framework UI Tests
 
 - **Trigger:** This workflow runs on push and pull requests to the `master` branch, excluding markdown files (`**.md`).
 - **Environment:** Tests are executed in an `ubuntu-latest` environment.
 - **Setup:** The workflow sets up Python 3.10, installs necessary dependencies including Robot Framework and SeleniumLibrary, and headless UI testing.
 - **Execution:** UI tests are performed using Robot Framework, targeting the `Action_UI_Tests.robot` file located in `tests/Automated_Test_Cases`.
 
-### Unit Test Workflow
+#### Unit Test Workflow
 
 - **Trigger:** Similar to the UI tests, this workflow activates on push and pull requests to the `master` branch, excluding markdown files.
 - **Environment:** Runs on `ubuntu-latest`, using Python 3.10.13.
@@ -432,7 +436,7 @@ Our project utilizes GitHub Actions for continuous integration, ensuring that th
 - **Execution:** Executes unit tests using pytest. It then generates a coverage report, updating the coverage badge in the repository.
 - **Additional Steps:** Commits and pushes the updated coverage badge to the repository and uploads the coverage report to Codecov for detailed analysis.
 
-### Integration with Project Development
+#### Integration with Project Development
 
 These CI workflows are integral to our development process, providing immediate feedback on the impact of new code. By automatically running tests and generating coverage reports, they help maintain the high quality and reliability of our application.
 
