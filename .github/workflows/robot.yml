@@ -39,3 +39,6 @@ jobs:
       run: |
          cd tests/Automated_Test_Cases
          robot Action_UI_Tests.robot
+
+
+
